@@ -25,6 +25,13 @@ Route::namespace('Auth')->group(function() {
 Route::namespace('Front')->group(function() {
 
     Route::get('/', 'productsController@index')->name('home');
+});
+
+Route::middleware('auth')->namespace('Front')->group(function() {
+    Route::get('/cart','CartController@index')->name('cart.list');
+    Route::get('add-to-cart/{id}', 'CartController@addToCart')->name('addToCart');
+    Route::delete('delete-from-cart/{id}', 'CartController@delete')->name('remove');
+    Route::post('makeorder', 'CartController@store')->name('makeOrder');
 
 });
 
@@ -35,5 +42,6 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::resource('/dashboard/products', 'ProductsController');
     Route::resource('/dashboard/users', 'UsersController');
     Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
+    Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');
 
 });
