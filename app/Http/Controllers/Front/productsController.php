@@ -14,7 +14,16 @@ class productsController extends Controller
     {
         $categories = Category::all();
         $topProducts = Product::orderBy('order_count', 'desc')->get();
+        
         return view('front.index', compact('categories', 'topProducts'));
+    }
+
+    public function show($id)
+    {
+        $categories = Category::all();
+        $product = Product::find($id);
+
+        return view('front.product', compact('product', 'categories'));
     }
 
 }

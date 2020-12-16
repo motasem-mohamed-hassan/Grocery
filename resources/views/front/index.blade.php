@@ -254,7 +254,7 @@
                                             <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
-                                                    <a href="{{ asset('frontend/') }}single.html" class="link-product-add-cart">Quick View</a>
+                                                    <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>
                                                 </div>
                                             </div>
                                             <span class="product-new-top">New</span>

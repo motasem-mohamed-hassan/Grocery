@@ -51,6 +51,16 @@ class CartController extends Controller
 
     public function store(Request $request)
     {
+
+        $validatedData = $request->validate([
+            'full_name'     => 'required|max:255',
+            'phone'         => 'required',
+            'address'       => 'required',
+            'city'          => 'required',
+            'address_type'  => 'required',
+        ]);
+
+
         $order                 = new Order();
         $order->user_id        = Auth::id();
         $order->full_name      = $request->full_name;
@@ -60,7 +70,7 @@ class CartController extends Controller
         $order->address_type   = $request->address_type;
         $order->save();
 
-        foreach(\Cart::getContent() as $id => $product)
+        foreach(\Cart::getContent() as $product)
         {
             $opj = new order_product();
             $opj->order_id = $order->id;
@@ -80,8 +90,8 @@ class CartController extends Controller
         $order->save();
 
         \Cart::clear();
-        
-        return redirect()->route('home');
+
+        return redirect()->route('home')->with('success','Your order have been sent successfuly!');;
 
     }
 

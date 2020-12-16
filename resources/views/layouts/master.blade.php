@@ -34,7 +34,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery-ui1.css') }}">
 	<!-- fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -109,13 +109,15 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				<!-- cart details -->
 				<div class="top_nav_right">
 					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
-						<form action="#" method="post" class="last">
-							<input type="hidden" name="cmd" value="_cart">
-							<input type="hidden" name="display" value="1">
-							<button class="w3view-cart" type="submit" name="submit" value="">
-								<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-							</button>
-						</form>
+                        <a href="{{ route('cart.list') }}">
+                            <form action="#" method="post" class="last">
+                                <input type="hidden" name="cmd" value="_cart">
+                                <input type="hidden" name="display" value="1">
+                                <button class="w3view-cart" type="submit" name="submit" value="">
+                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                        </a>
 					</div>
 				</div>
 				<!-- //cart details -->
@@ -846,7 +848,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</div>
 	<!-- //banner -->
 
-
+    @include('flash-message')
+    
     @yield('content')
 
 

@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::namespace('Auth')->group(function() {
 
     Route::post('/register','RegistrationController@store')->name('register');
+    Route::get('/login','SessionsController@index')->name('login-page');
     Route::post('/login','SessionsController@store')->name('login');
     Route::get('/logout','SessionsController@logout')->name('logout');
 
@@ -25,6 +26,8 @@ Route::namespace('Auth')->group(function() {
 Route::namespace('Front')->group(function() {
 
     Route::get('/', 'productsController@index')->name('home');
+    Route::get('product/{id}', 'ProductsController@show')->name('singleProduct');
+
 });
 
 Route::middleware('auth')->namespace('Front')->group(function() {
@@ -45,3 +48,6 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');
 
 });
+
+Auth::routes();
+

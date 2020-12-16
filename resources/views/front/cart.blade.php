@@ -79,7 +79,16 @@
 			</div>
 			<div class="checkout-left">
 				<div class="address_form_agile">
-					<h4>Add a new Details</h4>
+                    <h4>Add a new Details</h4>
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 					<form action="{{ route('makeOrder') }}" method="POST" class="creditly-card-form agileinfo_form">
                         @csrf
 						<div class="creditly-wrapper wthree, w3_agileits_wrapper">
