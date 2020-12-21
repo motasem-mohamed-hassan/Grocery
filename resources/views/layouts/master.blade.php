@@ -32,7 +32,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--//pop-up-box-->
 	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery-ui1.css') }}">
-	<!-- fonts -->
+    <!-- flexslider -->
+	<link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}" type="text/css" media="screen" />
+
+
+    <!-- fonts -->
     <link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
 
 </head>
@@ -49,7 +53,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<!-- header-bot-->
 			<div class="col-md-4 logo_agile">
 				<h1>
-					<a href="{{ asset('frontend/index.html') }}">
+					<a href="{{ route('home') }}">
 						<span>G</span>rocery
 						<span>S</span>hoppy
 						<img src="{{ asset('frontend/images/logo2.png') }}" alt=" ">
@@ -74,7 +78,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                     @if( auth()->check() )
                     <li>
-                        <a href="#">
+                        <a href="{{ route('myorders', Auth::user()) }}">
                             <span class="fa fa-unlock-alt" aria-hidden="true"></span> Hi {{ auth()->user()->name }}</a>
                     </li>
                     <li class="nav-item">
@@ -849,7 +853,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- //banner -->
 
     @include('flash-message')
-    
+
     @yield('content')
 
 
@@ -1292,6 +1296,24 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<!-- //price range (top products) -->
 
+    	<!-- imagezoom -->
+	<script src="{{ asset('frontend/js/imagezoom.js') }}"></script>
+	<!-- //imagezoom -->
+
+	<!-- FlexSlider -->
+	<script src="{{ asset('frontend/js/jquery.flexslider.js') }}"></script>
+	<script>
+		// Can also be used with $(document).ready()
+		$(window).load(function () {
+			$('.flexslider').flexslider({
+				animation: "slide",
+				controlNav: "thumbnails"
+			});
+		});
+	</script>
+	<!-- //FlexSlider-->
+
+
 	<!-- flexisel (for special offers) -->
 	<script src="{{ asset('frontend/js/jquery.flexisel.js') }}"></script>
 	<script>
@@ -1322,6 +1344,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		});
 	</script>
 	<!-- //flexisel (for special offers) -->
+
+
 
 	<!-- password-script -->
 	<script>

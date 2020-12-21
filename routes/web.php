@@ -35,6 +35,8 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('add-to-cart/{id}', 'CartController@addToCart')->name('addToCart');
     Route::delete('delete-from-cart/{id}', 'CartController@delete')->name('remove');
     Route::post('makeorder', 'CartController@store')->name('makeOrder');
+    Route::get('myorders', 'MyOrdersController@index')->name('myorders');
+    Route::get('order/{id}', 'MyOrdersController@show')->name('order_details');
 
 });
 

@@ -77,7 +77,7 @@
                     <div class="row">
                         <label class="col-md-3">image</label>
                         <div class="col-md-2">
-                            <input type="file" name="image" class="form-control">
+                            <input type="file" name="image[]" class="form-control" multiple>
                         </div>
                         <div class="clearfix"></div>
                     </div>

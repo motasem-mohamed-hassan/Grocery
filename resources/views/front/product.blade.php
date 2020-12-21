@@ -1,8 +1,9 @@
 @extends('layouts.master')
 
+
 @section('content')
 
-    	<!-- page -->
+	<!-- page -->
 	<div class="services-breadcrumb">
 		<div class="agile_inner_breadcrumb">
 			<div class="container">
@@ -11,7 +12,7 @@
 						<a href="index.html">Home</a>
 						<i>|</i>
 					</li>
-					<li>{{ $product->name }}</li>
+					<li>{{ $product->category->name }}</li>
 				</ul>
 			</div>
 		</div>
@@ -33,18 +34,13 @@
 				<div class="grid images_3_of_2">
 					<div class="flexslider">
 						<ul class="slides">
-							<li data-thumb="images/si.jpg">
+                            @foreach ($images as $image)
+                            <li data-thumb="{{ asset('storage/products/'.$image->url) }}">
 								<div class="thumb-image">
-									<img src="images/si.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
+									<img src="{{ asset('storage/products/'.$image->url) }}" data-imagezoom="true" class="img-responsive" alt=""> </div>
 							</li>
-							<li data-thumb="images/si2.jpg">
-								<div class="thumb-image">
-									<img src="images/si2.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
-							<li data-thumb="images/si3.jpg">
-								<div class="thumb-image">
-									<img src="images/si3.jpg" data-imagezoom="true" class="img-responsive" alt=""> </div>
-							</li>
+
+                            @endforeach
 						</ul>
 						<div class="clearfix"></div>
 					</div>
@@ -84,19 +80,32 @@
 						</li>
 						<li>
 							1 offer from
-							<span class="item_price">${{ $product->price }}</span>
+							<span class="item_price">$950.00</span>
 						</li>
 					</ul>
 				</div>
 				<div class="product-single-w3l">
 					<p>
 						<i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
-						<label>{{ $product->category->name }}</label> product.</p>
+						<label>Vegetarian</label> product.</p>
 					<ul>
 						<li>
-							{{ $product->description }}
+							Best for Biryani and Pulao.
+						</li>
+						<li>
+							After cooking, Zeeba Basmati rice grains attain an extra ordinary length of upto 2.4 cm/~1 inch.
+						</li>
+						<li>
+							Zeeba Basmati rice adheres to the highest food afety standards as your health is paramount to us.
+						</li>
+						<li>
+							Contains only the best and purest grade of basmati rice grain of Export quality.
 						</li>
 					</ul>
+					<p>
+						<i class="fa fa-refresh" aria-hidden="true"></i>All food products are
+						<label>non-returnable.</label>
+					</p>
 				</div>
 				<div class="occasion-cart">
 					<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
@@ -415,5 +424,6 @@
 	</div>
 	<!-- //special offers -->
 
-
+    
 @endsection
+

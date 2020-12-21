@@ -251,7 +251,7 @@
                                 <div class="col-md-4 product-men">
                                     <div class="men-pro-item simpleCart_shelfItem">
                                         <div class="men-thumb-item">
-                                            <img src="{{ asset('storage/products/'.$product->image) }}" alt="">
+                                            <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
                                                     <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>

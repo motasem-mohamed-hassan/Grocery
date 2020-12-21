@@ -36,7 +36,7 @@
                                     <td class="invert">{{ $loop->iteration }}</td>
                                     <td class="invert-image">
                                         <a href="single2.html">
-                                            <img src="{{ $row->attributes['image'] }}" alt=" " class="img-responsive">
+                                            <img src="{{ $row->attributes['image'] }}" style="width: 150px" class="img-responsive">
                                         </a>
                                     </td>
                                     <td class="invert">{{ $row->name }}</td>

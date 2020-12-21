@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Image;
 use App\Product;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(10);
-
+        $products = Product::with('first_image')->paginate(10);
         return view('dashboard.products.index', compact('products'));
     }
 
@@ -40,11 +40,6 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->image->getClientOriginalName()) {
-            $ext    = $request->image->getClientOriginalExtension();
-            $file   = date('YmdHis').rand(1,99999).'.'.$ext;
-            $request->image->storeAs('public/products', $file);
-        }
 
         $product= new Product();
 
@@ -53,9 +48,24 @@ class ProductsController extends Controller
         $product->description   = $request->description;
         $product->price         = $request->price;
         $product->stock         = $request->stock;
-        $product->image         = $file;
         $product->order_count   = 0;
         $product->save();
+
+        $images = $request->file('image');
+        foreach($images as $key =>$image)
+        {
+            if($request->image[$key]->getClientOriginalName()) {
+                $ext    = $image->getClientOriginalExtension();
+                $file   = date('YmdHis').rand(1,99999).'.'.$ext;
+                $image->storeAs('public/products', $file);
+            }
+
+            $imag = new Image();
+            $imag->product_id = $product->id;
+            $imag->url = $file;
+            $imag->save();
+
+        }
 
         return redirect()->route('admin.products.index');
     }

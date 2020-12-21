@@ -21,7 +21,6 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('price');
             $table->unsignedInteger('stock');
             $table->unsignedInteger('order_count')->default(0);
-            $table->string('image');
             $table->timestamps();
         });
     }

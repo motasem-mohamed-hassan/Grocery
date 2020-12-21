@@ -36,7 +36,7 @@ class CartController extends Controller
             "quantity"      => 1,
             "price"         => $product->price,
             'attributes'    => array(
-                "image"         => asset('storage/products/'.$product->image),
+                "image"         => asset('storage/products/'.$product->first_image->url),
             ),
         ));
         return redirect()->back();
@@ -61,32 +61,30 @@ class CartController extends Controller
         ]);
 
 
-        $order                 = new Order();
-        $order->user_id        = Auth::id();
-        $order->full_name      = $request->full_name;
-        $order->phone          = $request->phone;
-        $order->address        = $request->address;
-        $order->city           = $request->city;
-        $order->address_type   = $request->address_type;
-        $order->save();
 
         foreach(\Cart::getContent() as $product)
         {
-            $opj = new order_product();
-            $opj->order_id = $order->id;
-            $opj->product_id = $product['id'];
-            $opj->product_price = $product['price'];
-            $opj->product_quantity = $product['quantity'];
-            $opj->total = $product['price'] * $product['quantity'];
-            $opj->save();
+            $order                 = new Order();
+            $order->user_id        = Auth::id();
+            $order->full_name      = $request->full_name;
+            $order->phone          = $request->phone;
+            $order->address        = $request->address;
+            $order->city           = $request->city;
+            $order->address_type   = $request->address_type;
+
+            $order->product_id  = $product['id'];
+            $order->product_name  = $product['name'];
+            $order->price       = $product['price'];
+            $order->quantity    = $product['quantity'];
+            $order->total       = $product['price'] * $product['quantity'];
+            $order->save();
 
             $table = Product::find($product['id']);
-            $table->decrement('stock', $opj->product_quantity);
-            $table->increment('order_count', $opj->product_quantity);
+            $table->decrement('stock', $order->quantity);
+            $table->increment('order_count', $order->quantity);
 
         }
 
-        $order->total = \Cart::getTotal();
         $order->save();
 
         \Cart::clear();
