@@ -26,7 +26,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!--//tags -->
 	<link href="{{ asset('frontend/css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ asset('frontend/css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
-	<link href="{{ asset('frontend/css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('frontend/css/font-awesome.css') }}" rel="stylesheet">
+
+    <!--For stars of rating-->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+
 	<!--pop-up-box-->
 	<link href="{{ asset('frontend/css/popuo-box.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<!--//pop-up-box-->

@@ -17,23 +17,31 @@
         <div class="container-fluid">
             <table class="table table-bordered table-striped">
                 <tr class="bg-info">
-                    <th>product Name</th>
-                    <th>price</th>
-                    <th>quantity</th>
+                    <th>Order id</th>
+                    <th>name</th>
                     <th>total</th>
-                    <th>date</th>
+                    <th>phone</th>
+                    <th>address</th>
+                    <th>city</th>
+                    <th>address type</th>
+                    <th>Date</th>
                     <th>More details</th>
+
                 </tr>
                 @foreach ($orders as $order)
                 <tr>
-                    <td>{{ $order->product_name }}</td>
-                    <td>{{ $order->price }}</td>
-                    <td>{{ $order->quantity }}</td>
+                    <td>{{ $order->id }}</td>
+                    <td>{{ $order->full_name }}</td>
                     <td>{{ $order->total }}</td>
+                    <td>{{ $order->phone }}</td>
+                    <td>{{ $order->address }}</td>
+                    <td>{{ $order->city }}</td>
+                    <td>{{ $order->address_type }}</td>
                     <td>{{ $order->created_at }}</td>
+
                     <td>
                         <span class="float-right mr-2">
-                            <a href={{ route('singleProduct', $order->id) }}" style="color: #00bcd4">
+                            <a href={{ route('order_details', $order->id) }}" style="color: #00bcd4">
                                 <i class="fa fa-eye"></i>
                             </a>
                         </span>

@@ -131,7 +131,78 @@
 			<div class="clearfix"> </div>
 		</div>
 	</div>
-	<!-- //Single Page -->
+    <!-- //Single Page -->
+
+    @if($orderd == true && $reviewCart == false)
+    <!--Rating and review -->
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="{{ route('makereview', $product->id) }}" method="POST">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title">Rate this product</h5>
+                    <div class="stars">
+                        <input class="star star-5" id="star-5" type="radio" name="star" value="5"/>
+                        <label class="star star-5" for="star-5"></label>
+                        <input class="star star-4" id="star-4" type="radio" name="star" value="4"/>
+                        <label class="star star-4" for="star-4"></label>
+                        <input class="star star-3" id="star-3" type="radio" name="star" value="3"/>
+                        <label class="star star-3" for="star-3"></label>
+                        <input class="star star-2" id="star-2" type="radio" name="star" value="2"/>
+                        <label class="star star-2" for="star-2"></label>
+                        <input class="star star-1" id="star-1" type="radio" name="star" value="1"/>
+                        <label class="star star-1" for="star-1"></label>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <textarea class="form-control" name="review" rows="3"></textarea>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- End RaTING AND REVIEW -->
+    @endif
+
+    <!-- review cart -->
+
+    @if($reviewCart == true)
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Uour Review</h5>
+                <span class="starRating">
+                    <input id="rating5" type="radio" {{ $yourReview->rating == 5.0 ? 'checked' : ''  }}>
+                    <label for="rating5">5</label>
+                    <input id="rating4" type="radio" {{ $yourReview->rating == 4.0 ? 'checked' : ''  }}>
+                    <label for="rating4">4</label>
+                    <input id="rating3" type="radio" {{ $yourReview->rating == 3.0 ? 'checked' : ''  }}>
+                    <label for="rating3">3</label>
+                    <input id="rating2" type="radio" {{ $yourReview->rating == 2.0 ? 'checked' : ''  }}>
+                    <label for="rating2">2</label>
+                    <input id="rating1" type="radio" {{ $yourReview->rating == 1.0 ? 'checked' : ''  }}>
+                    <label for="rating1">1</label>
+                </span>
+
+            </div>
+            <div class="modal-body">
+                <p>{{ $yourReview->review }}</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button">Edit</button>
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Delete</button>
+            </div>
+            </div>
+        </div>
+    @endif
+
+
+    <!--End review cart -->
+
 	<!-- special offers -->
 	<div class="featured-section" id="projects">
 		<div class="container">
@@ -424,6 +495,6 @@
 	</div>
 	<!-- //special offers -->
 
-    
+
 @endsection
 

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Category;
-use App\Http\Controllers\Controller;
 use App\Image;
+use App\Order;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Review;
+use Illuminate\Support\Facades\Auth;
 
 class productsController extends Controller
 {
@@ -24,7 +27,23 @@ class productsController extends Controller
         $categories = Category::all();
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
-        return view('front.product', compact('product', 'categories', 'images'));
+
+        //make review
+        if($product->orders->where('user_id', Auth::id())->count() > 0){
+            $orderd = true;
+        }else{
+            $orderd = false;
+        }
+
+        //review Cart
+        $matchThese = ['user_id' => Auth::id(), 'product_id' => $id];
+        if(Review::where($matchThese)->count() > 0){
+            $reviewCart = true;
+            $yourReview = Review::where($matchThese)->first();
+        }else{
+            $reviewCart = false;
+        }
+        return view('front.product', compact('product', 'categories', 'images', 'orderd', 'reviewCart', 'yourReview'));
     }
 
 }

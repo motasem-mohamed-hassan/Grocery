@@ -21,15 +21,8 @@ class CreateOrdersTable extends Migration
             $table->string('address');
             $table->string('city');
             $table->string('address_type');
-            $table->unsignedInteger('product_id');
-            $table->string('product_name');
-            $table->unsignedInteger('price');
-            $table->unsignedInteger('quantity');
-            $table->unsignedInteger('total');
+            $table->unsignedInteger('total')->default('0');
             $table->timestamps();
-
-            $table->foreign('product_id')->references('id')->on('products');
-
         });
     }
 

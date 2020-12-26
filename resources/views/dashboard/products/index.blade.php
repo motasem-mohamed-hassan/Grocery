@@ -39,7 +39,8 @@
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->order_count }}</td>
                     <td><img src="{{ asset('storage/products/'.$product->first_image->url) }}"
-                        style="width: 150px;"></td>
+                        style="width: 150px;">
+                    </td>
                     <td>
                         <form method="POST" action="{{ route('admin.products.destroy', $product->id) }}">
                         @csrf

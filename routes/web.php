@@ -37,6 +37,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::post('makeorder', 'CartController@store')->name('makeOrder');
     Route::get('myorders', 'MyOrdersController@index')->name('myorders');
     Route::get('order/{id}', 'MyOrdersController@show')->name('order_details');
+    Route::post('review/{id}', 'MyOrdersController@review')->name('makereview');
 
 });
 

@@ -5,7 +5,6 @@ namespace App;
 use App\Image;
 use App\Order;
 use App\Category;
-use App\order_product;
 use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
@@ -22,7 +21,7 @@ class Product extends Model
 
     public function orders()
     {
-        return $this->belongsToMany(Order::class, 'order_products');
+        return $this->belongsToMany(Order::class);
     }
 
     public function images()

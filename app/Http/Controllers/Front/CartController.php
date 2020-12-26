@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\User;
 use App\Order;
 use App\Product;
 use App\Category;
 use App\order_product;
-use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -60,36 +58,38 @@ class CartController extends Controller
             'address_type'  => 'required',
         ]);
 
+        $order                 = new Order();
+        $order->user_id        = Auth::id();
+        $order->full_name      = $request->full_name;
+        $order->phone          = $request->phone;
+        $order->address        = $request->address;
+        $order->city           = $request->city;
+        $order->address_type   = $request->address_type;
+        $order->save();
 
 
         foreach(\Cart::getContent() as $product)
         {
-            $order                 = new Order();
-            $order->user_id        = Auth::id();
-            $order->full_name      = $request->full_name;
-            $order->phone          = $request->phone;
-            $order->address        = $request->address;
-            $order->city           = $request->city;
-            $order->address_type   = $request->address_type;
-
-            $order->product_id  = $product['id'];
-            $order->product_name  = $product['name'];
-            $order->price       = $product['price'];
-            $order->quantity    = $product['quantity'];
-            $order->total       = $product['price'] * $product['quantity'];
-            $order->save();
+            $op = new order_product();
+            $op->order_id = $order->id;
+            $op->product_id = $product['id'];
+            $op->product_name  =$product['name'];
+            $op->price         =$product['price'];
+            $op->quantity      =$product['quantity'];
+            $op->total         =$product['price'] * $product['quantity'];
+            $op->save();
 
             $table = Product::find($product['id']);
-            $table->decrement('stock', $order->quantity);
-            $table->increment('order_count', $order->quantity);
-
+            $table->decrement('stock', $op->quantity);
+            $table->increment('order_count', $op->quantity);
         }
 
+        $order->total = \Cart::getTotal();
         $order->save();
 
         \Cart::clear();
 
-        return redirect()->route('home')->with('success','Your order have been sent successfuly!');;
+        return redirect()->route('home')->with('success','Your order have been sent successfuly!');
 
     }
 
