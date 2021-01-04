@@ -37,7 +37,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- price range -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery-ui1.css') }}">
     <!-- flexslider -->
-	<link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}" type="text/css" media="screen" />
+
+
 
 
     <!-- fonts -->
@@ -603,10 +605,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<div class="agileits-navi_search">
 				<form action="#" method="post">
-					<select id="agileinfo-nav_search" name="agileinfo_search" required="">
+					<select id="agileinfo-nav_search" onchange="location = this.value;" name="agileinfo_search" required="">
                         <option value="">All Categories</option>
                         @foreach ($categories as $category)
-                            <option>{{ $category->name }}</option>
+                            <option value="{{ route('categoryPage', $category->id) }}">{{ $category->name }}</option>
                         @endforeach
                     </select>
 				</form>
@@ -775,7 +777,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</ul>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="{{ asset('frontend/') }}contact.html">Contact</a>
+									<a class="nav-stylehead" href="{{ route('contactPage') }}">Contact</a>
 								</li>
 							</ul>
 						</div>

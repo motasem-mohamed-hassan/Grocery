@@ -4912,3 +4912,8 @@ label.star:before {
 
 
 /*--//responsive--*/
+
+
+.card-inner{
+    margin-left: 4rem;
+}

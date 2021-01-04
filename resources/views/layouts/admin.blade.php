@@ -222,8 +222,6 @@
           </li>
 
 
-
-
           <li class="nav-header">Action</li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
@@ -292,5 +290,6 @@
 <script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+
 </body>
 </html>

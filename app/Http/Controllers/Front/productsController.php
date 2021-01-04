@@ -43,7 +43,19 @@ class productsController extends Controller
         }else{
             $reviewCart = false;
         }
-        return view('front.product', compact('product', 'categories', 'images', 'orderd', 'reviewCart', 'yourReview'));
+
+        //product Review avg
+        $avg = $product->reviews()->avg('rating');
+        //review list
+        $reviewsList = Review::where('product_id', $id)->get();
+
+
+        return view('front.product', compact('product', 'categories', 'images', 'orderd', 'reviewCart', 'yourReview', 'avg', 'reviewsList'));
     }
+
+
+
+
+
 
 }

@@ -50,17 +50,17 @@
 				<h3>{{ $product->name }}</h3>
 				<div class="rating1">
 					<span class="starRating">
-						<input id="rating5" type="radio" name="rating" value="5">
-						<label for="rating5">5</label>
-						<input id="rating4" type="radio" name="rating" value="4">
-						<label for="rating4">4</label>
-						<input id="rating3" type="radio" name="rating" value="3" checked="">
-						<label for="rating3">3</label>
-						<input id="rating2" type="radio" name="rating" value="2">
-						<label for="rating2">2</label>
-						<input id="rating1" type="radio" name="rating" value="1">
-						<label for="rating1">1</label>
-					</span>
+                        <input id="rating5" type="radio" {{ $avg == 5.0 ? 'checked' : ''  }}>
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" {{ $avg >= 4.0 ? 'checked' : ''  }}>
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" {{ $avg >= 3.0 ? 'checked' : ''  }}>
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" {{ $avg >= 2.0 ? 'checked' : ''  }}>
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" {{ $avg >= 1.0 ? 'checked' : ''  }}>
+                        <label for="rating1">1</label>
+                        </span>
 				</div>
 				<p>
 					<span class="item_price">${{ $product->price }}</span>
@@ -193,12 +193,48 @@
                 <p>{{ $yourReview->review }}</p>
             </div>
             <div class="modal-footer">
-                <button class="btn btn-primary" type="button">Edit</button>
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Delete</button>
+                <form action="{{ route('delete_review', $yourReview->id) }}" method="POST">
+                    @csrf
+                    @method('delete')
+                    <button class="btn btn-secondary" type="submit" data-dismiss="modal">Delete</button>
+                </form>
+
             </div>
             </div>
         </div>
     @endif
+
+    <hr>
+    <div class="clearfix"></div>
+
+    @foreach ($reviewsList as $oneReview)
+        <div class="modal-dialog" role="document">
+            <div class="col-lg-12">
+                <div class="bs-component">
+                <div class="list-group">
+                    <h5 class="modal-title">{{ $oneReview->user->name }}</h5>
+                    <span class="starRating">
+                        <input id="rating5" type="radio" {{ $oneReview->rating == 5.0 ? 'checked' : ''  }}>
+                        <label for="rating5">5</label>
+                        <input id="rating4" type="radio" {{ $oneReview->rating == 4.0 ? 'checked' : ''  }}>
+                        <label for="rating4">4</label>
+                        <input id="rating3" type="radio" {{ $oneReview->rating == 3.0 ? 'checked' : ''  }}>
+                        <label for="rating3">3</label>
+                        <input id="rating2" type="radio" {{ $oneReview->rating == 2.0 ? 'checked' : ''  }}>
+                        <label for="rating2">2</label>
+                        <input id="rating1" type="radio" {{ $oneReview->rating == 1.0 ? 'checked' : ''  }}>
+                        <label for="rating1">1</label>
+                    </span>
+                    <p class="list-group-item-text">{{ $oneReview->review }}</p></a>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <hr>
+
+    @endforeach
 
 
     <!--End review cart -->

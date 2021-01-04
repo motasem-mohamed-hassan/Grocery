@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\Front;
 
-use App\Image;
 use App\Order;
 use App\Review;
-use App\Product;
 use App\Category;
-use App\order_product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -43,6 +40,14 @@ class MyOrdersController extends Controller
         $my_rating->save();
 
         return redirect()->back()->with('success','Your REVIEW has been saved successfuly!');
+    }
+
+    public function deleteReview($id)
+    {
+        $review = review::find($id);
+        $review->delete();
+
+        return redirect()->back()->with('success', 'your review has been deleted successfully');
     }
 
 }

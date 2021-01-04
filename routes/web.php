@@ -27,6 +27,9 @@ Route::namespace('Front')->group(function() {
 
     Route::get('/', 'productsController@index')->name('home');
     Route::get('product/{id}', 'ProductsController@show')->name('singleProduct');
+    Route::get('/category{id}', 'CategoryController@show')->name('categoryPage');
+    Route::get('/contact', 'ContactController@index')->name('contactPage');
+    Route::post('/contact', 'ContactController@store')->name('sendEmail');
 
 });
 
@@ -38,6 +41,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('myorders', 'MyOrdersController@index')->name('myorders');
     Route::get('order/{id}', 'MyOrdersController@show')->name('order_details');
     Route::post('review/{id}', 'MyOrdersController@review')->name('makereview');
+    Route::delete('delete-review/{id}', 'MyOrdersController@deleteReview')->name('delete_review');
 
 });
 
@@ -49,6 +53,9 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::resource('/dashboard/users', 'UsersController');
     Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
     Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');
+    Route::get('/dashboard/inbox','MessagesController@index')->name('inbox');
+    Route::get('/dashboard/message/{id}', 'MessagesController@show')->name('message.show');
+    Route::delete('/dashboard/message/{id}', 'MessagesController@destroy')->name('message.destroy');
 
 });
 
