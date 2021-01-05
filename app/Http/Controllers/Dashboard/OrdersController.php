@@ -13,7 +13,14 @@ class OrdersController extends Controller
         $orders = Order::all();
 
         return view('dashboard.orders.index', compact('orders'));
+    }
 
+    public function approved(Request $request, $id)
+    {
+        $order = Order::find($id);
+        $order->status = $request->status;
+        $order->save();
 
+        return redirect()->back();
     }
 }

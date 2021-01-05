@@ -38,7 +38,19 @@
                     <td>{{ $order->phone }}</td>
                     <td>{{ $order->total }}</td>
                     <td>{{ $order->created_at }}</td>
-                    {{-- <td><a href="{{ route('admin.order', $order->id) }}" class="btn btn-primary">More</a></td> --}}
+                    <form action="{{ route('admin.order.approved', $order->id) }}" method="POST">
+                        @csrf
+
+                        @if($order->status == null)
+                            <td><button name="status" value="Approved" type="submit" class="btn btn-block btn-info">Approve</button></td>
+                        @elseif($order->status == 'Approved')
+                            <td><button name="status" value="On delivery" type="submit" class="btn btn-block btn-warning">On delivery</button></td>
+                        @elseif($order->status == 'On delivery')
+                            <td><button name="status" value="Deliveried" type="submit" class="btn btn-block btn-success">Deliveried</button></td>
+                        @elseif($order->status == 'Deliveried')
+                            <td><div class="bg-success color-palette"><span>Deliveried</span></div></td>
+                        @endif
+                    </form>
                 </tr>
                 @endforeach
             </table>

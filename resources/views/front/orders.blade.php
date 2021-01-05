@@ -25,6 +25,7 @@
                     <th>city</th>
                     <th>address type</th>
                     <th>Date</th>
+                    <th>Status</th>
                     <th>More details</th>
 
                 </tr>
@@ -38,6 +39,17 @@
                     <td>{{ $order->city }}</td>
                     <td>{{ $order->address_type }}</td>
                     <td>{{ $order->created_at }}</td>
+
+                    @if($order->status == null)
+                        <td><div class="bg-secondary color-palette"><span>waiting approve</span></div></td>
+                    @elseif($order->status == 'Approved')
+                        <td><div class="bg-info color-palette"><span>{{ $order->status }}</span></div></td>
+                    @elseif($order->status == 'On delivery')
+                        <td><div class="bg-warning color-palette"><span>{{ $order->status }}</span></div></td>
+                    @elseif($order->status == 'Deliveried')
+                        <td><div class="bg-success color-palette"><span>{{ $order->status }}</span></div></td>
+                    @endif
+
 
                     <td>
                         <span class="float-right mr-2">
