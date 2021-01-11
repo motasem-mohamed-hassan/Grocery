@@ -42,7 +42,7 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        return redirect()->route('admin.categories.index');
+        return redirect()->back()->with('success', 'Your category has ben addedd successfully!');
     }
 
     /**

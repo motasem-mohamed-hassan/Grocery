@@ -59,7 +59,9 @@
                                             </h4>
                                             <div class="info-product-price">
                                                 <span class="item_price">${{ $product->price }}</span>
-                                                <del>$280.00</del>
+                                                @isset($product->oldPrice)
+                                                <del>${{ $product->oldPrice }}</del>
+                                                @endisset
                                             </div>
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                 <form action="{{ route('addToCart', $product->id) }}" method="get">

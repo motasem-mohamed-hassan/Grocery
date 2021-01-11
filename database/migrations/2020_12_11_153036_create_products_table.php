@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->text('description');
             $table->integer('category_id')->nullable();
             $table->unsignedInteger('price');
+            $table->unsignedInteger('discount')->nullable();
+            $table->unsignedInteger('oldPrice')->nullable();
             $table->unsignedInteger('stock');
             $table->unsignedInteger('order_count')->default(0);
             $table->timestamps();

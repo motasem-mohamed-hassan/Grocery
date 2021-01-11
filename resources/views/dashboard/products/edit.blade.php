@@ -46,7 +46,15 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-md-3">Discount</label>
+                        <div class="col-md-1">
+                            <input type="number" name="discount" class="form-control" value="{{ $product->discount }}">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-md-3">Stock</label>

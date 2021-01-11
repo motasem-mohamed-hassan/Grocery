@@ -46,7 +46,16 @@ class ProductsController extends Controller
         $product->name          = $request->name;
         $product->category_id   = $request->category_id;
         $product->description   = $request->description;
-        $product->price         = $request->price;
+
+        if(isset($request->discount)) {
+            $product->discount = $request->discount;
+            $product->oldPrice = $request->price;
+            $product->price = $request->price * (1- $product->discount / 100);
+        }else{
+            $product->price = $request->price;
+        }
+
+
         $product->stock         = $request->stock;
         $product->order_count   = 0;
         $product->save();
@@ -106,23 +115,41 @@ class ProductsController extends Controller
     {
         $product = Product::find($id);
 
-        if(isset($request->image) && $request->image->getClientOriginalName()) {
-            $ext = $request->image->getClientOriginalExtension();
-            $file = date('YmdHis').rand(1,99999).'.'.$ext;
-            $request->image->storeAs('public/products', $file);
-        }elseif(!$product->image){
-            $file = '';
-        }else{
-            $file = $product->image;
-        }
-
         $product->name          = $request->name;
         $product->category_id   = $request->category_id;
         $product->description   = $request->description;
-        $product->price         = $request->price;
+
+        if(isset($request->discount)) {
+            $product->discount = $request->discount;
+            $product->oldPrice = $request->price;
+            $product->price = $request->price * (1- $product->discount / 100);
+        }else{
+            $product->price = $request->price;
+        }
+
         $product->stock         = $request->stock;
-        $product->image         = $file;
         $product->save();
+
+
+        if(($request->file('image')) == !null) {
+
+            $images = $request->file('image');
+            foreach($images as $key =>$image)
+            {
+                if($request->image[$key]->getClientOriginalName()) {
+                    $ext    = $image->getClientOriginalExtension();
+                    $file   = date('YmdHis').rand(1,99999).'.'.$ext;
+                    $image->storeAs('public/products', $file);
+                }
+
+                $imag = new Image();
+                $imag->product_id = $id;
+                $imag->url = $file;
+                $imag->save();
+
+            }
+
+        }
 
         return redirect()->route('admin.products.index');
 

@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -256,6 +257,11 @@
 <!-- ./wrapper -->
 
 
+<script src="http://code.jquery.com/jquery-3.3.1.min.js"
+               integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+               crossorigin="anonymous">
+</script>
+
 <!-- jQuery -->
 <script src="{{ asset('admin/plugins/jquery/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -290,6 +296,8 @@
 <script src="{{ asset('admin/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('admin/dist/js/demo.js') }}"></script>
+
+
 
 </body>
 </html>

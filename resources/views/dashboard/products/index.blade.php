@@ -24,6 +24,8 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
+                    <th>Descount</th>
+                    <th>New Price</th>
                     <th>Stock</th>
                     <th>Order Count</th>
                     <th>Image</th>
@@ -35,7 +37,15 @@
                     <td>{{ $product->category->name }}</td>
                     <td>{{ $product->name }}</td>
                     <td>{{ $product->description }}</td>
+                    @if(isset($product->discount))
+                    <td>{{ $product->oldPrice }}</td>
+                    <td>{{ $product->discount}} %</td>
                     <td>{{ $product->price }}</td>
+                    @else
+                    <td>{{ $product->price }}</td>
+                    <td><p> - </p></td>
+                    <td><p> - </p></td>
+                    @endif
                     <td>{{ $product->stock }}</td>
                     <td>{{ $product->order_count }}</td>
                     <td><img src="{{ asset('storage/products/'.$product->first_image->url) }}"

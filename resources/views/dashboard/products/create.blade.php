@@ -18,7 +18,7 @@
                 @csrf
                 <div class="form-group">
                     <div class="row">
-                        <label class="col-md-3">Nmae</label>
+                        <label class="col-md-3">Name</label>
                         <div class="col-md-6">
                             <input type="text" name="name" class="form-control">
                         </div>
@@ -45,7 +45,15 @@
                         <div class="clearfix"></div>
                     </div>
                 </div>
-
+                <div class="form-group">
+                    <div class="row">
+                        <label class="col-md-3">Discount</label>
+                        <div class="col-md-1">
+                            <input type="number" name="discount" class="form-control">
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
                 <div class="form-group">
                     <div class="row">
                         <label class="col-md-3">Stock</label>

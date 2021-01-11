@@ -54,10 +54,6 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
     Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');
     Route::post('/dashboard/orders/approved/{id}', 'OrdersController@approved')->name('order.approved');
-    Route::get('/dashboard/inbox','MessagesController@index')->name('inbox');
-    Route::get('/dashboard/message/{id}', 'MessagesController@show')->name('message.show');
-    Route::delete('/dashboard/message/{id}', 'MessagesController@destroy')->name('message.destroy');
-
 
 });
 
