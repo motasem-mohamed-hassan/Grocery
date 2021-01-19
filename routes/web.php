@@ -48,8 +48,19 @@ Route::middleware('auth')->namespace('Front')->group(function() {
 Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(function() {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-    Route::resource('/dashboard/categories', 'CategoriesController');
-    Route::resource('/dashboard/products', 'ProductsController');
+    Route::get('/dashboard/categories', 'CategoriesController@index')->name('categories.index');
+    Route::post('/dashboard/categories/store', 'CategoriesController@store')->name('categories.store');
+    Route::get('/dashboard/categories/edit', 'CategoriesController@edit')->name('categories.edit');
+    Route::post('/dashboard/categories/update', 'CategoriesController@update')->name('categories.update');
+    Route::delete('/dashboard/categories','CategoriesController@destroy')->name('categories.delete');
+
+    Route::get('/dashboard/products', 'productsController@index')->name('products.index');
+    Route::post('/dashboard/products/store', 'ProductsController@store')->name('product.store');
+    Route::get('/dashboard/products/edit', 'ProductsController@edit')->name('product.edit');
+    Route::post('/dashboard/products/update', 'ProductsController@update')->name('product.update');
+    Route::delete('/dashboard/products/delete', 'ProductsController@destroy')->name('product.delete');
+
+
     Route::resource('/dashboard/users', 'UsersController');
     Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
     Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');

@@ -18,26 +18,10 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::with('first_image')->paginate(10);
-        return view('dashboard.products.index', compact('products'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
         $categories = Category::all();
-        return view('dashboard.products.create', compact('categories'));
+        return view('dashboard.products.index', compact('products', 'categories'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
 
@@ -75,45 +59,43 @@ class ProductsController extends Controller
             $imag->save();
 
         }
+        $product->category;
+        $product->first_image;
 
-        return redirect()->route('admin.products.index');
+        if($product)
+            return response()->json([
+                'status' => true,
+                'msg'    => 'Category save successfully',
+                'data'     => $product,
+            ]);
+        else
+            return response()->json([
+                'status' => false,
+                'msg'    => 'try again'
+            ]);
+
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+
+    public function edit(Request $request)
     {
-        //
+        $product = Product::find($request->id);
+        $category = Category::find($product->category_id);
+
+        $product->first_image;
+        $product->images;
+
+        return response()->json([
+            'status' => true,
+            'data'     => $product,
+            'category'  => $category
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
+    public function update(Request $request)
     {
-        $product = Product::find($id);
-        $categories = Category::all();
-
-        return view('dashboard.products.edit', compact('product', 'categories'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        $product = Product::find($id);
+        $product = Product::find($request->id);
 
         $product->name          = $request->name;
         $product->category_id   = $request->category_id;
@@ -127,32 +109,34 @@ class ProductsController extends Controller
             $product->price = $request->price;
         }
 
+
         $product->stock         = $request->stock;
-        $product->save();
+        $product->order_count   = 0;
+        $product->update();
 
+        // $images = $request->file('image');
+        // foreach($images as $key =>$image)
+        // {
+        //     if($request->image[$key]->getClientOriginalName()) {
+        //         $ext    = $image->getClientOriginalExtension();
+        //         $file   = date('YmdHis').rand(1,99999).'.'.$ext;
+        //         $image->storeAs('public/products', $file);
+        //     }
 
-        if(($request->file('image')) == !null) {
+        //     $imag = new Image();
+        //     $imag->product_id = $product->id;
+        //     $imag->url = $file;
+        //     $imag->update();
+        // }
+        $product->category;
+        $product->first_image;
+        $product->images;
 
-            $images = $request->file('image');
-            foreach($images as $key =>$image)
-            {
-                if($request->image[$key]->getClientOriginalName()) {
-                    $ext    = $image->getClientOriginalExtension();
-                    $file   = date('YmdHis').rand(1,99999).'.'.$ext;
-                    $image->storeAs('public/products', $file);
-                }
-
-                $imag = new Image();
-                $imag->product_id = $id;
-                $imag->url = $file;
-                $imag->save();
-
-            }
-
-        }
-
-        return redirect()->route('admin.products.index');
-
+        return response()->json([
+            'status' => true,
+            'msg'    => 'product updated successfully',
+            'data'     => $product,
+        ]);
     }
 
     /**
@@ -161,11 +145,16 @@ class ProductsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $product =Product::find($id);
+        $product = product::find($request->id);
         $product->delete();
 
-        return redirect()->route('admin.categories.index');
+        return response()->json([
+            'status' => true,
+            'msg'    => 'product deleted successfully',
+            'id'     => $request->id
+        ]);
+
     }
 }

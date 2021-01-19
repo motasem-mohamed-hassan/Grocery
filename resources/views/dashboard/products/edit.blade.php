@@ -14,6 +14,12 @@
 
     <section class="content">
         <div class="container-fluid">
+
+
+
+
+
+            
             <form method="POST" action="{{ route('admin.products.update', $product->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')

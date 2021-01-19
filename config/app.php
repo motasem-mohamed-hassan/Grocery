@@ -163,6 +163,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
+        Yoeunes\Toastr\ToastrServiceProvider::class,
+
 
         /*
          * Package Service Providers...
