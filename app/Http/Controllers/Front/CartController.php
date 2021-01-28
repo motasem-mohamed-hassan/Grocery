@@ -2,33 +2,38 @@
 
 namespace App\Http\Controllers\Front;
 
+use Auth;
 use App\Order;
 use App\Product;
 use App\Category;
 use App\order_product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CartController extends Controller
 {
 
     public function index()
     {
-        $items = \Cart::getContent();
+
+
+
+        $items = \Cart::session(Session::getId())->getContent();
         $categories = Category::all();
-        $total = \Cart::getTotal();
+        $total = \Cart::session(Session::getId())->getTotal();
+        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
-
-        return view('Front.cart', compact('categories', 'items', 'total'));
+        return view('Front.cart', compact('categories', 'items', 'total', 'itemsCount'));
 
     }
 
-    public function addToCart($id)
+    public function addToCart(Request $request)
     {
-        $product = Product::find($id);
 
-        \Cart::add(array(
+        $product = Product::find($request->id);
+
+        \Cart::session(Session::getId())->add(array(
             "id"            => $product->id,
             "name"          => $product->name,
             "quantity"      => 1,
@@ -37,14 +42,68 @@ class CartController extends Controller
                 "image"         => asset('storage/products/'.$product->first_image->url),
             ),
         ));
-        return redirect()->back();
+
+        // \Cart::session(Session::getId())->update($product->id, array(
+        //     'quantity'  => 1,
+        // ));
+
+        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
+
+
+
+        return response()->json([
+            'status'    => true,
+            'msg'       => 'Successfully added to your cart',
+            'data'      => $itemsCount,
+        ]);
 
     }
 
-    public function delete($id)
+    public function plus(Request $request)
     {
-        \Cart::remove($id);
-        return redirect()->back();
+        $product = Product::find($request->id);
+
+        \Cart::session(Session::getId())->update($product->id, array(
+            'quantity'  => 1,
+        ));
+
+        return response()->json([
+            'status' => true,
+            'total' => \Cart::session(Session::getId())->getTotal(),
+            'priceSum'  => \Cart::get($product->id)->getPriceSum(),
+            'id'    => $product->id
+        ]);
+
+    }
+
+    public function minus(Request $request)
+    {
+        $product = Product::find($request->id);
+
+        \Cart::session(Session::getId())->update($product->id, array(
+            'quantity'  => -1,
+        ));
+
+        return response()->json([
+            'status' => true,
+            'total' => \Cart::session(Session::getId())->getTotal(),
+            'priceSum'  => \Cart::get($product->id)->getPriceSum(),
+            'id'    => $product->id
+        ]);
+
+
+    }
+
+    public function delete(Request $request)
+    {
+        \Cart::session(Session::getId())->remove($request->id);
+
+        return response()->json([
+            'status' => true,
+            'msg'    => 'Product removed successfully',
+            'id'     => $request->id,
+            'total' => \Cart::session(Session::getId())->getTotal(),
+        ]);
     }
 
     public function store(Request $request)
@@ -68,7 +127,7 @@ class CartController extends Controller
         $order->save();
 
 
-        foreach(\Cart::getContent() as $product)
+        foreach(\Cart::session(Session::getId())->getContent() as $product)
         {
             $op = new order_product();
             $op->order_id = $order->id;
@@ -84,10 +143,10 @@ class CartController extends Controller
             $table->increment('order_count', $op->quantity);
         }
 
-        $order->total = \Cart::getTotal();
+        $order->total = \Cart::session(Session::getId())->getTotal();
         $order->save();
 
-        \Cart::clear();
+        \Cart::session(Session::getId())->clear();
 
         return redirect()->route('home')->with('success','Your order have been sent successfuly!');
 

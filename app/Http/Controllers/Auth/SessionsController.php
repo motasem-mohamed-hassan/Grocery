@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SessionsController extends Controller
 {
@@ -22,6 +23,7 @@ class SessionsController extends Controller
     public function logout()
     {
         auth::logout();
+        Session::flush();
         return redirect()->route('home');
     }
 

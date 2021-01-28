@@ -185,16 +185,26 @@
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
+                            <div class="form-group" hidden>
+                                <div class="row">
+                                    <label class="col-md-3">Order Count</label>
+                                    <div class="col-md-2">
+                                        <input type="number" name="order_count" id="orderCount" class="form-control">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <div class="row">
                                     <label class="col-md-3">image</label>
                                     <div class="col-md-6">
                                         <input type="file" name="image[]"  class="form-control" multiple>
                                     </div>
-                                    <div class="clearfix"></div>                                </div>
+                                </div>
+                                    <div class="clearfix"></div>
                                     <div class="col-md-3"></div>
                                     <div class="col-md-9" id="myImage">
-
                                     </div>
                                     <div class="clearfix"></div>
                             </div>
@@ -269,7 +279,7 @@
                     </td>
                     <td>
                         <button product_id="{{ $product->id }}" data-toggle="modal" data-target="#updateModal" class="editBtn btn btn-info">Edit</button>
-                        <button product_id="{{ $product->id }}" class="delete_btn btn btn-danger">Delete</button>
+                        <button product_id="{{ $product->id }}"  class="delete_btn btn btn-danger">Delete</button>
                     </td>
                 </tr>
                 @endforeach
@@ -365,6 +375,10 @@
                     $('#stock').val('');
                     $('#image').val('');
 
+                    //success message
+                    toastr.success(data.msg);
+
+
                 },
                 error: function (reject) {
 
@@ -398,6 +412,7 @@
                     $('#editPrice').val(data.data.price);
                     $('#editDiscount').val(data.data.discount);
                     $('#editStock').val(data.data.stock);
+                    $('#orderCount').val(data.data.order_count);
                     $('#myImage').append(
                         `<img src="{{url('storage/products/`+firstImage+`')}}"
                                 style="width: 150px;" id="editImage">`
@@ -443,6 +458,10 @@
                                 $(".product_stock"+data.data.id).text(data.data.stock);
                                 $(".product_orderCount"+data.data.id).text(data.data.order_count);
 
+                                //success message
+                                toastr.success(data.msg);
+
+
                             },
                             error: function (reject) {
                                 console.log('no');
@@ -471,6 +490,10 @@
                 success: function (data) {
 
                     $('.productRow'+data.id).remove();
+
+                    //success message
+                    toastr.success(data.msg);
+
                 },
                 error: function (reject) {
 

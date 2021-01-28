@@ -9,6 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        $orders = Order::all()->count();
         return view('dashboard.dashboard');
     }
 }

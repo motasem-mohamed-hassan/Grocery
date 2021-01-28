@@ -147,6 +147,10 @@
                     );
                     //cleare input data
                     $('#name').val('');
+
+                    //success message
+                    toastr.success(data.msg);
+
                 },
                 error: function (reject) {
 
@@ -159,15 +163,14 @@
         $(document).on('click', '.editBtn', function(e){
             e.preventDefault();
 
+
+
             var category_id = $(this).attr('category_id');
 
             $.ajax({
                 type:   "get",
                 url:    "{{ route('admin.categories.edit') }}",
-                data:   {
-
-                    'id' : category_id
-                },
+                data:   {'id' : category_id},
 
                 success: function (data) {
                     $('#editName').val(data.data.name);
@@ -195,6 +198,10 @@
 
                             success: function (data) {
                                 $(".category_name"+data.data.id).text(data.data.name);
+
+                                //success message
+                                toastr.success(data.msg);
+
                             },
 
                             error: function (reject) {
@@ -226,9 +233,12 @@
                 success: function (data) {
 
                     if(data.status == true){
-                        $('#success_msg').show();
+                        $('.categoryRow'+data.id).remove();
+                        toastr.success(data.msg);
                     }
-                    $('.categoryRow'+data.id).remove();
+
+                    //success message
+
                 },
                 error: function (reject) {
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Image;
+use App\Order;
 use App\Review;
 use App\Product;
 use App\Category;
@@ -10,9 +11,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
-class productsController extends Controller
+class MasterController extends Controller
 {
-
     public function index()
     {
         $categories = Category::all(); //for all products sort by order count & categories navbar
@@ -22,13 +22,11 @@ class productsController extends Controller
         $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
 
-        return view('front.index', compact('categories', 'Sproducts', 'itemsCount'));
+        return view('layouts.index', compact('categories', 'Sproducts', 'itemsCount'));
     }
 
     public function show($id)
     {
-        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
-
         $categories = Category::all();
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
@@ -55,15 +53,7 @@ class productsController extends Controller
         $reviewsList = Review::where('product_id', $id)->get();
 
 
-        return view('front.product', compact('product', 'categories', 'images', 'orderd', 'reviewCart', 'yourReview', 'avg', 'reviewsList', ''));
+        return view('front.product', compact('product', 'categories', 'images', 'orderd', 'reviewCart', 'yourReview', 'avg', 'reviewsList'));
     }
-
-
-
-
-
-
-
-
 
 }

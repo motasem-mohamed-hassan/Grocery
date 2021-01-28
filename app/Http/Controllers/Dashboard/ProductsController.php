@@ -62,19 +62,11 @@ class ProductsController extends Controller
         $product->category;
         $product->first_image;
 
-        if($product)
-            return response()->json([
-                'status' => true,
-                'msg'    => 'Category save successfully',
-                'data'     => $product,
-            ]);
-        else
-            return response()->json([
-                'status' => false,
-                'msg'    => 'try again'
-            ]);
-
-
+        return response()->json([
+            'status' => true,
+            'msg'    => 'Product saved successfully',
+            'data'     => $product,
+        ]);
     }
 
 
@@ -111,7 +103,7 @@ class ProductsController extends Controller
 
 
         $product->stock         = $request->stock;
-        $product->order_count   = 0;
+        $product->order_count   = $request->order_count;
         $product->update();
 
         // $images = $request->file('image');
@@ -152,9 +144,11 @@ class ProductsController extends Controller
 
         return response()->json([
             'status' => true,
-            'msg'    => 'product deleted successfully',
+            'msg'    => 'Product deleted successfully',
             'id'     => $request->id
         ]);
 
     }
+
+
 }

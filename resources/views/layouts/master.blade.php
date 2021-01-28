@@ -1,15 +1,10 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE html>
 <html lang="zxx">
 
 <head>
 	<title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
-	<!--/tags -->
+    <!--/tags -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="keywords" content="Grocery Shoppy Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
@@ -38,6 +33,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<link rel="stylesheet" type="text/css" href="{{ asset('frontend/css/jquery-ui1.css') }}">
     <!-- flexslider -->
     <link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}" type="text/css" media="screen" />
+      <!-- toaster link css -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
+
+
 
 
 
@@ -75,7 +74,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 							<span class="fa fa-map-marker" aria-hidden="true"></span> Shop Locator</a>
 					</li>
 					<li>
+                        @if(auth()->check())
+                        <a href="{{ route('myorders', Auth::user()) }}">
+                        @else
 						<a href="#" data-toggle="modal" data-target="#myModal1">
+                        @endif
 							<span class="fa fa-truck" aria-hidden="true"></span>Track Order</a>
 					</li>
 					<li>
@@ -84,7 +87,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                     @if( auth()->check() )
                     <li>
-                        <a href="{{ route('myorders', Auth::user()) }}">
+                        <a href="#">
                             <span class="fa fa-unlock-alt" aria-hidden="true"></span> Hi {{ auth()->user()->name }}</a>
                     </li>
                     <li class="nav-item">
@@ -106,31 +109,44 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 				</ul>
 				<!-- //header lists -->
-				<!-- search -->
+                <!-- search -->
+                {{-- <div class="container" style="margin-top: 50px;">
+                    <div class="row">
+                        <div class="col-lg-3"></div>
+                        <div class="col-lg-6">
+                            <h4 class="text-center">Autocomplete Search Box with <br> Laravel + Ajax + jQuery</h4><hr>
+                            <div class="form-group">
+                                <label>Type a country name</label>
+                                <input type="text" name="country" id="country" placeholder="Enter country name" class="form-control">
+                            </div>
+                            <div id="country_list"></div>
+                        </div>
+                        <div class="col-lg-3"></div>
+                    </div>
+                </div> --}}
+
 				<div class="agileits_search">
-					<form action="#" method="post">
+					<form action="{{ route('search') }}" method="get">
 						<input name="Search" type="search" placeholder="How can we help you today?" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
 						</button>
 					</form>
 				</div>
-				<!-- //search -->
-				<!-- cart details -->
-				<div class="top_nav_right">
-					<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+                <!-- //search -->
+
+                <!-- cart details -->
+                <div class="top_nav_right">
+                    <div class="wthreecartaits wthreecartaits2 cart cart box_1">
                         <a href="{{ route('cart.list') }}">
-                            <form action="#" method="post" class="last">
-                                <input type="hidden" name="cmd" value="_cart">
-                                <input type="hidden" name="display" value="1">
-                                <button class="w3view-cart" type="submit" name="submit" value="">
-                                    <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                </button>
-                            </form>
+                            <button class="w3view-cart" type="submit" name="submit" value="">
+                                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+                                <span id="itemsCount" style="color: #FF5722" class=" d-flex justify-content-lg-center ">{{ $itemsCount }}</span>
+                            </button>
                         </a>
-					</div>
-				</div>
-				<!-- //cart details -->
+                    </div>
+                </div>
+            <!-- //cart details -->
 				<div class="clearfix"></div>
 			</div>
 			<div class="clearfix"></div>
@@ -635,7 +651,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 									</a>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="{{ asset('frontend/') }}about.html">About Us</a>
+									<a class="nav-stylehead" href="{{ route('aboutUs') }}">About Us</a>
 								</li>
 								<li class="dropdown">
 									<a href="{{ asset('frontend/') }}#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
@@ -787,76 +803,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</div>
 	<!-- //navigation -->
-	<!-- banner -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
-		<!-- Indicators-->
-		<ol class="carousel-indicators">
-			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
-			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
-		</ol>
-		<div class="carousel-inner" role="listbox">
-			<div class="item active">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Big
-							<span>Save</span>
-						</h3>
-						<p>Get flat
-							<span>10%</span> Cashback</p>
-						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
-					</div>
-				</div>
-			</div>
-			<div class="item item2">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Healthy
-							<span>Saving</span>
-						</h3>
-						<p>Get Upto
-							<span>30%</span> Off</p>
-						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
-					</div>
-				</div>
-			</div>
-			<div class="item item3">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Big
-							<span>Deal</span>
-						</h3>
-						<p>Get Best Offer Upto
-							<span>20%</span>
-						</p>
-						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
-					</div>
-				</div>
-			</div>
-			<div class="item item4">
-				<div class="container">
-					<div class="carousel-caption">
-						<h3>Today
-							<span>Discount</span>
-						</h3>
-						<p>Get Now
-							<span>40%</span> Discount</p>
-						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<a class="left carousel-control" href="{{ asset('frontend/') }}#myCarousel" role="button" data-slide="prev">
-			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="right carousel-control" href="{{ asset('frontend/') }}#myCarousel" role="button" data-slide="next">
-			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-	</div>
-	<!-- //banner -->
+    @yield('panner')
 
     @include('flash-message')
 
@@ -1219,20 +1166,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		</div>
 	</footer>
 	<!-- //footer -->
-	<!-- copyright -->
-	<div class="copy-right">
-		<div class="container">
-			<p>© 2017 Grocery Shoppy. All rights reserved | Design by
-				<a href="http://w3layouts.com"> W3layouts.</a>
-			</p>
-		</div>
-	</div>
-	<!-- //copyright -->
+    <!-- js-files -->
 
-	<!-- js-files -->
+
+
+
+
 	<!-- jquery -->
 	<script src="{{ asset('frontend/js/jquery-2.1.4.min.js') }}"></script>
-	<!-- //jquery -->
+    <!-- //jquery -->
+
+    <!-- For AJAX -->
+    @yield('scripts')
+
+
+
+
 
 	<!-- popup modal (for signin & signup)-->
 	<script src="{{ asset('frontend/js/jquery.magnific-popup.js') }}"></script>
@@ -1252,11 +1201,43 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 		});
 	</script>
-	<!-- Large modal -->
-	<!-- <script>
-		$('#').modal('show');
-	</script> -->
-	<!-- //popup modal (for signin & signup)-->
+    <!-- Large modal -->
+
+    {{-- <!-- Search Bar -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#Search').on('keyup',function() {
+                var query = $(this).val();
+                $.ajax({
+
+                    url:"{{ route('search') }}",
+                    type:"GET",
+                    data:{'country':query},
+
+                    success:function (data) {
+
+                        $('#product_list').html(data);
+                    }
+                })
+                // end of ajax call
+            });
+
+
+            $(document).on('click', 'li', function(){
+
+                var value = $(this).text();
+                $('#country').val(value);
+                $('#country_list').html("");
+            });
+        });
+    </script> --}}
+
+    <!--End Search Bar -->
 
 	<!-- cart-js -->
 	<script src="{{ asset('frontend/js/minicart.js') }}"></script>
@@ -1282,25 +1263,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<!-- //cart-js -->
 
-	<!-- price range (top products) -->
-	<script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
-	<script>
-		//<![CDATA[
-		$(window).load(function () {
-			$("#slider-range").slider({
-				range: true,
-				min: 0,
-				max: 9000,
-				values: [50, 6000],
-				slide: function (event, ui) {
-					$("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-				}
-			});
-			$("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
-
-		}); //]]>
-	</script>
-	<!-- //price range (top products) -->
+    <!-- price range (top products) -->
+    <script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
 
     	<!-- imagezoom -->
 	<script src="{{ asset('frontend/js/imagezoom.js') }}"></script>
@@ -1357,7 +1321,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
-			document.getElementById("password2").onchange = validatePassword;
 		}
 
 		function validatePassword() {
@@ -1372,9 +1335,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	</script>
 	<!-- //password-script -->
 
-	<!-- smoothscroll -->
-	<script src="{{ asset('frontend/js/SmoothScroll.min.js') }}"></script>
-	<!-- //smoothscroll -->
 
 	<!-- start-smooth-scrolling -->
 	<script src="{{ asset('frontend/js/move-top.js') }}"></script>
@@ -1414,7 +1374,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<!-- for bootstrap working -->
 	<script src="{{ asset('frontend/js/bootstrap.js') }}"></script>
 	<!-- //for bootstrap working -->
-	<!-- //js-files -->
+    <!--toaster js-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
 
 
 </body>

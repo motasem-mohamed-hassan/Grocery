@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-        	<!-- checkout page -->
+    <!-- checkout page -->
 	<div class="privacy">
 		<div class="container">
 			<div class="checkout-right">

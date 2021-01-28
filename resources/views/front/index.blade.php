@@ -1,4 +1,79 @@
 @extends('layouts.master')
+
+@section('panner')
+	<!-- banner -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Indicators-->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="2" class=""></li>
+			<li data-target="#myCarousel" data-slide-to="3" class=""></li>
+		</ol>
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Big
+							<span>Save</span>
+						</h3>
+						<p>Get flat
+							<span>10%</span> Cashback</p>
+						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item2">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Healthy
+							<span>Saving</span>
+						</h3>
+						<p>Get Upto
+							<span>30%</span> Off</p>
+						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item3">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Big
+							<span>Deal</span>
+						</h3>
+						<p>Get Best Offer Upto
+							<span>20%</span>
+						</p>
+						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
+					</div>
+				</div>
+			</div>
+			<div class="item item4">
+				<div class="container">
+					<div class="carousel-caption">
+						<h3>Today
+							<span>Discount</span>
+						</h3>
+						<p>Get Now
+							<span>40%</span> Discount</p>
+						<a class="button2" href="{{ asset('frontend/') }}product.html">Shop Now </a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<a class="left carousel-control" href="{{ asset('frontend/') }}#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="{{ asset('frontend/') }}#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
+	</div>
+	<!-- //banner -->
+
+@endsection
+
 @section('content')
 
 	<!-- top Products -->
@@ -13,30 +88,8 @@
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-			<!-- product left -->
-			<div class="side-bar col-md-3">
-				<div class="search-hotel">
-					<h3 class="agileits-sear-head">Search Here..</h3>
-					<form action="#" method="post">
-						<input type="search" placeholder="Product name..." name="search" required="">
-						<input type="submit" value=" ">
-					</form>
-				</div>
-				<!-- price range -->
-				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
-					<ul class="dropdown-menu6">
-						<li>
-							<div id="slider-range"></div>
-							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
-						</li>
-					</ul>
-				</div>
-				<!-- //price range -->
-			</div>
-			<!-- //product left -->
 			<!-- product right -->
-			<div class="agileinfo-ads-display col-md-9">
+			<div class="agileinfo-ads-display col-md-12">
 				<div class="wrapper">
                     @foreach ($categories as $category)
                         <div class="product-sec1">
@@ -51,7 +104,11 @@
                                                     <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>
                                                 </div>
                                             </div>
-                                            <span class="product-new-top">New</span>
+                                            @if($product->stock < 1)
+                                            <span class="product-new-top">OUT</span>
+                                            @else
+                                                <span class="product-new-top">New</span>
+                                            @endif
                                         </div>
                                         <div class="item-info-product ">
                                             <h4>
@@ -64,9 +121,12 @@
                                                 @endisset
                                             </div>
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                <form action="{{ route('addToCart', $product->id) }}" method="get">
                                                     <fieldset>
-                                                        <input type="submit" name="submit" value="Add to cart" class="button" />
+                                                        @if ($product->stock < 1)
+                                                            <button class="btn btn-danger" disabled style="width: 100%; padding: 13px; background-color: #1accfd">Out Of Stock</button>
+                                                        @else
+                                                            <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
+                                                        @endif
                                                     </fieldset>
                                                 </form>
                                             </div>
@@ -113,283 +173,64 @@
 			<!-- //tittle heading -->
 			<div class="content-bottom-in">
 				<ul id="flexiselDemo1">
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single.html">
-									<img src="{{ asset('frontend/images/s1.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single.html">Aashirvaad, 5g</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$220.00</h6>
-									<p>Save $40.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Aashirvaad, 5g" />
-											<input type="hidden" name="amount" value="220.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single.html">
-									<img src="{{ asset('frontend/images/s4.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single.html">Kissan Tomato Ketchup, 950g</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$99.00</h6>
-									<p>Save $20.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Kissan Tomato Ketchup, 950g" />
-											<input type="hidden" name="amount" value="99.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single.html">
-									<img src="{{ asset('frontend/images/s2.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single.html">Madhur Pure Sugar, 1g</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$69.00</h6>
-									<p>Save $20.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Madhur Pure Sugar, 1g" />
-											<input type="hidden" name="amount" value="69.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single2.html">
-									<img src="{{ asset('frontend/images/s3.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single2.html">Surf Excel Liquid, 1.02L</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$187.00</h6>
-									<p>Save $30.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Surf Excel Liquid, 1.02L" />
-											<input type="hidden" name="amount" value="187.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single.html">
-									<img src="{{ asset('frontend/images/s8.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single.html">Cadbury Choclairs, 655.5g</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$160.00</h6>
-									<p>Save $60.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Cadbury Choclairs, 655.5g" />
-											<input type="hidden" name="amount" value="160.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single2.html">
-									<img src="{{ asset('frontend/images/s6.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single2.html">Fair & Lovely, 80 g</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$121.60</h6>
-									<p>Save $30.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Fair & Lovely, 80 g" />
-											<input type="hidden" name="amount" value="121.60" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single.html">
-									<img src="{{ asset('frontend/images/s5.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single.html">Sprite, 2.25L (Pack of 2)</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$180.00</h6>
-									<p>Save $30.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Sprite, 2.25L (Pack of 2)" />
-											<input type="hidden" name="amount" value="180.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li>
-						<div class="w3l-specilamk">
-							<div class="speioffer-agile">
-								<a href="{{ asset('frontend/') }}single2.html">
-									<img src="{{ asset('frontend/images/s9.jpg') }}" alt="">
-								</a>
-							</div>
-							<div class="product-name-w3l">
-								<h4>
-									<a href="{{ asset('frontend/') }}single2.html">Lakme Eyeconic Kajal, 0.35 g</a>
-								</h4>
-								<div class="w3l-pricehkj">
-									<h6>$153.00</h6>
-									<p>Save $40.00</p>
-								</div>
-								<div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-									<form action="#" method="post">
-										<fieldset>
-											<input type="hidden" name="cmd" value="_cart" />
-											<input type="hidden" name="add" value="1" />
-											<input type="hidden" name="business" value=" " />
-											<input type="hidden" name="item_name" value="Lakme Eyeconic Kajal, 0.35 g" />
-											<input type="hidden" name="amount" value="153.00" />
-											<input type="hidden" name="discount_amount" value="1.00" />
-											<input type="hidden" name="currency_code" value="USD" />
-											<input type="hidden" name="return" value=" " />
-											<input type="hidden" name="cancel_return" value=" " />
-											<input type="submit" name="submit" value="Add to cart" class="button" />
-										</fieldset>
-									</form>
-								</div>
-							</div>
-						</div>
-					</li>
-				</ul>
+                    @foreach ($Sproducts as $product)
+                        <li>
+                            <div class="w3l-specilamk">
+                                <div class="speioffer-agile">
+                                    <a href="{{ route('singleProduct', $product->id) }}">
+                                        <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
+                                    </a>
+                                </div>
+                                <div class="product-name-w3l">
+                                    <h4>
+                                        <a href="{{ route('singleProduct', $product->id) }}">{{ $product->name }}</a>
+                                    </h4>
+                                    <div class="w3l-pricehkj">
+                                        <h6>${{ $product->price }}</h6>
+                                        <p>Save ${{ $product->oldPrice * ($product->discount /100)  }}</p>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                        <fieldset>
+                                            <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
+                                        </fieldset>
+                                    </form>
+                                </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
+
+                </ul>
 			</div>
 		</div>
 	</div>
 	<!-- //special offers -->
+@endsection
 
+
+@section('scripts')\
+
+
+
+    {{-- add to cart --}}
+    <script>
+        $(document).on('click', '.submitToCart', function(e){
+            e.preventDefault();
+
+            var productID = $(this).attr('productID');
+            $.ajax({
+                type: "get",
+                url: "{{ route('addToCart') }}",
+                data: {'id' : productID },
+
+                success: function (response) {
+                    $("#itemsCount").html(response.data);
+                    toastr.success(response.msg);
+                }
+            });
+        });
+    </script>
 
 @endsection
+

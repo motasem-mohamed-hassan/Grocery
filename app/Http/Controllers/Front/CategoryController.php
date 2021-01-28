@@ -2,18 +2,38 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Product;
 use App\Category;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
-    public function show($id)
+    public function show(Request $request, $id)
     {
+        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
+
         $categories = Category::all();
+        $Sproducts = Product::where('discount', '!=', null)->get(); //for spacial offers
         $category = Category::find($id);
 
-        return view('front.category', compact('categories', 'category'));
+        if($request->min && $request->max){
+            $products = Product::whereBetween('price', [$request->min, $request->max])
+                        ->where('category_id', $id)
+                        ->get();
+        }else{
+            $products = Product::where('category_id', $id)->get();
+        }
+
+        return view('front.category', compact('products', 'categories', 'category','itemsCount', 'Sproducts'));
 
     }
+
+    // public function range(Request $request)
+    // {
+
+    //     return view('front.category', compact('products'));
+
+    // }
 }

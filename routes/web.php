@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\AboutController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,17 +27,35 @@ Route::namespace('Auth')->group(function() {
 Route::namespace('Front')->group(function() {
 
     Route::get('/', 'productsController@index')->name('home');
-    Route::get('product/{id}', 'ProductsController@show')->name('singleProduct');
+    Route::get('product/{id}', 'productsController@show')->name('singleProduct');
     Route::get('/category{id}', 'CategoryController@show')->name('categoryPage');
+    Route::get('/price-range', 'CategoryController@range')->name('priceRange');
+
+
     Route::get('/contact', 'ContactController@index')->name('contactPage');
     Route::post('/contact', 'ContactController@store')->name('sendEmail');
+
+    Route::get('/search', 'SearchController@search')->name('search');
+
+
+
+
+    Route::get('/cart','CartController@index')->name('cart.list');
+    Route::get('add-to-cart', 'CartController@addToCart')->name('addToCart');
+    Route::get('add-to-cart/plus', 'CartController@plus')->name('quantityPlus');
+    Route::get('add-to-cart/minus', 'CartController@minus')->name('quantityMinus');
+    Route::delete('delete-from-cart', 'CartController@delete')->name('deleteItemFromCart');
+
+    Route::get('/about-us', 'AboutController@index')->name('aboutUs');
+
+
+
 
 });
 
 Route::middleware('auth')->namespace('Front')->group(function() {
-    Route::get('/cart','CartController@index')->name('cart.list');
-    Route::get('add-to-cart/{id}', 'CartController@addToCart')->name('addToCart');
-    Route::delete('delete-from-cart/{id}', 'CartController@delete')->name('remove');
+
+
     Route::post('makeorder', 'CartController@store')->name('makeOrder');
     Route::get('myorders', 'MyOrdersController@index')->name('myorders');
     Route::get('order/{id}', 'MyOrdersController@show')->name('order_details');

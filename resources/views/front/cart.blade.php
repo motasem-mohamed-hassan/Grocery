@@ -15,7 +15,7 @@
 			<!-- //tittle heading -->
 			<div class="checkout-right">
 				<h4>Your shopping cart contains:
-					<span>3 Products</span>
+					<span>{{ $itemsCount }} Products</span>
 				</h4>
 				<div class="table-responsive">
 					<table class="timetable_sub">
@@ -32,7 +32,7 @@
 						</thead>
 						<tbody>
                             @foreach ($items as $row)
-                                <tr class="rem">
+                                <tr class="rem productRow{{ $row->id }}">
                                     <td class="invert">{{ $loop->iteration }}</td>
                                     <td class="invert-image">
                                         <a href="single2.html">
@@ -44,21 +44,17 @@
                                     <td class="invert">
                                         <div class="quantity">
                                             <div class="quantity-select">
-                                                <div class="entry value-minus">&nbsp;</div>
+                                                <div class="entry value-minus" product_id="{{ $row->id }}">&nbsp;</div>
                                                 <div class="entry value">
                                                     <span>{{ $row->quantity }}</span>
                                                 </div>
-                                                <div class="entry value-plus active">&nbsp;</div>
+                                                <div class="entry value-plus" product_id="{{ $row->id }}">&nbsp;</div>
                                             </div>
                                         </div>
                                     </td>
-                                    <td class="invert">${{ $row->getPriceSum() }}</td>
+                                    <td class="priceSum{{ $row->id }} invert">${{ $row->getPriceSum() }}</td>
                                     <td class="invert">
-                                        <form method="POST" action="{{ route('remove', $row->id) }}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <input type="submit" class="btn btn-outline-danger" value="Remove">
-                                        </form>
+                                        <button class="deleteItemFromCart btn btn-outline-danger" product_id="{{ $row->id }}">Remove</button>
                                     </td>
                                 </tr>
                             @endforeach
@@ -70,7 +66,7 @@
                                 <th></th>
 								<th></th>
                                 <th></th>
-                                <th>{{ $total }}</th>
+                                <th id="total">{{ $total }}</th>
 								<th></th>
 							</tr>
                         </tfoot>
@@ -140,3 +136,85 @@
 	<!-- //checkout page -->
 
 @endsection
+
+
+@section('scripts')
+    	<!--quantity-->
+	<script>
+		$('.value-plus').on('click', function () {
+            var product_id = $(this).attr('product_id');
+            var divUpd = $(this).parent().find('.value');
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('quantityPlus') }}",
+                data: {'id' : product_id},
+
+                success: function (response) {
+                    if(response.status == true){
+                        var newVal = parseInt(divUpd.text(), 10) + 1;
+                        divUpd.text(newVal);
+
+                        $("#total").text(response.total);
+                        $(".priceSum"+response.id).text('$'+response.priceSum);
+
+                    }
+
+                }
+            });
+
+		});
+
+		$('.value-minus').on('click', function () {
+            var product_id = $(this).attr('product_id');
+			var divUpd = $(this).parent().find('.value');
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('quantityMinus') }}",
+                data: {'id' : product_id},
+
+                success: function (response) {
+                    if(response.status == true){
+                        var	newVal = parseInt(divUpd.text(), 10) - 1;
+			            if (newVal >= 1) divUpd.text(newVal);
+
+                        $("#total").text(response.total);
+                        $(".priceSum"+response.id).text('$'+response.priceSum);
+                    }
+                }
+            });
+
+
+		});
+
+
+        $(document).on('click', '.deleteItemFromCart', function(e){
+            e.preventDefault();
+
+            var product_id = $(this).attr('product_id');
+
+            $.ajax({
+                type: "delete",
+                url: "{{ route('deleteItemFromCart') }}",
+                data: {
+                    '_token': "{{ csrf_token() }}",
+                    'id'    : product_id
+                },
+
+                success: function (response) {
+                    if(response.status == true){
+                        $('.productRow'+response.id).remove();
+                        toastr.success(response.msg);
+
+                        $("#total").text(response.total);
+                    }
+
+                }
+            });
+
+        })
+	</script>
+	<!--quantity-->
+@endsection
+

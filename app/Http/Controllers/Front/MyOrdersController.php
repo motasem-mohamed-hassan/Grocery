@@ -7,6 +7,7 @@ use App\Review;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
 class MyOrdersController extends Controller
@@ -15,8 +16,10 @@ class MyOrdersController extends Controller
     {
         $categories = Category::all();
         $orders = Order::where('user_id', Auth::id())->get();
+        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
-        return view('front.orders', compact('categories', 'orders'));
+
+        return view('front.orders', compact('categories', 'orders', 'itemsCount'));
     }
 
     public function show($id)

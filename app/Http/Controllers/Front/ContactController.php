@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Front;
 
 use App\Category;
-use App\Http\Controllers\Controller;
 use App\Mail\ContactFormMail;
-use GuzzleHttp\Psr7\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Session;
 
 class ContactController extends Controller
 {
@@ -14,8 +14,10 @@ class ContactController extends Controller
     public function index()
     {
         $categories = Category::all();
+        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
-        return view('front.contact', compact('categories'));
+
+        return view('front.contact', compact('categories', 'itemsCount'));
     }
 
 

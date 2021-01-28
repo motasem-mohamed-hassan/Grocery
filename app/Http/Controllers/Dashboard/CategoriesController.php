@@ -24,18 +24,11 @@ class CategoriesController extends Controller
         $category->name = $request->name;
         $category->save();
 
-        //for msg in ajax code
-        if($category)
-            return response()->json([
-                'status' => true,
-                'msg'    => 'Category save successfully',
-                'data'     => $category
-            ]);
-        else
-            return response()->json([
-                'status' => false,
-                'msg'    => 'try again'
-            ]);
+        return response()->json([
+            'status' => true,
+            'msg'    => 'Category saved successfully',
+            'data'     => $category
+        ]);
     }
 
     public function edit(Request $request)
