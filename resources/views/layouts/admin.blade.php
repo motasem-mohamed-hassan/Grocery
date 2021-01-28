@@ -225,6 +225,15 @@
               </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.info') }}" class="nav-link @if($segment=='info') active @endif">
+                <i class="nav-icon fas fa-info"></i>
+                <p>
+                    Info
+                </p>
+            </a>
+          </li>
+
 
 
           <li class="nav-header">Action</li>
