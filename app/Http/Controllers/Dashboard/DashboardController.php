@@ -14,10 +14,13 @@ class DashboardController extends Controller
 
         $delevered              = Order::where('status', 'Deliveried')->count();
         $notDeleveredYet        = Order::where('status', '!=', 'Deliveried')->count();
-        $successfullyDelevered  = $delevered / $ordersCount * 100;
+        if($delevered + $ordersCount == 0){
+            $successfullyDelevered = 0;
+        }else{
+            $successfullyDelevered = $delevered / $ordersCount * 100;;
+        }
 
-        $usersCountr            = User::aLL()->count();
-
+        $usersCountr = User::aLL()->count();
         return view('dashboard.dashboard', compact('ordersCount','successfullyDelevered','notDeleveredYet','usersCountr'));
     }
 }

@@ -85,7 +85,12 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');
     Route::post('/dashboard/orders/approved/{id}', 'OrdersController@approved')->name('order.approved');
 
-    Route::get('/dashboard/info', 'InfoController@index')->name('info');
+    Route::get('/dashboard/pages', 'AboutController@index')->name('info');
+    Route::get('/dashboard/setting', 'SettingController@index')->name('setting');
+
+    Route::put('/dashboard/setting/update/{id}', 'SettingController@update')->name('update.setting');
+    Route::put('/dashboard/about/update/{id}', 'AboutController@update')->name('update.about');
+
 
 });
 

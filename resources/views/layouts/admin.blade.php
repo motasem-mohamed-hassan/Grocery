@@ -233,6 +233,15 @@
                 </p>
             </a>
           </li>
+          <li class="nav-item has-treeview">
+            <a href="{{ route('admin.setting') }}" class="nav-link @if($segment=='setting') active @endif">
+                <i class="nav-icon fas fa-info"></i>
+                <p>
+                    Setting
+                </p>
+            </a>
+          </li>
+
 
 
 
