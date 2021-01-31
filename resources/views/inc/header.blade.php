@@ -218,77 +218,19 @@
 						<div class="collapse navbar-collapse menu--shylock" id="bs-example-navbar-collapse-1">
 							<ul class="nav navbar-nav menu__list">
 								<li class="active">
-									<a class="nav-stylehead" href="{{ asset('frontend/') }}index.html">Home
+									<a class="nav-stylehead" href="{{ route('home') }}">Home
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>
 								<li class="">
 									<a class="nav-stylehead" href="{{ route('aboutUs') }}">About Us</a>
+                                </li>
+                                <li class="">
+									<a class="nav-stylehead" href="{{ route('get_add') }}">Add product</a>
 								</li>
-								<li class="dropdown">
-									<a href="{{ asset('frontend/') }}#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Kitchen
-										<span class="caret"></span>
-									</a>
-									<ul class="dropdown-menu multi-column columns-3">
-										<div class="agile_inner_drop_nav_info">
-											<div class="col-sm-4 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Bakery</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Baking Supplies</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Coffee, Tea & Beverages</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Dried Fruits, Nuts</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Sweets, Chocolate</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Spices & Masalas</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Jams, Honey & Spreads</a>
-													</li>
-												</ul>
-											</div>
-											<div class="col-sm-4 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Pickles</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Pasta & Noodles</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Rice, Flour & Pulses</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Sauces & Cooking Pastes</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Snack Foods</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Oils, Vinegars</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product.html">Meat, Poultry & Seafood</a>
-													</li>
-												</ul>
-											</div>
-											<div class="col-sm-4 multi-gd-img">
-												<img src="{{ asset('frontend/images/nav.png') }}" alt="">
-											</div>
-											<div class="clearfix"></div>
-										</div>
-									</ul>
-								</li>
-								<li class="dropdown">
+
+
+                                <li class="dropdown">
 									<a href="{{ asset('frontend/') }}#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Household
 										<span class="caret"></span>
 									</a>

@@ -12,7 +12,7 @@
       </div>
     <!-- /.content-header -->
 
-    <section class="content">
+    {{-- <section class="content">
         <div class="container-fluid">
             <!-- Button trigger modal for create -->
             <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#createModal">
@@ -217,7 +217,7 @@
                 </div>
                 </div>
             </div>
-            <!--End Update Modal -->
+            <!--End Update Modal --> --}}
 
 
 
@@ -292,7 +292,7 @@
 @endsection
 
 @section('scripts')
-    <script>
+    {{-- <script>
 
         //store data
         $(document).on('click', '#submitToCreate', function(e){
@@ -500,7 +500,7 @@
                 }
             });
 
-        });
+        }); --}}
 
 
     </script>

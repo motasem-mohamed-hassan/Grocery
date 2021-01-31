@@ -20,7 +20,6 @@ Route::namespace('Auth')->group(function() {
     Route::get('/login','SessionsController@index')->name('login-page');
     Route::post('/login','SessionsController@store')->name('login');
     Route::get('/logout','SessionsController@logout')->name('logout');
-
 });
 
 
@@ -30,11 +29,8 @@ Route::namespace('Front')->group(function() {
     Route::get('product/{id}', 'productsController@show')->name('singleProduct');
     Route::get('/category{id}', 'CategoryController@show')->name('categoryPage');
     Route::get('/price-range', 'CategoryController@range')->name('priceRange');
-
-
     Route::get('/contact', 'ContactController@index')->name('contactPage');
     Route::post('/contact', 'ContactController@store')->name('sendEmail');
-
     Route::get('/search', 'SearchController@search')->name('search');
 
 
@@ -61,6 +57,11 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('order/{id}', 'MyOrdersController@show')->name('order_details');
     Route::post('review/{id}', 'MyOrdersController@review')->name('makereview');
     Route::delete('delete-review/{id}', 'MyOrdersController@deleteReview')->name('delete_review');
+
+    //sell
+    Route::get('/adding', 'AddController@index')->name('get_add');
+
+
 
 });
 
