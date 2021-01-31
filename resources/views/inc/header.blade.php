@@ -125,7 +125,7 @@
                         <form action="{{ route('login') }}" method="post">
                             @csrf
 							<div class="styled-input agile-styled-input-top">
-								<input type="email" placeholder="Email" name="email" required="">
+								<input type="text" placeholder="phone" name="phone_number" required="">
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Password" name="password" required="">
@@ -164,8 +164,11 @@
                             @csrf
 							<div class="styled-input agile-styled-input-top">
 								<input type="text" placeholder="Name" name="name" required="">
-							</div>
-							<div class="styled-input">
+                            </div>
+                            <div class="styled-input agile-styled-input-top">
+								<input type="text" pattern="[0-9]" placeholder="phone number" name="phone_number" required>
+                            </div>
+							<div class="form-input">
 								<input type="email" placeholder="E-mail" name="email" required="">
 							</div>
 							<div class="styled-input">
