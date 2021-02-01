@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('content')
-<form id="createForm" method="" action="" enctype="">
+<form action="{{ route('post_add') }}" method="post"  enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <div class="row">
@@ -45,24 +45,6 @@
     </div>
     <div class="form-group">
         <div class="row">
-            <label class="col-md-3">Discount</label>
-            <div class="col-md-2">
-                <input type="number" name="discount" id="discount" class="form-control">
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
-            <label class="col-md-3">Stock</label>
-            <div class="col-md-2">
-                <input type="number" name="stock" id="stock" class="form-control">
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="row">
             <label class="col-md-3">image</label>
             <div class="col-md-6">
                 <input type="file" name="image[]" id="image" class="form-control" multiple>
@@ -71,7 +53,7 @@
         </div>
     </div>
     <div class="modal-footer">
-        <input type="submit" id="submitToCreate" class="btn btn-info" value="Create" data-dismiss="modal">
+        <input type="submit" class="btn btn-info" value="Add">
     </div>
 </form>
 

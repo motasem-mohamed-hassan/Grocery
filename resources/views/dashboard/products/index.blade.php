@@ -12,274 +12,49 @@
       </div>
     <!-- /.content-header -->
 
-    {{-- <section class="content">
-        <div class="container-fluid">
-            <!-- Button trigger modal for create -->
-            <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#createModal">
-                Add New Product
-            </button>
-
-            <!-- create Modal -->
-            <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="createModalLabel">Add Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!--Form-->
-                        <form id="createForm" method="" action="" enctype="">
-                            @csrf
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" id="name" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Category</label>
-                                    <div class="col-md-6">
-                                        <select name="category_id" class="form-control" id="category">
-                                            <option value="" selected>--Select Category--</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Description</label>
-                                    <div class="col-md-6">
-                                        <textarea name="description" id="description" class="form-control"></textarea>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Price</label>
-                                    <div class="col-md-3">
-                                        <input type="number" name="price" id="price" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Discount</label>
-                                    <div class="col-md-2">
-                                        <input type="number" name="discount" id="discount" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Stock</label>
-                                    <div class="col-md-2">
-                                        <input type="number" name="stock" id="stock" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">image</label>
-                                    <div class="col-md-6">
-                                        <input type="file" name="image[]" id="image" class="form-control" multiple>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="submit" id="submitToCreate" class="btn btn-info" value="Create" data-dismiss="modal">
-                            </div>
-                        </form>
-
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!--End create Modal -->
-
-            <!-- Update Modal -->
-            <div class="modal fade updateModal" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Update Product</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <!--Form-->
-                        <form id="updateForm" method="" action="">
-                            @csrf
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Name</label>
-                                    <div class="col-md-6">
-                                        <input type="text" name="name" id="editName" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Category</label>
-                                    <div class="col-md-6">
-                                        <select name="category_id" class="form-control" id="category">
-                                            <option id="editCategory" value="">Current Category</option>
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Description</label>
-                                    <div class="col-md-6">
-                                        <textarea name="description" id="editDescription" class="form-control"></textarea>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Price</label>
-                                    <div class="col-md-3">
-                                        <input type="number" name="price" id="editPrice" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Discount</label>
-                                    <div class="col-md-2">
-                                        <input type="number" name="discount" id="editDiscount" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">Stock</label>
-                                    <div class="col-md-2">
-                                        <input type="number" name="stock" id="editStock" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-                            <div class="form-group" hidden>
-                                <div class="row">
-                                    <label class="col-md-3">Order Count</label>
-                                    <div class="col-md-2">
-                                        <input type="number" name="order_count" id="orderCount" class="form-control">
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <div class="row">
-                                    <label class="col-md-3">image</label>
-                                    <div class="col-md-6">
-                                        <input type="file" name="image[]"  class="form-control" multiple>
-                                    </div>
-                                </div>
-                                    <div class="clearfix"></div>
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-9" id="myImage">
-                                    </div>
-                                    <div class="clearfix"></div>
-                            </div>
-                            <div class="modal-footer">
-                                <input type="text" name="id" id="currentid" class="form-control" value="" hidden>
-                                <input type="submit" id="submitToUpdate" class="btn btn-info" value="Update" data-dismiss="modal">
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <!--End Update Modal --> --}}
-
-
-
             <!--Start table-->
             <table id="myTable" class="table table-bordered table-striped">
                 <tr class="bg-info">
                     <th>ID</th>
+                    <th>user id</th>
+                    <th>user name</th>
+                    <th>User phone</th>
                     <th>Category</th>
                     <th>Name</th>
                     <th>Description</th>
                     <th>Price</th>
-                    <th>Descount</th>
-                    <th>New Price</th>
-                    <th>Stock</th>
-                    <th>Order Count</th>
-                    <th>Image</th>
                     <th>Action</th>
                 </tr>
                 @foreach ($products as $product )
                 <tr class="productRow{{ $product->id }}">
-                    <td class="product_id{{ $product->id }}">
+                    <td>
                         {{ $product->id }}
                     </td>
-                    <td class="category_name{{ $product->id }}">
+                    <td>
+                        {{ $product->user_id }}
+                    </td>
+                    <td >
+                        {{ $product->user->name }}
+                    </td>
+                    <td >
+                        {{ $product->user->phone_number }}
+                    </td>
+                    <td >
                         {{ $product->category->name }}
                     </td>
-                    <td class="product_name{{ $product->id }}">
+                    <td >
                         {{ $product->name }}
                     </td>
-                    <td class="product_description{{ $product->id }}">
+                    <td>
                         {{ $product->description }}
                     </td>
-                    @if(isset($product->discount))
-                        <td class="product_price{{ $product->id }}">
-                            {{ $product->oldPrice }}
-                        </td>
-                        <td class="product_discount{{ $product->id }}">
-                            {{ $product->discount}} %
-                        </td>
-                        <td class="product_newPrice{{ $product->id }}">
-                            {{ $product->price }}
-                        </td>
-                    @else
-                        <td class="product_price{{ $product->id }}">
-                            {{ $product->price }}
-                        </td>
-                        <td><p> - </p></td>
-                        <td><p> - </p></td>
-                    @endif
-                    <td class="product_stock{{ $product->id }}">
-                        {{ $product->stock }}
-                    </td>
-                    <td class="product_orderCount{{ $product->id }}">
-                        {{ $product->order_count }}
-                    </td>
-                    <td class="product_image{{ $product->id }}">
-                        <img src="{{ asset('storage/products/'.$product->first_image->url) }}"
-                        style="width: 150px;">
+                    <td>
+                        {{ $product->price }}
                     </td>
                     <td>
-                        <button product_id="{{ $product->id }}" data-toggle="modal" data-target="#updateModal" class="editBtn btn btn-info">Edit</button>
+                        <button product_id="{{ $product->id }}"  class="approve_btn btn btn-info">Approve</button>
                         <button product_id="{{ $product->id }}"  class="delete_btn btn btn-danger">Delete</button>
+                        <button product_id="{{ $product->id }}"  class="delete_btn btn btn-success">show</button>
                     </td>
                 </tr>
                 @endforeach
@@ -292,6 +67,55 @@
 @endsection
 
 @section('scripts')
+
+    <script>
+        //approve button
+        $(document).on('click', '.approve_btn', function(e){
+            e.preventDefault();
+
+            var product_id = $(this).attr('product_id');
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('admin.approve-btn') }}",
+                data: { 'id' : product_id },
+
+                success: function (response) {
+
+                    $('.productRow'+product_id).remove();
+
+                    //success message
+                    toastr.success(response.msg);
+                }
+            });
+        });
+
+
+        //approve button
+        $(document).on('click', '.delete_btn', function(e){
+            e.preventDefault();
+
+            var product_id = $(this).attr('product_id')
+
+            $.ajax({
+                type: "get",
+                url: "{{ route('admin.delete-btn') }}",
+                data: { 'id' : product_id },
+                
+                success: function (response) {
+
+                    $('.productRow'+product_id).remove();
+
+                    //success message
+                    toastr.success(response.msg);
+                }
+            });
+        })
+
+    </script>
+
+
+
     {{-- <script>
 
         //store data

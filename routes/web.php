@@ -60,6 +60,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
 
     //sell
     Route::get('/adding', 'AddController@index')->name('get_add');
+    Route::post('/adding', 'AddController@store')->name('post_add');
 
 
 
@@ -74,12 +75,10 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::post('/dashboard/categories/update', 'CategoriesController@update')->name('categories.update');
     Route::delete('/dashboard/categories','CategoriesController@destroy')->name('categories.delete');
 
+    //products view
     Route::get('/dashboard/products', 'productsController@index')->name('products.index');
-    Route::post('/dashboard/products/store', 'ProductsController@store')->name('product.store');
-    Route::get('/dashboard/products/edit', 'ProductsController@edit')->name('product.edit');
-    Route::post('/dashboard/products/update', 'ProductsController@update')->name('product.update');
-    Route::delete('/dashboard/products/delete', 'ProductsController@destroy')->name('product.delete');
-
+    Route::get('/dashboard/products/approve', 'productsController@approve')->name('approve-btn');
+    Route::get('/dashboard/products/delete', 'productsController@delete')->name('delete-btn');
 
     Route::resource('/dashboard/users', 'UsersController');
     Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');

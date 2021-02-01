@@ -17,12 +17,10 @@ class productsController extends Controller
     {
         $categories = Category::all(); //for all products sort by order count & categories navbar
 
-        $Sproducts = Product::where('discount', '!=', null)->get(); //for spacial offers
-
         $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
 
-        return view('front.index', compact('categories', 'Sproducts', 'itemsCount'));
+        return view('front.index', compact('categories', 'itemsCount'));
     }
 
     public function show($id)

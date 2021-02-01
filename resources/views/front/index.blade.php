@@ -89,7 +89,7 @@
 			</h3>
 			<!-- //tittle heading -->
 			<!-- product right -->
-			<div class="agileinfo-ads-display col-md-12">
+			{{-- <div class="agileinfo-ads-display col-md-12">
 				<div class="wrapper">
                     @foreach ($categories as $category)
                         <div class="product-sec1">
@@ -157,10 +157,10 @@
 			</div>
 			<!-- //product right -->
 		</div>
-	</div>
+	</div> --}}
 	<!-- //top products -->
 	<!-- special offers -->
-	<div class="featured-section" id="projects">
+	{{-- <div class="featured-section" id="projects">
 		<div class="container">
 			<!-- tittle heading -->
 			<h3 class="tittle-w3l">Special Offers
@@ -204,7 +204,7 @@
                 </ul>
 			</div>
 		</div>
-	</div>
+	</div> --}}
 	<!-- //special offers -->
 @endsection
 
