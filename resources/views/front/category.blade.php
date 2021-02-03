@@ -92,11 +92,8 @@
                                             </h4>
                                             <div class="info-product-price">
                                                 <span class="item_price">${{ $product->price }}</span>
-                                                @isset($product->oldPrice)
-                                                <del>${{ $product->oldPrice }}</del>
-                                                @endisset
                                             </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                 <form action="{{ route('addToCart', $product->id) }}" method="get">
                                                     <fieldset>
                                                         <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
@@ -128,39 +125,6 @@
 					<i></i>
 				</span>
 			</h3>
-			<!-- //tittle heading -->
-			<div class="content-bottom-in">
-				<ul id="flexiselDemo1">
-                    @foreach ($Sproducts as $product)
-                        <li>
-                            <div class="w3l-specilamk">
-                                <div class="speioffer-agile">
-                                    <a href="{{ route('singleProduct', $product->id) }}">
-                                        <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
-                                    </a>
-                                </div>
-                                <div class="product-name-w3l">
-                                    <h4>
-                                        <a href="{{ route('singleProduct', $product->id) }}">{{ $product->name }}</a>
-                                    </h4>
-                                    <div class="w3l-pricehkj">
-                                        <h6>${{ $product->price }}</h6>
-                                        <p>Save ${{ $product->oldPrice * ($product->discount /100)  }}</p>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <fieldset>
-                                            <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-
-                </ul>
-			</div>
 		</div>
 	</div>
 	<!-- //special offers -->
@@ -188,29 +152,4 @@
 
 
 @endsection
-
-@section('scripts')
-    {{-- add to cart --}}
-<script>
-	//add to cart
-    $(document).on('click', '.submitToCart', function(e){
-        e.preventDefault();
-
-        var productID = $(this).attr('productID');
-        $.ajax({
-            type: "get",
-            url: "{{ route('addToCart') }}",
-            data: {'id' : productID },
-
-            success: function (response) {
-                $("#itemsCount").html(response.data);
-                toastr.success(response.msg);
-            }
-        });
-    });
-
-</script>
-@endsection
-
-
 

@@ -14,21 +14,32 @@ class AddController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
-        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
+        $categories = Category::where('parent_id', null)->get();
 
-        return view('front.add', compact('itemsCount', 'categories'));
+        return view('front.add', compact('categories'));
+    }
+
+    public function choseSub(Request $request)
+    {
+
+        $subCategories = Category::where('parent_id', $request->id)->get();
+
+        return response()->json([
+            'status'    => true,
+            'data'      => $subCategories
+        ]);
     }
 
     public function store(Request $request)
     {
         $product = new Product();
-        $product->user_id   = Auth::id();
-        $product->name = $request->name;
-        $product->description = $request->description;
-        $product->category_id   = $request->category_id;
-        $product->price = $request->price;
-        $product->status = 0;
+        $product->user_id           = Auth::id();
+        $product->name              = $request->name;
+        $product->description       = $request->description;
+        $product->category_id       = $request->category_id;
+        $product->subCategory_id    = $request->subCategory_id;
+        $product->price             = $request->price;
+        $product->status            = 0;
         $product->save();
 
         $images = $request->file('image');
@@ -41,8 +52,8 @@ class AddController extends Controller
             }
 
             $imag = new Image();
-            $imag->product_id = $product->id;
-            $imag->url = $file;
+            $imag->product_id   = $product->id;
+            $imag->url          = $file;
             $imag->save();
 
         }

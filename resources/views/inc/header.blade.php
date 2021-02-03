@@ -26,7 +26,7 @@
 					</li>
 					<li>
                         @if(auth()->check())
-                        <a href="{{ route('myorders', Auth::user()) }}">
+                        <a href="#">
                         @else
 						<a href="#" data-toggle="modal" data-target="#myModal1">
                         @endif
@@ -85,20 +85,6 @@
 					</form>
 				</div>
                 <!-- //search -->
-
-                <!-- cart details -->
-                <div class="top_nav_right">
-                    <div class="wthreecartaits wthreecartaits2 cart cart box_1">
-                        <a href="{{ route('cart.list') }}">
-                            <button class="w3view-cart" type="submit" name="submit" value="">
-                                <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                                <span id="itemsCount" style="color: #FF5722" class=" d-flex justify-content-lg-center ">{{ $itemsCount }}</span>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            <!-- //cart details -->
-				<div class="clearfix"></div>
 			</div>
 			<div class="clearfix"></div>
 		</div>

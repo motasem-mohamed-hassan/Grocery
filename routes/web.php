@@ -36,11 +36,6 @@ Route::namespace('Front')->group(function() {
 
 
 
-    Route::get('/cart','CartController@index')->name('cart.list');
-    Route::get('add-to-cart', 'CartController@addToCart')->name('addToCart');
-    Route::get('add-to-cart/plus', 'CartController@plus')->name('quantityPlus');
-    Route::get('add-to-cart/minus', 'CartController@minus')->name('quantityMinus');
-    Route::delete('delete-from-cart', 'CartController@delete')->name('deleteItemFromCart');
 
     Route::get('/about-us', 'AboutController@index')->name('aboutUs');
 
@@ -51,16 +46,10 @@ Route::namespace('Front')->group(function() {
 
 Route::middleware('auth')->namespace('Front')->group(function() {
 
-
-    Route::post('makeorder', 'CartController@store')->name('makeOrder');
-    Route::get('myorders', 'MyOrdersController@index')->name('myorders');
-    Route::get('order/{id}', 'MyOrdersController@show')->name('order_details');
-    Route::post('review/{id}', 'MyOrdersController@review')->name('makereview');
-    Route::delete('delete-review/{id}', 'MyOrdersController@deleteReview')->name('delete_review');
-
-    //sell
+    //add products
     Route::get('/adding', 'AddController@index')->name('get_add');
     Route::post('/adding', 'AddController@store')->name('post_add');
+    Route::get('/adding/chose', 'AddController@choseSub')->name('chose_sub');
 
 
 
@@ -79,12 +68,12 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::get('/dashboard/products', 'productsController@index')->name('products.index');
     Route::get('/dashboard/products/approve', 'productsController@approve')->name('approve-btn');
     Route::get('/dashboard/products/delete', 'productsController@delete')->name('delete-btn');
+    Route::get('dashboard/product/{id}', 'productsController@show')->name('show-btn');
 
     Route::resource('/dashboard/users', 'UsersController');
-    Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
-    Route::get('/dashboard/orders', 'OrdersController@index')->name('orders');
-    Route::post('/dashboard/orders/approved/{id}', 'OrdersController@approved')->name('order.approved');
 
+    Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
+    
     Route::get('/dashboard/pages', 'AboutController@index')->name('info');
     Route::get('/dashboard/setting', 'SettingController@index')->name('setting');
 

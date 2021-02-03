@@ -87,150 +87,144 @@
 					<i></i>
 				</span>
 			</h3>
-			<!-- //tittle heading -->
-			<!-- product right -->
-			{{-- <div class="agileinfo-ads-display col-md-12">
-				<div class="wrapper">
-                    @foreach ($categories as $category)
-                        <div class="product-sec1">
-                            <h3 class="heading-tittle">{{ $category->name }}</h3>
-                            @foreach ($category->products->slice(0, 3)->sortByDesc('order_count') as $product)
-                                <div class="col-md-4 product-men">
-                                    <div class="men-pro-item simpleCart_shelfItem">
-                                        <div class="men-thumb-item">
-                                            <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
-                                            <div class="men-cart-pro">
-                                                <div class="inner-men-cart-pro">
-                                                    <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>
-                                                </div>
-                                            </div>
-                                            @if($product->stock < 1)
-                                            <span class="product-new-top">OUT</span>
-                                            @else
-                                                <span class="product-new-top">New</span>
-                                            @endif
-                                        </div>
-                                        <div class="item-info-product ">
-                                            <h4>
-                                                <a href="{{ asset('frontend/') }}single.html">{{ $product->name }}</a>
-                                            </h4>
-                                            <div class="info-product-price">
-                                                <span class="item_price">${{ $product->price }}</span>
-                                                @isset($product->oldPrice)
-                                                <del>${{ $product->oldPrice }}</del>
-                                                @endisset
-                                            </div>
-                                            <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                    <fieldset>
-                                                        @if ($product->stock < 1)
-                                                            <button class="btn btn-danger" disabled style="width: 100%; padding: 13px; background-color: #1accfd">Out Of Stock</button>
-                                                        @else
-                                                            <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
-                                                        @endif
-                                                    </fieldset>
-                                                </form>
-                                            </div>
+            <!-- //tittle heading -->
+            <!-- product left -->
+			<div class="side-bar col-md-3">
+				<div class="search-hotel">
+					<h3 class="agileits-sear-head">Search Here..</h3>
+					<form action="#" method="post">
+						<input type="search" placeholder="Product name..." name="search" required="">
+						<input type="submit" value=" ">
+					</form>
+				</div>
+				<!-- price range -->
+				<div class="range">
+					<h3 class="agileits-sear-head">Price range</h3>
+					<ul class="dropdown-menu6">
+						<li>
 
+							<div id="slider-range"></div>
+							<input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+						</li>
+					</ul>
+				</div>
+				<!-- //price range -->
+				<!-- cuisine -->
+				<div class="left-side">
+					<h3 class="agileits-sear-head">Categories</h3>
+					<ul>
+                        @foreach($categories as $category)
+						<li>
+							<input type="checkbox" class="checked">
+							<span class="span">{{ $category->name }}</span>
+                        </li>
+                        @endforeach
+					</ul>
+				</div>
+				<!-- //cuisine -->
+				<!-- deals -->
+				<div class="deal-leftmk left-side">
+					<h3 class="agileits-sear-head">Special Deals</h3>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d2.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Lay's Potato Chips</h3>
+							<a href="single.html">$18.00</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d1.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Bingo Mad Angles</h3>
+							<a href="single.html">$9.00</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d4.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Tata Salt</h3>
+							<a href="single.html">$15.00</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d5.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Gujarat Dry Fruit</h3>
+							<a href="single.html">$525.00</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+					<div class="special-sec1">
+						<div class="col-xs-4 img-deals">
+							<img src="images/d3.jpg" alt="">
+						</div>
+						<div class="col-xs-8 img-deal1">
+							<h3>Cadbury Dairy Milk</h3>
+							<a href="single.html">$149.00</a>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<!-- //deals -->
+			</div>
+			<!-- //product left -->
+
+			<!-- product right -->
+			<div class="agileinfo-ads-display col-md-9">
+				<div class="wrapper">
+                    @foreach ($products->chunk(3) as $chunk)
+                        <div class="product-sec1">
+                            @foreach ($chunk as $product)
+                                    <div class="col-md-4 product-men">
+                                        <div class="men-pro-item simpleCart_shelfItem">
+                                            <div class="men-thumb-item">
+                                                <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
+                                                <div class="men-cart-pro">
+                                                    <div class="inner-men-cart-pro">
+                                                        <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>
+                                                    </div>
+                                                </div>
+                                                    <span class="product-new-top">New</span>
+                                            </div>
+                                            <div class="item-info-product ">
+                                                <h4>
+                                                    <a href="{{ asset('frontend/') }}single.html">{{ $product->name }}</a>
+                                                </h4>
+                                                <div class="info-product-price">
+                                                    <span class="item_price">${{ $product->price }}</span>
+                                                </div>
+                                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                        <fieldset>
+                                                            <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
+                                                        </fieldset>
+                                                    </form>
+                                                </div>
+
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                             @endforeach
                             <div class="clearfix"></div>
                         </div>
-
-                        @if ($loop->first)
-                            <div class="product-sec1 product-sec2 clearfix">
-                                <div class="col-xs-7 effect-bg">
-                                    <h3 class="">Pure Energy</h3>
-                                    <h6>Enjoy our all healthy Products</h6>
-                                    <p>Get Extra 10% Off</p>
-                                </div>
-                                <h3 class="w3l-nut-middle">Nuts & Dry Fruits</h3>
-                                <div class="col-xs-5 bg-right-nut">
-                                    <img src="{{ asset('frontend/images/nut1.png') }}" alt="">
-                                </div>
-                            </div>
-                        @endif
-
                     @endforeach
 				</div>
 			</div>
 			<!-- //product right -->
 		</div>
-	</div> --}}
+	</div>
 	<!-- //top products -->
-	<!-- special offers -->
-	{{-- <div class="featured-section" id="projects">
-		<div class="container">
-			<!-- tittle heading -->
-			<h3 class="tittle-w3l">Special Offers
-				<span class="heading-style">
-					<i></i>
-					<i></i>
-					<i></i>
-				</span>
-			</h3>
-			<!-- //tittle heading -->
-			<div class="content-bottom-in">
-				<ul id="flexiselDemo1">
-                    @foreach ($Sproducts as $product)
-                        <li>
-                            <div class="w3l-specilamk">
-                                <div class="speioffer-agile">
-                                    <a href="{{ route('singleProduct', $product->id) }}">
-                                        <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
-                                    </a>
-                                </div>
-                                <div class="product-name-w3l">
-                                    <h4>
-                                        <a href="{{ route('singleProduct', $product->id) }}">{{ $product->name }}</a>
-                                    </h4>
-                                    <div class="w3l-pricehkj">
-                                        <h6>${{ $product->price }}</h6>
-                                        <p>Save ${{ $product->oldPrice * ($product->discount /100)  }}</p>
-                                    </div>
-                                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                        <fieldset>
-                                            <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
-                                        </fieldset>
-                                    </form>
-                                </div>
-
-                                </div>
-                            </div>
-                        </li>
-                    @endforeach
-
-                </ul>
-			</div>
-		</div>
-	</div> --}}
-	<!-- //special offers -->
 @endsection
 
 
-@section('scripts')\
-
-
-
-    {{-- add to cart --}}
-    <script>
-        $(document).on('click', '.submitToCart', function(e){
-            e.preventDefault();
-
-            var productID = $(this).attr('productID');
-            $.ajax({
-                type: "get",
-                url: "{{ route('addToCart') }}",
-                data: {'id' : productID },
-
-                success: function (response) {
-                    $("#itemsCount").html(response.data);
-                    toastr.success(response.msg);
-                }
-            });
-        });
-    </script>
-
-@endsection
 

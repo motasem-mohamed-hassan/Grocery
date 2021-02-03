@@ -18,7 +18,8 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->text('description');
-            $table->integer('category_id')->nullable();
+            $table->integer('category_id');
+            $table->integer('subCategory_id');
             $table->unsignedInteger('price');
             $table->boolean('status')->default('0');
 

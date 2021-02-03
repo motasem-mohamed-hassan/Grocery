@@ -54,7 +54,7 @@
                     <td>
                         <button product_id="{{ $product->id }}"  class="approve_btn btn btn-info">Approve</button>
                         <button product_id="{{ $product->id }}"  class="delete_btn btn btn-danger">Delete</button>
-                        <button product_id="{{ $product->id }}"  class="delete_btn btn btn-success">show</button>
+                        <a class="btn btn-success" href="{{ route('admin.show-btn', $product->id) }}">Show</a>
                     </td>
                 </tr>
                 @endforeach
@@ -101,7 +101,7 @@
                 type: "get",
                 url: "{{ route('admin.delete-btn') }}",
                 data: { 'id' : product_id },
-                
+
                 success: function (response) {
 
                     $('.productRow'+product_id).remove();

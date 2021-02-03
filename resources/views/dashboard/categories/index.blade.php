@@ -12,7 +12,210 @@
       </div>
     <!-- /.content-header -->
 
-    <section class="content">
+    <div class="container py-3">
+
+        <div class="modal" tabindex="-1" role="dialog" id="editCategoryModal">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Edit Category</h5>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <form action="" id="updateForm" method="">
+                @csrf
+
+                <div class="modal-body">
+                  <div class="form-group">
+                    <input type="text" id="editName" name="name" class="form-control" value="">
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                    <input type="text" name="id" id="currentid" class="form-control" value="" hidden>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="submitToUpdate" class="btn btn-primary" data-dismiss="modal">Update</button>
+                </div>
+              </div>
+              </form>
+          </div>
+        </div>
+
+      <div class="row">
+        <div class="col-md-8">
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Categories</h3>
+            </div>
+            <div class="card-body">
+              <ul class="list-group">
+                @foreach ($categories as $category)
+                  <li class="list-group-item">
+                    <div class="d-flex justify-content-between category_name{{ $category->id }}">
+                      {{ $category->name }}
+
+                      <div class="button-group d-flex">
+                        <button type="button" category_id="{{ $category->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">Edit</button>
+
+                        <form action="#" method="POST">
+                          @csrf
+                          <button type="submit" category_id="{{ $category->id }}" class="delete_btn btn btn-sm btn-danger">Delete</button>
+                        </form>
+                      </div>
+                    </div>
+
+                    @if ($category->children)
+                      <ul class="list-group mt-2">
+                        @foreach ($category->children as $child)
+                          <li class="list-group-item">
+                            <div class="d-flex justify-content-between subCategory_name{{ $category->id }}">
+                              {{ $child->name }}
+
+                              <div class="button-group d-flex">
+                                <button type="button" category_id="{{ $child->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">Edit</button>
+
+                                <form action="#" method="POST">
+                                  @csrf
+                                  <button type="submit" category_id="{{ $child->id }}" class="delete_btn btn btn-sm btn-danger">Delete</button>
+                                </form>
+                              </div>
+                            </div>
+                          </li>
+                        @endforeach
+                      </ul>
+                    @endif
+                  </li>
+                @endforeach
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- create -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <h3>Create Category</h3>
+            </div>
+
+            <div class="card-body">
+              <form action="{{ route('admin.categories.store') }}" method="POST">
+                @csrf
+
+                <div class="form-group">
+                  <select class="form-control" name="parent_id">
+                    <option value="">Select Parent Category</option>
+
+                    @foreach ($categories as $category)
+                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Category Name" required>
+                </div>
+
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    @endsection
+
+    @section('scripts')
+    <script>
+        //update data
+            //press edit
+            $(document).on('click', '.editBtn', function(e){
+                e.preventDefault();
+
+                var category_id = $(this).attr('category_id');
+
+                $.ajax({
+                    type:   "get",
+                    url:    "{{ route('admin.categories.edit') }}",
+                    data:   {'id' : category_id},
+
+                    success: function (data) {
+                        $('#editName').val(data.data.name);
+                        $('#currentid').val(data.data.id);
+                    },
+
+                    complete:function(){
+                        //store update
+                        $(document).on('click', '#submitToUpdate', function(e){
+                            e.preventDefault();
+
+                            var formData = new FormData($('#updateForm')[0]);
+
+                            $.ajax({
+                                type:   "post",
+                                url:    "{{ route('admin.categories.update') }}",
+                                data:   formData,
+
+                                processData: false,
+                                contentType: false,
+                                cache: false,
+
+                                success: function (data) {
+
+                                    location.reload();
+                                    //success message
+                                    toastr.success(data.msg);
+                                },
+
+
+                            });
+                        });
+                    }
+
+                });
+            });
+
+
+            //delete
+            $(document).on('click', '.delete_btn', function(e){
+                e.preventDefault();
+
+                var category_id = $(this).attr('category_id');
+
+                $.ajax({
+                    type: "delete",
+                    url: "{{ route('admin.categories.delete') }}",
+                    data: {
+                        '_token': "{{ csrf_token() }}",
+                        'id'    : category_id
+                    },
+
+                    success: function (data) {
+
+                        if(data.status == true){
+                            location.reload();
+                            toastr.success(data.msg);
+                        }
+
+                        //success message
+
+                    },
+                    error: function (reject) {
+
+                    }
+                });
+
+            });
+
+    </script>
+    @endsection
+
+    {{-- <section class="content">
         <div class="container-fluid">
             <!-- Button trigger modal for create -->
             <button type="button" class="btn btn-info mb-3" data-toggle="modal" data-target="#createModal">
@@ -163,8 +366,6 @@
         $(document).on('click', '.editBtn', function(e){
             e.preventDefault();
 
-
-
             var category_id = $(this).attr('category_id');
 
             $.ajax({
@@ -247,6 +448,6 @@
 
         });
 
-    </script>
-@endsection
+    </script> --}}
+{{-- @endsection --}}
 

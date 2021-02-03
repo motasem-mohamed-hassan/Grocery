@@ -12,10 +12,10 @@ class CategoryController extends Controller
 {
     public function show(Request $request, $id)
     {
-        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
-        $categories = Category::all();
-        $Sproducts = Product::where('discount', '!=', null)->get(); //for spacial offers
+        $categories     = Category::where('parent_id', null)->get();
+        $subCategory    = Category::where('parent_id', '>', 0)->get();
+
         $category = Category::find($id);
 
         if($request->min && $request->max){
@@ -26,14 +26,7 @@ class CategoryController extends Controller
             $products = Product::where('category_id', $id)->get();
         }
 
-        return view('front.category', compact('products', 'categories', 'category','itemsCount', 'Sproducts'));
+        return view('front.category', compact('products', 'categories', 'category', 'subCategory'));
 
     }
-
-    // public function range(Request $request)
-    // {
-
-    //     return view('front.category', compact('products'));
-
-    // }
 }

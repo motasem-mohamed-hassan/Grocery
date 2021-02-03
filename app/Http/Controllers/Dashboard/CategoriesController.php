@@ -12,7 +12,7 @@ class CategoriesController extends Controller
 
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::with('children')->whereNull('parent_id')->get();
 
         return view('dashboard.categories.index', compact('categories'));
     }
@@ -20,15 +20,25 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        $category = new Category();
-        $category->name = $request->name;
-        $category->save();
 
-        return response()->json([
-            'status' => true,
-            'msg'    => 'Category saved successfully',
-            'data'     => $category
+        $validatedData = $this->validate($request, [
+            'name'      => 'required|min:3|max:255|string',
+            'parent_id' => 'sometimes|nullable|numeric'
         ]);
+
+        Category::create($validatedData);
+
+        return redirect()->back()->withSuccess('You have successfully created a Category!');
+        // $category = new Category();
+        // $category->name = $request->name;
+        // $category->save();
+
+
+        // return response()->json([
+        //     'status' => true,
+        //     'msg'    => 'Category saved successfully',
+        //     'data'     => $category
+        // ]);
     }
 
     public function edit(Request $request)
@@ -50,7 +60,7 @@ class CategoriesController extends Controller
         return response()->json([
             'status' => true,
             'msg'    => 'Category updated successfully',
-            'data'     => $category
+            'data'     => $category,
         ]);
     }
 
