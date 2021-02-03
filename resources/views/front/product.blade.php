@@ -9,10 +9,13 @@
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="index.html">Home</a>
+						<a href="{{ route('home') }}">Home</a>
 						<i>|</i>
 					</li>
-					<li>{{ $product->category->name }}</li>
+					<li>
+                        {{ $product->category->name }}
+                        <i>|</i>
+                    </li>
 				</ul>
 			</div>
 		</div>
@@ -48,20 +51,6 @@
 			</div>
 			<div class="col-md-7 single-right-left simpleCart_shelfItem">
 				<h3>{{ $product->name }}</h3>
-				<div class="rating1">
-					<span class="starRating">
-                        <input id="rating5" type="radio" {{ $avg == 5.0 ? 'checked' : ''  }}>
-                        <label for="rating5">5</label>
-                        <input id="rating4" type="radio" {{ $avg >= 4.0 ? 'checked' : ''  }}>
-                        <label for="rating4">4</label>
-                        <input id="rating3" type="radio" {{ $avg >= 3.0 ? 'checked' : ''  }}>
-                        <label for="rating3">3</label>
-                        <input id="rating2" type="radio" {{ $avg >= 2.0 ? 'checked' : ''  }}>
-                        <label for="rating2">2</label>
-                        <input id="rating1" type="radio" {{ $avg >= 1.0 ? 'checked' : ''  }}>
-                        <label for="rating1">1</label>
-                        </span>
-				</div>
 				<p>
                     <span class="item_price">${{ $product->price }}</span>
 				</p>

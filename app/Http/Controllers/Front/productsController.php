@@ -28,6 +28,8 @@ class productsController extends Controller
         $categories     = Category::where('parent_id', null)->get();
         $subCategory    = Category::where('parent_id', '>', 0)->get();
 
+        
+
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
 

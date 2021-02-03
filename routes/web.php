@@ -14,33 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::namespace('Auth')->group(function() {
+// Route::namespace('Auth')->group(function() {
 
-    Route::post('/register','RegistrationController@store')->name('register');
-    Route::get('/login','SessionsController@index')->name('login-page');
-    Route::post('/login','SessionsController@store')->name('login');
-    Route::get('/logout','SessionsController@logout')->name('logout');
-});
+//     Route::post('/register','RegistrationController@store')->name('register');
+//     Route::get('/login','SessionsController@index')->name('login-page');
+//     Route::post('/login','SessionsController@store')->name('login');
+//     Route::get('/logout','SessionsController@logout')->name('logout');
+// });
 
 
 Route::namespace('Front')->group(function() {
 
-    Route::get('/', 'productsController@index')->name('home');
-    Route::get('product/{id}', 'productsController@show')->name('singleProduct');
-    Route::get('/category{id}', 'CategoryController@show')->name('categoryPage');
-    Route::get('/price-range', 'CategoryController@range')->name('priceRange');
-    Route::get('/contact', 'ContactController@index')->name('contactPage');
+    Route::get('/', 'productsController@index')->name('home'); #need search and select boxs
+    Route::get('product/{id}', 'productsController@show')->name('singleProduct');   #need data
+    Route::get('/category{id}', 'CategoryController@show')->name('categoryPage');   #need data and select box
+    Route::get('/price-range', 'CategoryController@range')->name('priceRange');     #need to add slider
+    Route::get('/contact', 'ContactController@index')->name('contactPage');         #data
     Route::post('/contact', 'ContactController@store')->name('sendEmail');
-    Route::get('/search', 'SearchController@search')->name('search');
-
-
-
-
 
     Route::get('/about-us', 'AboutController@index')->name('aboutUs');
-
-
-
 
 });
 
@@ -73,7 +65,7 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
     Route::resource('/dashboard/users', 'UsersController');
 
     Route::put('/makeadmin/{id}', 'UsersController@makeAdmin')->name('makeAdmin');
-    
+
     Route::get('/dashboard/pages', 'AboutController@index')->name('info');
     Route::get('/dashboard/setting', 'SettingController@index')->name('setting');
 

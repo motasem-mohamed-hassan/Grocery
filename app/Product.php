@@ -18,6 +18,11 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
+    public function subCategory()
+    {
+        return $this->belongsTo('App\Category', 'parent_id');
+
+    }
 
     public function orders()
     {
@@ -43,5 +48,7 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+
 
 }

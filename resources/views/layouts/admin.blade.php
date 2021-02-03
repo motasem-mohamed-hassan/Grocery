@@ -217,14 +217,14 @@
               </p>
             </a>
           </li>
-          <li class="nav-item has-treeview">
+          {{-- <li class="nav-item has-treeview">
             <a href="{{ route('admin.orders') }}" class="nav-link @if($segment=='orders') active @endif">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Orders
               </p>
             </a>
-          </li>
+          </li> --}}
           <li class="nav-item has-treeview">
             <a href="{{ route('admin.info') }}" class="nav-link @if($segment=='info') active @endif">
                 <i class="nav-icon fas fa-info"></i>

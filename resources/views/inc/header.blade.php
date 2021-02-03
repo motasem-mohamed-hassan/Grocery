@@ -77,7 +77,7 @@
                 </div> --}}
 
 				<div class="agileits_search">
-					<form action="{{ route('search') }}" method="get">
+					<form action="#" method="get">
 						<input name="Search" type="search" placeholder="How can we help you today?" required="">
 						<button type="submit" class="btn btn-default" aria-label="Left Align">
 							<span class="fa fa-search" aria-hidden="true"> </span>
