@@ -77,7 +77,7 @@
 
             $.ajax({
                 type: "get",
-                url: "{{ route('admin.approve-btn') }}",
+                url: "{{ route('admin.products.approve') }}",
                 data: { 'id' : product_id },
 
                 success: function (response) {
@@ -99,7 +99,7 @@
 
             $.ajax({
                 type: "get",
-                url: "{{ route('admin.delete-btn') }}",
+                url: "{{ route('admin.products.delete') }}",
                 data: { 'id' : product_id },
 
                 success: function (response) {

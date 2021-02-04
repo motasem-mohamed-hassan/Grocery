@@ -85,6 +85,20 @@
 					</form>
 				</div>
                 <!-- //search -->
+
+                <div class="top_nav_right ml-2">
+					<div class="dropdown">
+						<button style="background-color: #FF5722; color: white; width: 10pc;" class="btn  dropdown-toggle text-light " type="button" id="dropdownmenus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						&raquo	User account
+						</button>
+						<div class="dropdown-menu text-center" aria-labelledby="dropdownmenus">
+							<li> <a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
+							<li> <a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
+							<li> <a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
+						</div>
+					</div>
+				</div>
+
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -174,18 +188,44 @@
 	<!-- //Modal2 -->
 	<!-- //signup Model -->
 	<!-- //header-bot -->
-	<!-- navigation -->
+    <!-- navigation -->
+
+    <div class="border p-2">
+		<div class="container">
+        </div>
+    </div>
+
+
+
 	<div class="ban-top">
 		<div class="container">
 			<div class="agileits-navi_search">
 				<form action="#" method="post">
-					<select id="agileinfo-nav_search" onchange="location = this.value;" name="agileinfo_search" required="">
-                        <option value="">All Categories</option>
-                        @foreach ($categories as $category)
-                            <option value="{{ route('categoryPage', $category->id) }}">{{ $category->name }}</option>
-                        @endforeach
-                    </select>
-				</form>
+                    <ul class="navbar-nav mt-3">
+                        <li class="nav-item dropdown list-style btn back mt-5">
+                            <a class=" dropdown-toggle text-light list-style" href="#" data-toggle="dropdown">&DownArrow; Treeview menu  </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
+                                <li><a class="dropdown-item" href="#"> Dropdown item 2 &raquo </a>
+                                    <ul class="submenu dropdown-menu">
+                                        <li><a class="dropdown-item" href="">Submenu item 1</a></li>
+                                        <li><a class="dropdown-item" href="">Submenu item 2</a></li>
+                                        <li><a class="dropdown-item" href="">Submenu item 3 &raquo </a>
+                                            <ul class="submenu dropdown-menu">
+                                                <li><a class="dropdown-item" href="">Multi level 1</a></li>
+                                                <li><a class="dropdown-item" href="">Multi level 2</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a class="dropdown-item" href="">Submenu item 4</a></li>
+                                        <li><a class="dropdown-item" href="">Submenu item 5</a></li>
+                                    </ul>
+                                </li>
+                                <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
+                                <li><a class="dropdown-item" href="#"> Dropdown item 4 </a>
+                            </ul>
+                        </li>
+                    </ul>
+                </form>
 			</div>
 			<div class="top_nav_left">
 				<nav class="navbar navbar-default">

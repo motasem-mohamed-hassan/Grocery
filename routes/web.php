@@ -58,8 +58,8 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
 
     //products view
     Route::get('/dashboard/products', 'productsController@index')->name('products.index');
-    Route::get('/dashboard/products/approve', 'productsController@approve')->name('approve-btn');
-    Route::get('/dashboard/products/delete', 'productsController@delete')->name('delete-btn');
+    Route::get('/dashboard/products/approve', 'productsController@approve')->name('products.approve');
+    Route::get('/dashboard/products/delete', 'productsController@delete')->name('products.delete');
     Route::get('dashboard/product/{id}', 'productsController@show')->name('show-btn');
 
     Route::resource('/dashboard/users', 'UsersController');

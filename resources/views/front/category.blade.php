@@ -94,7 +94,7 @@
                                                 <span class="item_price">${{ $product->price }}</span>
                                             </div>
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                <form action="{{ route('addToCart', $product->id) }}" method="get">
+                                                <form action="#" method="get">
                                                     <fieldset>
                                                         <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
                                                     </fieldset>
