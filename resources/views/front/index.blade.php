@@ -2,7 +2,7 @@
 
 @section('panner')
 	<!-- banner -->
-	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+	{{-- <div id="myCarousel" class="carousel slide" data-ride="carousel">
 		<!-- Indicators-->
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -70,7 +70,7 @@
 			<span class="sr-only">Next</span>
 		</a>
 	</div>
-	<!-- //banner -->
+	<!-- //banner --> --}}
 
 @endsection
 
@@ -88,7 +88,11 @@
 				</span>
 			</h3>
             <!-- //tittle heading -->
-            <!-- product left -->
+
+            <livewire:live-home />
+            {{-- @livewire('live-home') --}}
+
+            {{-- <!-- product left -->
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
 					<h3 class="agileits-sear-head">Search Here..</h3>
@@ -220,7 +224,7 @@
                     @endforeach
 				</div>
 			</div>
-			<!-- //product right -->
+			<!-- //product right --> --}}
 		</div>
 	</div>
 	<!-- //top products -->

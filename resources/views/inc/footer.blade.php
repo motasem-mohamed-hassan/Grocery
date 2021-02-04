@@ -13,7 +13,7 @@
 				</div>
 			</div>
 			<div class="col-xs-4 w3l-rightmk">
-				<img src="{{ asset('frontend/images/tab3.png') }}" alt=" ">
+				{{-- <img src="{{ asset('frontend/images/tab3.png') }}" alt=" "> --}}
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -180,10 +180,10 @@
 					<div class="agileits_app-devices">
 						<h5>Download the App</h5>
 						<a href="{{ asset('frontend/') }}#">
-							<img src="{{ asset('frontend/images/1.png') }}" alt="">
+							{{-- <img src="{{ asset('frontend/images/1.png') }}" alt=""> --}}
 						</a>
 						<a href="{{ asset('frontend/') }}#">
-							<img src="{{ asset('frontend/images/2.png') }}" alt="">
+							{{-- <img src="{{ asset('frontend/images/2.png') }}" alt=""> --}}
 						</a>
 						<div class="clearfix"> </div>
 					</div>

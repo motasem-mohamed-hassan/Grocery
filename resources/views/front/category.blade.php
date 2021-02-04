@@ -5,7 +5,7 @@
 
 @section('content')
 
-	<!-- banner-2 -->
+	{{-- <!-- banner-2 -->
 	<div class="page-head_agile_info_w3l">
 
 	</div>
@@ -24,7 +24,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- //page -->
+	<!-- //page --> --}}
 	<!-- top Products -->
 	<div class="ads-grid">
 		<div class="container">

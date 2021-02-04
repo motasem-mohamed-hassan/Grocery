@@ -72,6 +72,7 @@
 
 
 
+    @livewireScripts
 
 	<!-- popup modal (for signin & signup)-->
 	<script src="{{ asset('frontend/js/jquery.magnific-popup.js') }}"></script>
@@ -207,7 +208,7 @@
 
 
 
-	<!-- password-script -->
+	{{-- <!-- password-script -->
 	<script>
 		window.onload = function () {
 			document.getElementById("password1").onchange = validatePassword;
@@ -223,7 +224,7 @@
 			//empty string means no validation error
 		}
 	</script>
-	<!-- //password-script -->
+	<!-- //password-script --> --}}
 
 
 	<!-- start-smooth-scrolling -->

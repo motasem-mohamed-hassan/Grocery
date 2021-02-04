@@ -18,11 +18,6 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function subCategory()
-    {
-        return $this->belongsTo('App\Category', 'parent_id');
-
-    }
 
     public function orders()
     {
@@ -48,6 +43,16 @@ class Product extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public static function search($query)
+    // {
+    //     return empty($query) ? static::query()->where('status', 1)
+    //         : static::where('status', 1)
+    //         ->where(function($q) use($query){
+    //             $q
+    //                 ->where('name', 'LIKE', '%'. $query . '%');
+    //         });
+    // }
 
 
 

@@ -12,7 +12,7 @@
 					<a href="{{ route('home') }}">
 						<span>G</span>rocery
 						<span>S</span>hoppy
-						<img src="{{ asset('frontend/images/logo2.png') }}" alt=" ">
+						<img src="#" alt=" ">
 					</a>
 				</h1>
 			</div>
@@ -205,7 +205,6 @@
                         <li class="nav-item dropdown list-style btn back mt-5">
                             <a class=" dropdown-toggle text-light list-style" href="#" data-toggle="dropdown">&DownArrow; Treeview menu  </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
                                 <li><a class="dropdown-item" href="#"> Dropdown item 2 &raquo </a>
                                     <ul class="submenu dropdown-menu">
                                         <li><a class="dropdown-item" href="">Submenu item 1</a></li>
@@ -220,8 +219,6 @@
                                         <li><a class="dropdown-item" href="">Submenu item 5</a></li>
                                     </ul>
                                 </li>
-                                <li><a class="dropdown-item" href="#"> Dropdown item 3 </a></li>
-                                <li><a class="dropdown-item" href="#"> Dropdown item 4 </a>
                             </ul>
                         </li>
                     </ul>
