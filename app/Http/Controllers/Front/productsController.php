@@ -17,12 +17,8 @@ class productsController extends Controller
     {
 
         $categories     = Category::where('parent_id', null)->get();
-        foreach($categories as $category){
-            $subCategories    = Category::where('parent_id', $category)->get();
-        }
-        // $products       = Product::where('status', 1)->get();
 
-        return view('front.index', compact('categories', 'subCategories'));
+        return view('front.index', compact('categories'));
     }
 
     public function show($id)

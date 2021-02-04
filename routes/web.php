@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front\AboutController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,13 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::namespace('Auth')->group(function() {
+Route::namespace('Auth')->group(function() {
 
 //     Route::post('/register','RegistrationController@store')->name('register');
 //     Route::get('/login','SessionsController@index')->name('login-page');
 //     Route::post('/login','SessionsController@store')->name('login');
 //     Route::get('/logout','SessionsController@logout')->name('logout');
-// });
+
+});
 
 
 Route::namespace('Front')->group(function() {
@@ -34,6 +36,7 @@ Route::namespace('Front')->group(function() {
 
     Route::get('/about-us', 'AboutController@index')->name('aboutUs');
 
+
 });
 
 Route::middleware('auth')->namespace('Front')->group(function() {
@@ -42,8 +45,8 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('/adding', 'AddController@index')->name('get_add');
     Route::post('/adding', 'AddController@store')->name('post_add');
     Route::get('/adding/chose', 'AddController@choseSub')->name('chose_sub');
-
-
+    Route::get('/profile', 'ProfileController@show')->name('profile');
+    Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
 
 });
 

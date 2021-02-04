@@ -92,7 +92,8 @@
 						&raquo	User account
 						</button>
 						<div class="dropdown-menu text-center" aria-labelledby="dropdownmenus">
-							<li> <a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
+
+							<li> <a class="dropdown-item " href="{{ route('profile') }}"> Profile </a></li>
 							<li> <a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
 							<li> <a class="dropdown-item " href="#"> Dropdown item 1 </a></li>
 						</div>
@@ -125,7 +126,7 @@
                         <form action="{{ route('login') }}" method="post">
                             @csrf
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="phone" name="phone_number" required="">
+								<input type="text" placeholder="phone" name="phone_number" required="" onkeypress="return onlyNumberKey(event)>
 							</div>
 							<div class="styled-input">
 								<input type="password" placeholder="Password" name="password" required="">
@@ -163,7 +164,7 @@
                         <form action="{{ route('register') }}" method="post">
                             @csrf
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="name" required="">
+								<input type="text" placeholder="Name" name="name" required="" onkeypress="return onlyNumberKey(event)>
                             </div>
                             <div class="styled-input agile-styled-input-top">
 								<input type="text" pattern="[0-9]" placeholder="phone number" name="phone_number" required>
@@ -205,20 +206,22 @@
                         <li class="nav-item dropdown list-style btn back mt-5">
                             <a class=" dropdown-toggle text-light list-style" href="#" data-toggle="dropdown">&DownArrow; Treeview menu  </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#"> Dropdown item 2 &raquo </a>
-                                    <ul class="submenu dropdown-menu">
-                                        <li><a class="dropdown-item" href="">Submenu item 1</a></li>
-                                        <li><a class="dropdown-item" href="">Submenu item 2</a></li>
-                                        <li><a class="dropdown-item" href="">Submenu item 3 &raquo </a>
-                                            <ul class="submenu dropdown-menu">
-                                                <li><a class="dropdown-item" href="">Multi level 1</a></li>
-                                                <li><a class="dropdown-item" href="">Multi level 2</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a class="dropdown-item" href="">Submenu item 4</a></li>
-                                        <li><a class="dropdown-item" href="">Submenu item 5</a></li>
-                                    </ul>
-                                </li>
+                                @foreach($categories as $category)
+                                    <li>
+                                        <a class="dropdown-item" href="#"> {{ $category->name }} </a>
+                                        <ul class="submenu dropdown-menu">
+                                            @foreach($category->children as $child)
+                                            <li><a class="dropdown-item" href="">{{ $child->name }}</a>
+                                                <ul class="submenu dropdown-menu">
+                                                    @foreach($category->products as $product)
+                                                    <li><a class="dropdown-item" href="">{{ $product->name }}</a></li>
+                                                    @endforeach
+                                                </ul>
+                                            </li>
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                @endforeach
                             </ul>
                         </li>
                     </ul>
@@ -261,51 +264,16 @@
 										<div class="agile_inner_drop_nav_info">
 											<div class="col-sm-6 multi-gd-img">
 												<ul class="multi-column-dropdown">
+                                                    @foreach($categories as $category)
 													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Kitchen & Dining</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Detergents</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Utensil Cleaners</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Floor & Other Cleaners</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Disposables, Garbage Bag</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Repellents & Fresheners</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html"> Dishwash</a>
-													</li>
-												</ul>
+														<a href="{{ route('categoryPage', $category->id) }}">{{ $category->name }}</a>
+                                                    </li>
+                                                    @endforeach
 											</div>
 											<div class="col-sm-6 multi-gd-img">
 												<ul class="multi-column-dropdown">
 													<li>
 														<a href="{{ asset('frontend/') }}product2.html">Pet Care</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Cleaning Accessories</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Pooja Needs</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Crackers</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Festive Decoratives</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Plasticware</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Home Care</a>
 													</li>
 												</ul>
 											</div>
