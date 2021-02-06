@@ -42,8 +42,11 @@
                             <span class="fa fa-unlock-alt" aria-hidden="true"></span> Hi {{ auth()->user()->name }}</a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('logout') }}">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span> Log Out </a>
+                        <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        {{-- <a href="{{ route('logout') }}"> --}}
+                            <button type="submit"><span class="fa fa-unlock-alt" aria-hidden="true"></span> Log Out </a></button>
+                        </form>
 
                     </li>
                     @else
@@ -60,22 +63,6 @@
 
 				</ul>
 				<!-- //header lists -->
-                <!-- search -->
-                {{-- <div class="container" style="margin-top: 50px;">
-                    <div class="row">
-                        <div class="col-lg-3"></div>
-                        <div class="col-lg-6">
-                            <h4 class="text-center">Autocomplete Search Box with <br> Laravel + Ajax + jQuery</h4><hr>
-                            <div class="form-group">
-                                <label>Type a country name</label>
-                                <input type="text" name="country" id="country" placeholder="Enter country name" class="form-control">
-                            </div>
-                            <div id="country_list"></div>
-                        </div>
-                        <div class="col-lg-3"></div>
-                    </div>
-                </div> --}}
-
 				<div class="agileits_search">
 					<form action="#" method="get">
 						<input name="Search" type="search" placeholder="How can we help you today?" required="">
@@ -164,7 +151,7 @@
                         <form action="{{ route('register') }}" method="post">
                             @csrf
 							<div class="styled-input agile-styled-input-top">
-								<input type="text" placeholder="Name" name="name" required="" onkeypress="return onlyNumberKey(event)>
+								<input type="text" placeholder="Name" name="name" required="" onkeypress="return onlyNumberKey(event)">
                             </div>
                             <div class="styled-input agile-styled-input-top">
 								<input type="text" pattern="[0-9]" placeholder="phone number" name="phone_number" required>
@@ -208,17 +195,20 @@
                             <ul class="dropdown-menu">
                                 @foreach($categories as $category)
                                     <li>
-                                        <a class="dropdown-item" href="#"> {{ $category->name }} </a>
+                                        <a class="dropdown-item" href="{{ route('categoryPage', $category->id) }}"> {{ $category->name }} </a>
                                         <ul class="submenu dropdown-menu">
+                                            @if($category->children)
                                             @foreach($category->children as $child)
-                                            <li><a class="dropdown-item" href="">{{ $child->name }}</a>
+                                            <li><a class="dropdown-item" href="{{ route('categoryPage', $child->id) }}">{{ $child->name }}</a>
                                                 <ul class="submenu dropdown-menu">
                                                     @foreach($category->products as $product)
-                                                    <li><a class="dropdown-item" href="">{{ $product->name }}</a></li>
+                                                    <li><a class="dropdown-item" href="{{ route('singleProduct', $product->id) }}">{{ $product->name }}</a></li>
                                                     @endforeach
                                                 </ul>
                                             </li>
                                             @endforeach
+                                            @endif
+
                                         </ul>
                                     </li>
                                 @endforeach

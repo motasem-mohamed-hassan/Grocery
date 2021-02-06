@@ -25,14 +25,15 @@ class productsController extends Controller
     {
 
         $categories     = Category::where('parent_id', null)->get();
-        $subCategory    = Category::where('parent_id', '>', 0)->get();
+        // $subCategory    = Category::where('parent_id', '>', 0)->get();
 
 
 
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
+        $subCategory = Category::where('id', $product->subCategory_id)->first();
 
-        return view('front.product', compact('product', 'categories', 'images'));
+        return view('front.product', compact('product', 'categories', 'images', 'subCategory'));
     }
 
 

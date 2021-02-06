@@ -9,8 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -18,6 +17,20 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <!-- Icons font CSS-->
+    <link href="{{ asset('js/vendor/mdi-font/css/material-design-iconic-font.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('js/vendor/font-awesome-4.7/css/font-awesome.min.css') }}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="{{ asset('js/vendor/select2/select2.min.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('js/vendor/datepicker/daterangepicker.css') }}" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet" media="all">
+
 </head>
 <body>
     <div id="app">
@@ -75,6 +88,18 @@
         <main class="py-4">
             @yield('content')
         </main>
+
     </div>
+
+        <!-- Jquery JS-->
+    <script src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
+    <!-- Vendor JS-->
+    <script src="{{ asset('js/vendor/select2/select2.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/datepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/datepicker/daterangepicker.js') }}"></script>
+
+    <!-- Main JS-->
+    <script src="{{ asset('js/js/global.js') }}"></script>
+
 </body>
 </html>

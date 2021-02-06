@@ -13,9 +13,14 @@
 						<i>|</i>
 					</li>
 					<li>
-                        {{ $product->category->name }}
+                       <a href="{{ route('categoryPage', $product->category->id) }}"> {{ $product->category->name }} </a>
                         <i>|</i>
                     </li>
+                    <li>
+                        {{ $subCategory->name }}
+                        <i>|</i>
+                    </li>
+
 				</ul>
 			</div>
 		</div>
