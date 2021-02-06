@@ -20,7 +20,6 @@
                         {{ $subCategory->name }}
                         <i>|</i>
                     </li>
-
 				</ul>
 			</div>
 		</div>
@@ -30,7 +29,7 @@
 	<div class="banner-bootom-w3-agileits">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">{{ $product->category->name }}
+			<h3 class="tittle-w3l">{{ $product->name }}
 				<span class="heading-style">
 					<i></i>
 					<i></i>

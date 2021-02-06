@@ -23,7 +23,13 @@ class LiveCategory extends Component
 
     public function render()
     {
-        $products = !empty($this->search) ? Product::where('name', 'like', '%'.$this->search.'%')->where('category_id', $this->category->id)->get() : Product::where('category_id', $this->category->id)->get();
+        $products = !empty($this->search) ? Product::where('name', 'like', '%'.$this->search.'%')
+                    ->where('category_id', $this->category->id)
+                    ->orWhere('subCategory_id', $this->category->id)
+                    ->get()
+                    :
+                     Product::where('category_id', $this->category->id)
+                    ->orWhere('subCategory_id', $this->category->id)->get();
 
         return view('livewire.live-category', compact('category','products', 'subCategories'));
     }

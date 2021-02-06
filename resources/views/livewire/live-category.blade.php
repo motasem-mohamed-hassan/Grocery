@@ -31,12 +31,12 @@
 			<!-- product left -->
 			<div class="side-bar col-md-3">
 				<div class="search-hotel">
-					<h3 class="agileits-sear-head">Search Here..</h3>
+					<h3 class="agileits-sear-head">بحث في الصفحة</h3>
 						<input type="search" wire:model="search" placeholder="Product name..." name="search" required="">
 				</div>
 				<!-- price range -->
 				<div class="range">
-					<h3 class="agileits-sear-head">Price range</h3>
+					<h3 class="agileits-sear-head">تحديد السعر</h3>
 					<ul class="dropdown-menu6">
 						<li>
                             <form action="{{ route('categoryPage', $category->id) }}" method="get">
@@ -49,13 +49,14 @@
                                     <label for="maxPrice">max price</label>
                                     <input type="number" class="form-control" id="maxPrice" name="max" placeholder="Enter max">
                                 </div>
-                                <button type="submit" class="btn btn-primary" id="submitToRange">Submit</button>
+                                <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
                             </form>
 						</li>
 					</ul>
 				</div>
 				<!-- //price range -->
                 <!-- cuisine -->
+                @if(count($subCategories) > 0)
                 <div class="left-side">
                     <h3 class="agileits-sear-head">Categories</h3>
                     <ul>
@@ -67,6 +68,7 @@
                         @endforeach
                     </ul>
                 </div>
+                @endif
                 <!-- //cuisine -->
 
 			</div>

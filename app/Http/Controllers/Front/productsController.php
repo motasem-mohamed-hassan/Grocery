@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use App\Image;
 use App\Review;
+use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Http\Controllers\Controller;
@@ -13,17 +14,25 @@ use Illuminate\Support\Facades\Session;
 class productsController extends Controller
 {
 
-    public function index()
+    public function index(Request $request)
     {
+        $categories = Category::where('parent_id', null)->get();
+        foreach($categories as $category){
+            $subCategories = Category::where('parent_id', $category->id)->get();
+        }
 
-        $categories     = Category::where('parent_id', null)->get();
+        if($request->min && $request->max){
+            $products = Product::whereBetween('price', [$request->min, $request->max])->get();
+        }else{
+            $products = Product::all();
+        }
 
-        return view('front.index', compact('categories'));
+
+        return view('front.index', compact('categories', 'subCategories','products'));
     }
 
     public function show($id)
     {
-
         $categories     = Category::where('parent_id', null)->get();
         // $subCategory    = Category::where('parent_id', '>', 0)->get();
 

@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AddController extends Controller
 {
@@ -32,6 +33,15 @@ class AddController extends Controller
 
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'name'  => 'required|max:255|',
+            'description'  => 'required',
+            'category_id'  => 'required',
+            'subCategory_id'  => 'required',
+            'price'  => 'required',
+            'image'     => 'required'
+        ]);
+
         $product = new Product();
         $product->user_id           = Auth::id();
         $product->name              = $request->name;

@@ -50,7 +50,7 @@
     @include('inc.header')
     @yield('panner')
 
-    @include('flash-message')
+    {{-- @include('flash-message') --}}
 
     @yield('content')
 

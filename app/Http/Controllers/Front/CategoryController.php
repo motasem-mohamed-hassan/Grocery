@@ -21,9 +21,12 @@ class CategoryController extends Controller
         if($request->min && $request->max){
             $products = Product::whereBetween('price', [$request->min, $request->max])
                         ->where('category_id', $id)
+                        ->orWhere('subCategory_id', $id)
                         ->get();
         }else{
-            $products = Product::where('category_id', $id)->get();
+            $products = Product::where('category_id', $id)
+                        ->orWhere('subCategory_id', $id)
+                        ->get();
         }
 
         return view('front.category', compact('products', 'categories', 'category', 'subCategory'));

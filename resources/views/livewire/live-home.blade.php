@@ -2,27 +2,36 @@
         <!-- product left -->
     <div class="side-bar col-md-3">
         <div class="search-hotel">
-            <h3 class="agileits-sear-head">Search Here..</h3>
+            <h3 class="agileits-sear-head">بحث في الصفحة</h3>
             <form action="#" method="post">
-                <input wire:model="search" type="search" placeholder="Product name...">
+                <input wire:model="search" type="search" placeholder="...اسم المنتج">
                 <input type="submit" value=" ">
             </form>
         </div>
         <!-- price range -->
         <div class="range">
-            <h3 class="agileits-sear-head">Price range</h3>
+            <h3 class="agileits-sear-head">تحديد السعر</h3>
             <ul class="dropdown-menu6">
                 <li>
-
-                    <div id="slider-range"></div>
-                    <input type="text" id="amount" style="border: 0; color: #ffffff; font-weight: normal;" />
+                    <form action="{{ route('home') }}" method="get">
+                        @csrf
+                        <div class="form-group">
+                            <label for="minPrice">الحد الأدني</label>
+                            <input type="number" class="form-control" id="minPrice" name="min">
+                        </div>
+                        <div class="form-group">
+                            <label for="maxPrice">الحد الأعلى</label>
+                            <input type="number" class="form-control" id="maxPrice" name="max">
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
+                    </form>
                 </li>
             </ul>
         </div>
         <!-- //price range -->
         <!-- cuisine -->
         <div class="left-side">
-            <h3 class="agileits-sear-head">Categories</h3>
+            <h3 class="agileits-sear-head">الاقسام الرئيسية</h3>
             <ul>
                 @foreach($categories as $category)
                 <li>
@@ -35,8 +44,8 @@
         <!-- //cuisine -->
         <!-- deals -->
         <div class="deal-leftmk left-side">
-            <h3 class="agileits-sear-head">Special Deals</h3>
-            <div class="special-sec1">
+            <h3 class="agileits-sear-head">المنتجات المبوبة</h3>
+            {{-- <div class="special-sec1">
                 <div class="col-xs-4 img-deals">
                     <img src="images/d2.jpg" alt="">
                 </div>
@@ -45,47 +54,7 @@
                     <a href="single.html">$18.00</a>
                 </div>
                 <div class="clearfix"></div>
-            </div>
-            <div class="special-sec1">
-                <div class="col-xs-4 img-deals">
-                    <img src="images/d1.jpg" alt="">
-                </div>
-                <div class="col-xs-8 img-deal1">
-                    <h3>Bingo Mad Angles</h3>
-                    <a href="single.html">$9.00</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="special-sec1">
-                <div class="col-xs-4 img-deals">
-                    <img src="images/d4.jpg" alt="">
-                </div>
-                <div class="col-xs-8 img-deal1">
-                    <h3>Tata Salt</h3>
-                    <a href="single.html">$15.00</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="special-sec1">
-                <div class="col-xs-4 img-deals">
-                    <img src="images/d5.jpg" alt="">
-                </div>
-                <div class="col-xs-8 img-deal1">
-                    <h3>Gujarat Dry Fruit</h3>
-                    <a href="single.html">$525.00</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
-            <div class="special-sec1">
-                <div class="col-xs-4 img-deals">
-                    <img src="images/d3.jpg" alt="">
-                </div>
-                <div class="col-xs-8 img-deal1">
-                    <h3>Cadbury Dairy Milk</h3>
-                    <a href="single.html">$149.00</a>
-                </div>
-                <div class="clearfix"></div>
-            </div>
+            </div> --}}
         </div>
         <!-- //deals -->
     </div>
@@ -103,10 +72,10 @@
                                         <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
                                         <div class="men-cart-pro">
                                             <div class="inner-men-cart-pro">
-                                                <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>
+                                                <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">صفحة المنتج</a>
                                             </div>
                                         </div>
-                                            <span class="product-new-top">New</span>
+                                            <span class="product-new-top">جديد</span>
                                     </div>
                                     <div class="item-info-product ">
                                         <h4>
@@ -117,7 +86,7 @@
                                         </div>
                                         <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                 <fieldset>
-                                                    <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
+                                                    <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="تواصل مع البائع" />
                                                 </fieldset>
                                             </form>
                                         </div>
