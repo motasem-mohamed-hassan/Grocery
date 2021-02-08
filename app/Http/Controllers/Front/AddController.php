@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AddRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -31,16 +32,8 @@ class AddController extends Controller
         ]);
     }
 
-    public function store(Request $request)
+    public function store(AddRequest $request)
     {
-        $validated = $request->validate([
-            'name'  => 'required|max:255|',
-            'description'  => 'required',
-            'category_id'  => 'required',
-            'subCategory_id'  => 'required',
-            'price'  => 'required',
-            'image'     => 'required'
-        ]);
 
         $product = new Product();
         $product->user_id           = Auth::id();

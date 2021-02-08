@@ -17,9 +17,6 @@ class productsController extends Controller
     public function index(Request $request)
     {
         $categories = Category::where('parent_id', null)->get();
-        foreach($categories as $category){
-            $subCategories = Category::where('parent_id', $category->id)->get();
-        }
 
         if($request->min && $request->max){
             $products = Product::whereBetween('price', [$request->min, $request->max])->get();
@@ -28,7 +25,7 @@ class productsController extends Controller
         }
 
 
-        return view('front.index', compact('categories', 'subCategories','products'));
+        return view('front.index', compact('categories','products'));
     }
 
     public function show($id)

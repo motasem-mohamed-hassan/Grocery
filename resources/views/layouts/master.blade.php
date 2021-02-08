@@ -85,7 +85,7 @@
         }
     </script>
 	<!-- popup modal (for signin & signup)-->
-	<script src="{{ asset('frontend/js/jquery.magnific-popup.js') }}"></script>
+	{{-- <script src="{{ asset('frontend/js/jquery.magnific-popup.js') }}"></script>
 	<script>
 		$(document).ready(function () {
 			$('.popup-with-zoom-anim').magnificPopup({
@@ -101,77 +101,63 @@
 			});
 
 		});
-	</script>
+	</script> --}}
+
     <!-- Large modal -->
 
-    {{-- <!-- Search Bar -->
+<!-- Search Bar -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
+
     <script type="text/javascript">
         $(document).ready(function () {
-
-            $('#Search').on('keyup',function() {
+            $('#search').on('keyup',function() {
                 var query = $(this).val();
-                $.ajax({
 
-                    url:"{{ route('search') }}",
+                $.ajax({
+                    url:"{{ route('autocomplete') }}",
                     type:"GET",
-                    data:{'country':query},
+                    data:{'words':query},
+
+                    processData: false,
+                    contentType: false,
+                    cache: false,
+
 
                     success:function (data) {
 
-                        $('#product_list').html(data);
+                        console.log(data.data);
+                        $.each(data.data, function(k, v) {
+                            $('.product_list').append(`<a>${v.name}</a><br>`);
+
+                        });
+
+
                     }
+
                 })
-                // end of ajax call
             });
 
 
-            $(document).on('click', 'li', function(){
+            // $(document).on('click', 'li', function(){
 
-                var value = $(this).text();
-                $('#country').val(value);
-                $('#country_list').html("");
-            });
+            //     var value = $(this).text();
+            //     $('#country').val(value);
+            //     $('#country_list').html("");
+            // });
         });
-    </script> --}}
-
+    </script>
     <!--End Search Bar -->
 
-	<!-- cart-js -->
-	<script src="{{ asset('frontend/js/minicart.js') }}"></script>
-	<script>
-		paypalm.minicartk.render(); //use only unique class names other than paypalm.minicartk.Also Replace same class name in css and minicart.min.js
 
-		paypalm.minicartk.cart.on('checkout', function (evt) {
-			var items = this.items(),
-				len = items.length,
-				total = 0,
-				i;
-
-			// Count the number of each item in the cart
-			for (i = 0; i < len; i++) {
-				total += items[i].get('quantity');
-			}
-
-			if (total < 3) {
-				alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-				evt.preventDefault();
-			}
-		});
-	</script>
-	<!-- //cart-js -->
-
-    <!-- price range (top products) -->
-    <script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
 
     	<!-- imagezoom -->
 	<script src="{{ asset('frontend/js/imagezoom.js') }}"></script>
 	<!-- //imagezoom -->
 
-	<!-- FlexSlider -->
+	{{-- <!-- FlexSlider -->
 	<script src="{{ asset('frontend/js/jquery.flexslider.js') }}"></script>
 	<script>
 		// Can also be used with $(document).ready()
@@ -182,11 +168,11 @@
 			});
 		});
 	</script>
-	<!-- //FlexSlider-->
+	<!-- //FlexSlider--> --}}
 
 
 	<!-- flexisel (for special offers) -->
-	<script src="{{ asset('frontend/js/jquery.flexisel.js') }}"></script>
+	{{-- <script src="{{ asset('frontend/js/jquery.flexisel.js') }}"></script>
 	<script>
 		$(window).load(function () {
 			$("#flexiselDemo1").flexisel({
@@ -213,7 +199,7 @@
 			});
 
 		});
-	</script>
+	</script> --}}
 	<!-- //flexisel (for special offers) -->
 
 
@@ -237,39 +223,6 @@
 	<!-- //password-script --> --}}
 
 
-	<!-- start-smooth-scrolling -->
-	<script src="{{ asset('frontend/js/move-top.js') }}"></script>
-	<script src="{{ asset('frontend/js/easing.js') }}"></script>
-	<script>
-		jQuery(document).ready(function ($) {
-			$(".scroll").click(function (event) {
-				event.preventDefault();
-
-				$('html,body').animate({
-					scrollTop: $(this.hash).offset().top
-				}, 1000);
-			});
-		});
-	</script>
-	<!-- //end-smooth-scrolling -->
-
-	<!-- smooth-scrolling-of-move-up -->
-	<script>
-		$(document).ready(function () {
-			/*
-			var defaults = {
-				containerID: 'toTop', // fading element id
-				containerHoverID: 'toTopHover', // fading element hover id
-				scrollSpeed: 1200,
-				easingType: 'linear'
-			};
-			*/
-			$().UItoTop({
-				easingType: 'easeOutQuart'
-			});
-
-		});
-	</script>
 	<!-- //smooth-scrolling-of-move-up -->
 
 	<!-- for bootstrap working -->

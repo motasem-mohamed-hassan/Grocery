@@ -13,8 +13,12 @@ Route::namespace('Front')->group(function() {
     Route::get('/price-range', 'CategoryController@range')->name('priceRange');     #need to add slider
     Route::get('/contact', 'ContactController@index')->name('contactPage');         #data
     Route::post('/contact', 'ContactController@store')->name('sendEmail');
-
     Route::get('/about-us', 'AboutController@index')->name('aboutUs');
+
+
+    //search
+    Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
+
 
 
 });
@@ -59,4 +63,3 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
 });
 
 Auth::routes();
-

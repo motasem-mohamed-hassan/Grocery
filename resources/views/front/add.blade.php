@@ -81,6 +81,9 @@
             </div>
         </form>
     </div>
+
+    {{ LaravelLocalization::getCurrentLocaleName() }}
+
 @endsection
 
 @section('scripts')
