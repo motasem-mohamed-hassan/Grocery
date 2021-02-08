@@ -1,8 +1,8 @@
 
-<div class="services-breadcrumb">
-    <div class="agile_inner_breadcrumb">
-        <div class="container">
-            <ul class="w3_short">
+	<div class="services-breadcrumb">
+		<div class="agile_inner_breadcrumb">
+			<div style="display: flex; justify-content: flex-end;" class="container">
+				<ul class="w3_short">
                 <li>
                     <a href="{{ route('home') }}">Home</a>
                     <i>|</i>
@@ -28,51 +28,6 @@
 				</span>
 			</h3>
 			<!-- //tittle heading -->
-			<!-- product left -->
-			<div class="side-bar col-md-3">
-				<div class="search-hotel">
-					<h3 class="agileits-sear-head">بحث في الصفحة</h3>
-						<input type="search" wire:model="search" placeholder="Product name..." name="search" required="">
-				</div>
-				<!-- price range -->
-				<div class="range">
-					<h3 class="agileits-sear-head">تحديد السعر</h3>
-					<ul class="dropdown-menu6">
-						<li>
-                            <form action="{{ route('categoryPage', $category->id) }}" method="get">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="minPrice">min price</label>
-                                    <input type="number" class="form-control" id="minPrice" name="min" placeholder="Enter main">
-                                </div>
-                                <div class="form-group">
-                                    <label for="maxPrice">max price</label>
-                                    <input type="number" class="form-control" id="maxPrice" name="max" placeholder="Enter max">
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
-                            </form>
-						</li>
-					</ul>
-				</div>
-				<!-- //price range -->
-                <!-- cuisine -->
-                @if(count($subCategories) > 0)
-                <div class="left-side">
-                    <h3 class="agileits-sear-head">Categories</h3>
-                    <ul>
-                        @foreach($subCategories as $subCategory)
-                        <li>
-                            <input type="checkbox" class="checked">
-                            <span class="span">{{ $subCategory->name }}</span>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-                @endif
-                <!-- //cuisine -->
-
-			</div>
-			<!-- //product left -->
 			<!-- product right -->
 			<div class="agileinfo-ads-display col-md-9 w3l-rightpro">
                 <div class="wrapper">
@@ -113,8 +68,55 @@
                     @endforeach
                 </div>
             </div>
-
 			<!-- //product right -->
+
+
+            			<!-- product left -->
+			<div class="side-bar col-md-3">
+				<div class="search-hotel">
+					<h3 class="agileits-sear-head">بحث في الصفحة</h3>
+						<input type="search" wire:model="search" placeholder="Product name..." name="search" required="">
+				</div>
+				<!-- price range -->
+				<div class="range">
+					<h3 class="agileits-sear-head">تحديد السعر</h3>
+					<ul class="dropdown-menu6">
+						<li>
+                            <form action="{{ route('categoryPage', $category->id) }}" method="get">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="minPrice">الحد الأدنى</label>
+                                    <input type="number" class="form-control" id="minPrice" name="min" placeholder="Enter main">
+                                </div>
+                                <div class="form-group">
+                                    <label for="maxPrice">الحد الأقصى</label>
+                                    <input type="number" class="form-control" id="maxPrice" name="max" placeholder="Enter max">
+                                </div>
+                                <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
+                            </form>
+						</li>
+					</ul>
+				</div>
+				<!-- //price range -->
+                <!-- cuisine -->
+                @if(count($subCategories) > 0)
+                <div class="left-side">
+                    <h3 class="agileits-sear-head">Categories</h3>
+                    <ul>
+                        @foreach($subCategories as $subCategory)
+                        <li>
+                            <input type="checkbox" class="checked">
+                            <span class="span">{{ $subCategory->name }}</span>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                <!-- //cuisine -->
+
+			</div>
+			<!-- //product left -->
+
 		</div>
 	</div>
 

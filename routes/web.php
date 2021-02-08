@@ -29,7 +29,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('/adding', 'AddController@index')->name('get_add');
     Route::post('/adding', 'AddController@store')->name('post_add');
     Route::get('/adding/chose', 'AddController@choseSub')->name('chose_sub');
-    Route::get('/profile', 'ProfileController@show')->name('profile');
+    Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
 
 });

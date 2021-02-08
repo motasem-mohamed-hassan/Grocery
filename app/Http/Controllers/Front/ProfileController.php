@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
-    public function show()
+    public function show($id)
     {
         $categories = Category::where('parent_id', null)->get();
-        $user       = User::find(Auth::id());
+        $user       = User::find($id);
 
         return view('front.profile', compact('categories', 'user'));
     }

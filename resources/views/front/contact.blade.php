@@ -4,13 +4,14 @@
 
 <div class="services-breadcrumb">
     <div class="agile_inner_breadcrumb">
-        <div class="container">
+        <div style="display: flex; justify-content: flex-end;" class="container">
             <ul class="w3_short">
+
+                <li>تواصل معنا </li>
                 <li>
-                    <a href="{{ route('home') }}">Home</a>
-                    <i>|</i>
+                <i>|</i>
+                    <a href="{{ route('home') }}">الرئيسية</a>
                 </li>
-                <li>contact Us</li>
             </ul>
         </div>
     </div>
@@ -20,7 +21,7 @@
 <div class="contact-w3l">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">Contact Us
+        <h3 class="tittle-w3l">تواصل معنا
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -35,36 +36,49 @@
                     <form action="{{ route('sendEmail') }}" method="post">
                         @csrf
                         <div class="">
-                            <input type="text" name="name" placeholder="Name" value="{{ old('name') }}">
+                            <input style="text-align: right;" type="text" name="name" placeholder="الاسم" value="{{ old('name') }}">
                             <div>{{ $errors->first('name') }}</div>
                         </div>
                         <div class="">
-                            <input class="email" type="email" name="email" placeholder="Email" value="{{ old('email') }}">
+                            <input style="text-align: right;" class="email" type="email" name="Email" placeholder="البريد الالكتروني" value="{{ old('email') }}">
                             <div>{{ $errors->first('email') }}</div>
                         </div>
                         <div class="">
-                            <input class="text" type="text" name="subject" placeholder="Subject" value="{{ old('subject') }}">
+                            <input style="text-align: right;" class="text" type="text" name="subject" placeholder="الموضوع" value="{{ old('subject') }}">
                             <div>{{ $errors->first('subject') }}</div>
                         </div>
                         <div class="">
-                            <textarea placeholder="Message" name="message" value="{{ old('message') }}"></textarea>
+                            <textarea style="text-align: right;" placeholder="الرسالة" name="message" value="{{ old('message') }}"></textarea>
                             <div>{{ $errors->first('name') }}</div>
                         </div>
-                        <input type="submit" value="Send">
+                        <div style="display: flex; justify-content: flex-end;">
+                        <input type="submit" value="ارسال">
+                        </div>
                     </form>
                 </div>
-                <div class="contact-right wthree">
-                    <div class="col-xs-7 contact-text w3-agileits">
-                        <h4>GET IN TOUCH :</h4>
-                        <p>
-                            <i class="fa fa-map-marker"></i> 123 Sebastian, NY 10002, USA.</p>
-                        <p>
-                            <i class="fa fa-phone"></i> Telephone : 333 222 3333</p>
-                        <p>
-                            <i class="fa fa-fax"></i> FAX : +1 888 888 4444</p>
-                        <p>
-                            <i class="fa fa-envelope-o"></i> Email :
-                            <a href="mailto:example@mail.com">mail@example.com</a>
+                <div  class="contact-right wthree">
+                    <div  class=" contact-text w3-agileits">
+                        <h4 style="text-align: right;">:تواصل معنا</h4>
+                        <p style="text-align: right;">
+                            123 Sebastian, NY 10002, USA.
+                            <i class="fa fa-map-marker"></i>
+
+                        </p>
+                        <p style="text-align: right;">
+                             333 222 3333 :التليفون
+                            <i class="fa fa-phone"></i>
+
+                        </p>
+                        <p style="text-align: right;">
+                              +1 888 888 4444: فاكس
+                             <i class="fa fa-fax"></i>
+
+                            </p>
+                        <p style="text-align: right;">
+
+                            <a href="mailto:example@mail.com">mail@example.com</a>:البريد الالكتروني
+                            <i class="fa fa-envelope-o"></i>
+
                         </p>
                     </div>
                     <div class="col-xs-5 contact-agile">
