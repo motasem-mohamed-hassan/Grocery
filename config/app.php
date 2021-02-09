@@ -164,6 +164,8 @@ return [
         Spatie\Permission\PermissionServiceProvider::class,
         Darryldecode\Cart\CartServiceProvider::class,
         Yoeunes\Toastr\ToastrServiceProvider::class,
+        Nexmo\Laravel\NexmoServiceProvider::class,
+
 
 
         /*
@@ -231,6 +233,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Cart' => Darryldecode\Cart\Facades\CartFacade::class,
+        'Nexmo' => \Nexmo\Laravel\Facade\Nexmo::class,
+
 
     ],
 

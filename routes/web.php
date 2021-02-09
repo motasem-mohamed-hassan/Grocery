@@ -63,3 +63,6 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(fun
 });
 
 Auth::routes();
+Route::get('/verify', 'VerifyController@show')->name('verify');
+Route::post('/verify', 'VerifyController@verify')->name('verify');
+

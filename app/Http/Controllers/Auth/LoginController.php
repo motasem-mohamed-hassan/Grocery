@@ -6,6 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Contracts\Auth\Authenticatable;
+
+use Nexmo;
 
 class LoginController extends Controller
 {
@@ -39,5 +44,20 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function authenticated(Request $request, Authenticatable $user)
+    {
+        Auth::logout();
+        $request->session()->put('verify:user:id', $user->id);
+
+        $verification = Nexmo::verify()->start([
+            // 'number' => $user->phone_number,
+            'number' => '+20 155 994 4997',
+            'brand'  => 'Laravel Demo'
+        ]);
+        $request->session()->put('verify:request_id', $verification->getRequestId());
+
+
+        return redirect('verify');
+    }
 
 }

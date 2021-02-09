@@ -1,8 +1,8 @@
 <form method="post" action="{{ route('login') }}">
     @csrf
   <div class="form-group">
-    <label>Username</label>
-    <input type="text" name="name" class="form-control p_input">
+    <label>phone number</label>
+    <input type="text" name="phone_number" class="form-control p_input">
   </div>
   <div class="form-group">
     <label>Password *</label>

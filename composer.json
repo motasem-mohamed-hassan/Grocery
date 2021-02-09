@@ -17,6 +17,9 @@
         "laravel/tinker": "^2.0",
         "livewire/livewire": "2.3",
         "mcamara/laravel-localization": "^1.6",
+        "nexmo/client": "2.0",
+        "nexmo/laravel": "^2.4",
+        "php-http/guzzle6-adapter": "^2.0",
         "spatie/laravel-permission": "^3.18",
         "yoeunes/toastr": "^1.2"
     },

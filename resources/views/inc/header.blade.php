@@ -139,7 +139,7 @@
 						<form action="{{ route('login') }}" method="post">
 							@csrf
 							<div class="styled-input agile-styled-input-top">
-								<input style="text-align: right;" type="email" placeholder="البريد الالكتروني" name="email" required="">
+								<input style="text-align: right;" type="text" placeholder="رقم الهاتف" name="phone_number" required="">
 							</div>
 							<div class="styled-input">
 								<input style="text-align: right;" type="password" placeholder="كلمة السر" name="password" required="">
@@ -179,17 +179,21 @@
 						<form action="{{ route('register') }}" method="post">
 							@csrf
 							<div class="styled-input">
-								<input style="text-align: right;" type="text" placeholder="الاسم" name="name" required="">
+								<input style="text-align: right;" type="text" placeholder="الاسم" name="name" required>
 							</div>
 							<div class="styled-input">
-								<input style="text-align: right;" type="email" placeholder="البريد الالكتروني" name="email" required="">
+								<input style="text-align: right;" type="email" placeholder="البريد الالكتروني" name="email" required>
 							</div>
                             <div class="styled-input">
-								<input style="text-align: right;" type="text" placeholder="رقم الهاتف" name="phone_number" required="">
+								<input style="text-align: right;" type="text" placeholder="رقم الهاتف" name="phone_number" required>
 							</div>
 							<div class="styled-input">
-								<input style="text-align: right;" type="password" placeholder="كلمةالسر" name="password" id="password1" required="">
+								<input style="text-align: right;" type="password" placeholder="كلمةالسر" name="password" id="password1" required>
 							</div>
+                            <div class="styled-input">
+                                <input style="text-align: right;" type="password" placeholder="تأكيد كلمة السر" name="password_confirmation" required>
+                            </div>
+
 							<div style="display: flex; justify-content: flex-end;">
 								<input type="submit" value="تسجيل جديد ">
 							</div>
@@ -415,4 +419,15 @@
 			</div>
 		</div>
 	</div>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
+
 	<!-- //navigation -->
