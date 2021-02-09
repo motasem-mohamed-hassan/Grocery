@@ -84,11 +84,19 @@
                                 Bay Area, San Francisco, CA
                             </div>
                         </div><br>
+                        @if($user->id == Auth::id())
                         <div class="d-flex justify-content-end">
                             <button class="btn btn-info mr-2" type="submit" id="edit-button" data-toggle="modal" data-target="#staticBackdrop"> Edit your profile
                             </button>
                             <!-- <button class="btn backs" type="submit" id="end-editing"> save</button> -->
                         </div>
+                        @else
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-success mr-2"> send message
+                            </button>
+                            <!-- <button class="btn backs" type="submit" id="end-editing"> save</button> -->
+                        </div>
+                        @endauth
                     </div>
                 </div>
                 <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

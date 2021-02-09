@@ -38,7 +38,7 @@
 
 					@if( auth()->check() )
 					<li>
-						<a href="#">
+						<a href="{{ route('profile', Auth::id())}}">
 							<span class="fa fa-unlock-alt" aria-hidden="true"></span>  {{ auth()->user()->name }} اهلا</a>
 					</li>
 					<li class="nav-item">

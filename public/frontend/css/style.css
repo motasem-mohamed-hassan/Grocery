@@ -546,47 +546,38 @@ button.w3view-cart {
 }
 
 .carousel-caption {
-    position: inherit;
-    min-height: 600px;
-    padding-top: 8em;
+    /* position: inherit; */
+    /* min-height: 20pc;
+    padding-top: 8em; */
 }
 
 
 /*-- carousel-slider --*/
 
 .carousel .item {
-    background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-    background: -moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-    background: -ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-    background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner2.jpg) no-repeat;
-    background-size: cover;
+    background:  url(../images/banner1.jpg) no-repeat;
+    background-size: 100%;
+    height:20pc;
 }
 
 .carousel .item.item2 {
-    background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-    background: -moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-    background: -ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-    background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner1.jpg) no-repeat;
-    background-size: cover;
+    background:  url(../images/banner1.jpg) no-repeat;
+    background-size: 100%;
+    height:20pc;
 }
 
 .carousel .item.item3 {
-    background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-    background: -moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-    background: -ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-    background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner3.jpg) no-repeat;
-    background-size: cover;
+    background:  url(../images/banner1.jpg) no-repeat;
+    background-size: 100%;
+    height:20pc;
 }
 
 .carousel .item.item4 {
-    background: -webkit-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-    background: -moz-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-    background: -ms-linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-    background: linear-gradient(rgba(23, 22, 23, 0.2), rgba(23, 22, 23, 0.5)), url(../images/banner4.jpg) no-repeat;
-    background-size: cover;
+    background:  url(../images/banner1.jpg) no-repeat;
+    background-size: 100%;
+    height:20pc;
 }
-
-.carousel-caption h2,
+/* .carousel-caption h2,
 .carousel-caption h3 {
     font-size: 5em;
     font-weight: 600;
@@ -594,7 +585,7 @@ button.w3view-cart {
     text-transform: uppercase;
     text-shadow: 3px 8px 2px rgb(12, 12, 12);
     background: rgba(0, 0, 0, 0.34);
-    padding: 35px 0;
+    padding: 35px 0; */
 }
 
 .carousel-caption h2 span,
@@ -603,18 +594,18 @@ button.w3view-cart {
     color: #FF5722;
 }
 
-.carousel-caption p {
+/* .carousel-caption p {
     letter-spacing: 5px;
     font-size: 24px;
     color: #fff;
-    margin: 20px 0;
+    margin: 20px 0; */
 }
 
-.carousel-caption p span {
+/* .carousel-caption p span {
     font-size: 40px;
     letter-spacing: 0px;
     font-weight: 600;
-}
+} */
 
 .codes.agileitsbg3 {
     background: #3498DB;
@@ -3472,6 +3463,25 @@ select.form-control.option-w3ls {
     .multi-gd-img img {
         margin-top: 20px;
     }
+    .carousel .item.item4 {
+        background-size: 100%;
+        height: 5.7pc;
+    }
+    .carousel .item.item1 {
+        background-size: 100%;
+        height: 5.7pc;
+    }
+
+    .carousel .item.item2 {
+        background-size: 100%;
+        height: 5.7pc;
+    }
+
+    .carousel .item.item3 {
+        background-size: 100%;
+        height: 5.7pc;
+    }
+
 }
 
 @media(max-width: 1366px) {
@@ -3720,7 +3730,7 @@ select.form-control.option-w3ls {
 
 @media(max-width: 1050px) {
     .carousel-caption {
-        min-height: 450px;
+        /* min-height: 450px; */
         padding-top: 5em;
     }
     .button2 {
