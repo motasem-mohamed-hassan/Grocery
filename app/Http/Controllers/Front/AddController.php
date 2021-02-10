@@ -32,6 +32,13 @@ class AddController extends Controller
         ]);
     }
 
+    public function category(Request $request)
+    {
+        $categories = Category::where('parent_id', null)->get();
+        $category = Category::where('id', $request->category_id)->first();
+
+        return view('front.add_product', compact('categories', 'category'));
+    }
     public function store(AddRequest $request)
     {
 

@@ -48,6 +48,98 @@ class DatabaseSeeder extends Seeder
             'description'   =>  'some description',
         ]);
 
+        DB::table('categories')->insert([
+            'id'            =>  '1',
+            'name'        =>  'سيارات',
+        ]);
+        DB::table('categories')->insert([
+            'id'            =>  '2',
+            'name'        =>  'موبايلات',
+        ]);
 
+        DB::table('categories')->insert([
+            'id'            =>  '3',
+            'name'        =>  'اجهزة لوحية',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '4',
+            'name'        =>  'لابتوب',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '5',
+            'name'        =>  'كومبيوتر مكتبي',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '6',
+            'name'        =>  'مكيفات',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '7',
+            'name'        =>  'اجهزة منزلية كبيرة',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '8',
+            'name'        =>  'اجهزة منزلية صغيرة',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '9',
+            'name'        =>  'كاميرات',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '10',
+            'name'        =>  'تلفيزيونات',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '11',
+            'name'        =>  'العاب الكترونية',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '12',
+            'name'        =>  'مكائن القهوة',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '13',
+            'name'        =>  'قوارب',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '14',
+            'name'        =>  'عدد وادوات',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '15',
+            'name'        =>  'معدات رياضية',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '16',
+            'name'        =>  'اثاث',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '17',
+            'name'        =>  'معدات صناعية',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '18',
+            'name'        =>  'اجهزة طبية',
+        ]);
+
+        DB::table('categories')->insert([
+            'id'            =>  '19',
+            'name'        =>  'مقتنيات ثمينة',
+        ]);
     }
 }

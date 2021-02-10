@@ -335,7 +335,7 @@
 									</ul>
 								</li>
 								<li class="">
-									<a class="nav-stylehead" href="{{ asset('frontend/') }}faqs.html">اضف منتجات</a>
+									<a class="nav-stylehead" href="{{ route('get_add') }}">اضف منتجات</a>
 								</li>
 
 								<li class="">
