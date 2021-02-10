@@ -31,6 +31,7 @@
     <!-- Main CSS-->
     <link href="{{ asset('css/main.css') }}" rel="stylesheet" media="all">
 
+
 </head>
 <body>
     <div id="app">

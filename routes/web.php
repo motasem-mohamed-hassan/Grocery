@@ -66,3 +66,5 @@ Auth::routes();
 Route::get('/verify', 'VerifyController@show')->name('verify');
 Route::post('/verify', 'VerifyController@verify')->name('verify');
 
+
+ 

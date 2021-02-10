@@ -16,11 +16,23 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedBigInteger('user_id');
-            $table->string('name');
-            $table->text('description');
             $table->integer('category_id');
             $table->integer('subCategory_id');
-            $table->unsignedInteger('price');
+
+            // $table->string('transmissionType');
+            // $table->string('kilometers');
+            // $table->string('engineCapacity');
+            // $table->string('screensize');
+            // $table->string('memory');
+            // $table->string('storage');
+            // $table->string('generation');
+            // $table->string('color');
+            // $table->string('accessories');
+            // $table->string('processor');
+            // $table->text('description');
+            // $table->unsignedInteger('price');
+
+
             $table->boolean('status')->default('0');
 
 
