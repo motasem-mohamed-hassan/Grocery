@@ -30,6 +30,9 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('/adding/category', 'AddController@category')->name('get_add_category');
     Route::get('/adding/chose', 'AddController@choseSub')->name('chose_sub');
     Route::post('/adding', 'AddController@store')->name('post_add');
+    Route::get('/edit-product/{id}', 'AddController@show')->name('edit_product');
+    Route::put('/edit-product/{id}', 'AddController@update')->name('update_product');
+    Route::delete('/delete-product/{id}', 'AddController@delete')->name('delete_product');
     Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
 

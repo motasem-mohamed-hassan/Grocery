@@ -311,6 +311,22 @@
                         </p>
                     </ul>
 				</div>
+
+                @if($product->user_id == Auth::id())
+                <div>
+                    <a href="{{ route('edit_product', $product->id) }}" class="btn btn-info">تعديل</a>
+                    <form action="{{ route('delete_product', $product->id) }}" method="POST">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-danger">مسح</button>
+                    </form>
+
+                </div>
+                @else
+                <div>
+                    <button class="btn btn-success">تواصل مع البائع</button>
+                </div>
+                @endif
 			</div>
 			<div class="clearfix"> </div>
 		</div>

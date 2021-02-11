@@ -34,8 +34,7 @@
 	<!-- flexslider -->
 	<link rel="stylesheet" href="{{ asset('frontend/css/flexslider.css') }}" type="text/css" media="screen" />
 	<!-- toaster link css -->
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet" />
-
+    @toastr_css
 
 
 
@@ -63,6 +62,11 @@
 
 
 
+    @jquery
+    @toastr_js
+    @toastr_render
+
+
 
 	<!-- jquery -->
 	<script src="{{ asset('frontend/js/jquery-2.1.4.min.js') }}"></script>
@@ -70,10 +74,6 @@
 
 	<!-- For AJAX -->
 	@yield('scripts')
-
-
-
-
 
 	<!-- popup modal (for signin & signup)-->
 	<script src="{{ asset('frontend/js/jquery.magnific-popup.js') }}"></script>

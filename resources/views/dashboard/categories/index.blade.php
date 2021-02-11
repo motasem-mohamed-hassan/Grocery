@@ -58,14 +58,14 @@
                     <div class="d-flex justify-content-between category_name{{ $category->id }}">
                       {{ $category->name }}
 
-                      <div class="button-group d-flex">
+                      {{-- <div class="button-group d-flex">
                         <button type="button" category_id="{{ $category->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">Edit</button>
 
                         <form action="#" method="POST">
                           @csrf
                           <button type="submit" category_id="{{ $category->id }}" class="delete_btn btn btn-sm btn-danger">Delete</button>
                         </form>
-                      </div>
+                      </div> --}}
                     </div>
 
                     @if ($category->children)

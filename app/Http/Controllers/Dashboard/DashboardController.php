@@ -5,22 +5,16 @@ namespace App\Http\Controllers\Dashboard;
 use App\User;
 use App\Order;
 use App\Http\Controllers\Controller;
+use App\Product;
 
 class DashboardController extends Controller
 {
     public function index()
     {
-        $ordersCount = Order::all()->count();
-
-        $delevered              = Order::where('status', 'Deliveried')->count();
-        $notDeleveredYet        = Order::where('status', '!=', 'Deliveried')->count();
-        if($delevered + $ordersCount == 0){
-            $successfullyDelevered = 0;
-        }else{
-            $successfullyDelevered = $delevered / $ordersCount * 100;;
-        }
-
-        $usersCountr = User::aLL()->count();
-        return view('dashboard.dashboard', compact('ordersCount','successfullyDelevered','notDeleveredYet','usersCountr'));
+        $productsApprovedCount = Product::where('status', 1)->count();
+        $productsNotApprovedCount = Product::where('status', 0)->count();
+        $allProductsCount = Product::all()->count();
+        $usersCount = User::all()->count();
+        return view('dashboard.dashboard', compact('usersCount', 'productsApprovedCount', 'productsNotApprovedCount', 'allProductsCount'));
     }
 }
