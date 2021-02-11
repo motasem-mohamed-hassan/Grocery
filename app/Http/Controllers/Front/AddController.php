@@ -36,20 +36,55 @@ class AddController extends Controller
     {
         $categories = Category::where('parent_id', null)->get();
         $category = Category::where('id', $request->category_id)->first();
-
-        return view('front.add_product', compact('categories', 'category'));
+        $category_id = $request->category_id;
+        $subCategory_id = $request->subCategory_id;
+        return view('front.add_product', compact('categories', 'category','subCategory_id'));
     }
-    public function store(AddRequest $request)
-    {
 
+    public function store( AddRequest $request)
+    {
         $product = new Product();
-        $product->user_id           = Auth::id();
-        $product->name              = $request->name;
-        $product->description       = $request->description;
-        $product->category_id       = $request->category_id;
-        $product->subCategory_id    = $request->subCategory_id;
-        $product->price             = $request->price;
-        $product->status            = 0;
+        $product->user_id           =    Auth::id();
+        $product->category_id       =    $request->category_id;
+        $product->subCategory_id	=    $request->subCategory_id;
+
+        $product->name              =    $request->name;
+
+        $product->manufactureYear   =    $request->manufactureYear ;
+        $product->wheelType         =    $request->wheelType ;
+        $product->product           =    $request->product ;
+        $product->machinesPlace     =    $request->machinesPlace ;
+        $product->machinesType      =    $request->machinesType ;
+        $product->machinesPower     =    $request->machinesPower ;
+        $product->machinesAge       =    $request->machinesAge ;
+        $product->capleType         =    $request->capleType ;
+        $product->age               =    $request->age ;
+        $product->transmissionType  =    $request->transmissionType ;
+        $product->kilometers        =    $request->kilometers ;
+        $product->engineCapacity    =    $request->engineCapacity ;
+        $product->screensize        =    $request->screensize ;
+        $product->memory            =    $request->memory ;
+        $product->storage           =    $request->storage ;
+        $product->generation        =    $request->generation ;
+        $product->color             =    $request->color ;
+        $product->accessories       =    $request->accessories ;
+        $product->processor         =    $request->processor ;
+        $product->coolingPower      =    $request->coolingPower ;
+        $product->coolingType       =    $request->coolingType ;
+        $product->capacitance       =    $request->capacitance ;
+        $product->megapixel         =    $request->megapixel ;
+        $product->screenType        =    $request->screenType ;
+        $product->length            =    $request->length ;
+        $product->machinesNumber    =    $request->machinesNumber ;
+        $product->size              =    $request->size ;
+        $product->manufactureType   =    $request->manufactureType ;
+        $product->fuelType          =    $request->fuelType ;
+        $product->energy            =    $request->energy ;
+
+
+        $product->description       =   $request->description;
+        $product->price             =   $request->price;
+        $product->status            =   0;
         $product->save();
 
         $images = $request->file('image');

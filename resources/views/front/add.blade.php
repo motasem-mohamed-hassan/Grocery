@@ -38,7 +38,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <input  type="submit" class="btn btn-info" value="Add">
+                <input  type="submit" class="btn btn-info" value="Confirm">
             </div>
         </form>
 

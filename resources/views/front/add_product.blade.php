@@ -13,7 +13,11 @@
 
         <p>{{ $category->name }}</p><br><br><br>
 
-        <form action="#" method="post"  enctype="multipart/form-data">
+        <form action="{{ route('post_add')}}" method="post"  enctype="multipart/form-data">
+            @csrf
+            <input style="display: none" type="text" name="subCategory_id" class="form-control" value="{{ $subCategory_id }}">
+            <input style="display: none" type="text" name="category_id" class="form-control" value="{{ $category->id }}">
+
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الموديل</label>

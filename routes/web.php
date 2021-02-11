@@ -28,8 +28,8 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     //add products
     Route::get('/adding', 'AddController@index')->name('get_add');
     Route::get('/adding/category', 'AddController@category')->name('get_add_category');
-
     Route::get('/adding/chose', 'AddController@choseSub')->name('chose_sub');
+    Route::post('/adding', 'AddController@store')->name('post_add');
     Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
 
