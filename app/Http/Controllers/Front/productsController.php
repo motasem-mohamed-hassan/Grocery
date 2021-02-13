@@ -18,11 +18,14 @@ class productsController extends Controller
     {
         $categories = Category::where('parent_id', null)->get();
 
-        if($request->min && $request->max){
-            $products = Product::whereBetween('price', [$request->min, $request->max])->get();
-        }else{
-            $products = Product::all();
+        $query = Product::where('status', 1);
+        if($request->has('search')){
+            $query->where('name', 'LIKE', '%'.$request->search.'%');
+        }if($request->min && $request->max){
+            $query->whereBetween('price', [$request->min, $request->max]);
         }
+
+        $products = $query->get();
 
 
         return view('front.index', compact('categories','products'));
