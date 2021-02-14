@@ -262,61 +262,22 @@
 
 
 								<li class="dropdown">
-									<a href="{{ asset('frontend/') }}#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">منتجات المنزلية
+									<a href="{{ asset('frontend/') }}#" class="dropdown-toggle nav-stylehead" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">جميع الأقسام
 										<span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu multi-column columns-3">
 										<div class="agile_inner_drop_nav_info">
+                                            @foreach ($categories->chunk(10) as $chunk)
 											<div class="col-sm-6 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Kitchen & Dining</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Detergents</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Utensil Cleaners</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Floor & Other Cleaners</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Disposables, Garbage Bag</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Repellents & Fresheners</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html"> Dishwash</a>
-													</li>
-												</ul>
-											</div>
-											<div class="col-sm-6 multi-gd-img">
-												<ul class="multi-column-dropdown">
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Pet Care</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Cleaning Accessories</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Pooja Needs</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Crackers</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Festive Decoratives</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Plasticware</a>
-													</li>
-													<li>
-														<a href="{{ asset('frontend/') }}product2.html">Home Care</a>
-													</li>
-												</ul>
-											</div>
+                                                <ul class="multi-column-dropdown">
+                                                @foreach($chunk as $category)
+                                                <li>
+                                                    <a href="{{ route('categoryPage', $category->id) }}">{{ $category->name }}</a>
+                                                </li>
+                                                @endforeach
+                                                </ul>
+                                            </div>
+                                            @endforeach
 											<div class="clearfix"></div>
 										</div>
 									</ul>
