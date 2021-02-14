@@ -13,7 +13,9 @@ class AboutController extends Controller
     {
         $categories = Category::all();
         $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
+        $setting = Setting::find('1');
 
-        return view('front.about', compact('categories', 'itemsCount'));
+
+        return view('front.about', compact('categories', 'itemsCount', 'setting'));
     }
 }

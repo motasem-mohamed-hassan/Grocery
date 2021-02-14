@@ -261,7 +261,7 @@
                 <option value="2t">2t</option>
             </select><br>
             @endif
-            @if($category->name == 'لابتوب')
+            @if($category->name == 'كمبيوتر مكتبي')
             <select class="form-control" name="model">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $model)
@@ -297,8 +297,8 @@
                 <option value="{{ $model->name }}">{{ $model->name }}</option>
                 @endforeach
             </select><br>
-            <select class="form-control" name="coolingPower">
-                <option disabled selected>طاقة التبريد</option>
+            <select class="form-control" name="coolingType">
+                <option disabled selected>نوع التبريد</option>
                 <option value="رقمي">رقمي</option>
             </select><br>
             @endif

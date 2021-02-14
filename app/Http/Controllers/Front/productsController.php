@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Product;
 use App\Category;
 use App\Http\Controllers\Controller;
+use App\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -17,6 +18,7 @@ class productsController extends Controller
     public function index(Request $request)
     {
         $categories = Category::where('parent_id', null)->get();
+        $setting = Setting::find('1');
 
         $query = Product::where('status', 1);
         if($request->has('search')){
@@ -28,7 +30,7 @@ class productsController extends Controller
         $products = $query->get();
 
 
-        return view('front.index', compact('categories','products'));
+        return view('front.index', compact('categories','products', 'setting'));
     }
 
     public function show($id)

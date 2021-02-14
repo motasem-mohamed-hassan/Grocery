@@ -1,9 +1,4 @@
 
-	<!-- top-header -->
-	<div class="header-most-top">
-		<p>منطقة عرض البقالة أفضل الصفقات والخصومات </p>
-	</div>
-	<!-- //top-header -->
 	<!-- header-bot-->
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
@@ -19,10 +14,10 @@
 			<div class="col-md-8 header">
 				<!-- header lists -->
 				<ul>
-					<li>
+					{{-- <li>
 						<a class="play-icon popup-with-zoom-anim" href="{{ asset('frontend/#small-dialog1') }}">
 							الموقع <span class="fa fa-map-marker" aria-hidden="true"></span></a>
-					</li>
+					</li> --}}
 					<li>
 						@if(auth()->check())
 						<a href="{{ route('profile', Auth::user()) }}">
@@ -32,12 +27,12 @@
 							اطلب طلبك <span class="fa fa-truck" aria-hidden="true"></span></a>
 					</li>
 					<li>
-						رقم الهاتف <span class="fa fa-phone" aria-hidden="true"></span> </li>
+						{{ $setting->phone1 }}<span class="fa fa-phone" aria-hidden="true"></span> </li>
 
 					@if( auth()->check() )
 					<li>
 						<a href="{{ route('profile', Auth::id())}}">
-							<span class="fa fa-unlock-alt" aria-hidden="true"></span>  {{ auth()->user()->name }} اهلا</a>
+							<span class="fa fa-user" aria-hidden="true"></span>  الصفحة الشخصية</a>
 					</li>
 					<li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">

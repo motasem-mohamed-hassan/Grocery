@@ -4,10 +4,11 @@ namespace App\Http\Controllers\Front;
 
 use App\Image;
 use App\Product;
+use App\Setting;
 use App\Category;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Http\Requests\AddRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
@@ -17,8 +18,10 @@ class AddController extends Controller
     public function index()
     {
         $categories = Category::where('parent_id', null)->get();
+        $setting = Setting::find('1');
 
-        return view('front.add', compact('categories'));
+
+        return view('front.add', compact('categories', 'setting'));
     }
 
     public function choseSub(Request $request)

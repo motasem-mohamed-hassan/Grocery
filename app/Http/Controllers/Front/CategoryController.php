@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Product;
+use App\Setting;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,6 +17,7 @@ class CategoryController extends Controller
 
         $categories     = Category::where('parent_id', null)->get();
         $subCategories    = Category::where('parent_id', '>', 0)->get();
+        $setting = Setting::find('1');
 
 
 
@@ -45,8 +47,8 @@ class CategoryController extends Controller
             $query->whereBetween('manufactureYear', [$request->minmanufactureYear, $request->maxmanufactureYear]);
         if($request->has('processor'))
             $query->where('processor', $request->processor);
-        if($request->has('coolingPower'))
-            $query->where('coolingPower', $request->coolingPower);
+        if($request->has('coolingType'))
+            $query->where('coolingType', $request->coolingType);
         if($request->has('capacitance'))
             $query->where('capacitance', 'LIKE', '%'.$request->capacitance.'%');
         if($request->has('megapixel'))
@@ -66,7 +68,7 @@ class CategoryController extends Controller
         $products = $query->get();
 
 
-        return view('front.category', compact('products', 'categories', 'category', 'subCategories'));
+        return view('front.category', compact('products', 'categories', 'category', 'subCategories', 'setting'));
 
     }
 }

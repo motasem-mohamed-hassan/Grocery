@@ -7,16 +7,36 @@
     <div class="main-body">
         <div class="row gutters-sm">
             <div class="col-md-4 mb-3">
-                <div  id="user-card" class="card bg-light "  >
-                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% "  >
+                <div  id="user-card" class="card bg-light ">
+                    @if(!$user->image)
+                        <img src="{{ asset('frontend/images/avatar.png') }}" style="width: 80% ; border-radius:50% ">
+                    @else
+                    <img src="{{ asset('storage/avatars/'.$user->image) }}" id='output_image' class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% "  >
+                    @endif
                     <div class="card-body">
                         <h3 class="card-title">اسم المستخدم</h3>
                         <p class="card-text"> معلومات عن المستخدم معلومات عن المستخدم معلومات عن المستخدم معلومات عن المستخدم معلومات عن المستخدم </p>
                     </div>
+                    @if($user->id == Auth::id())
                     <div class="card-body">
-                        <button class="btn btn-info">متابعة</button>
-                        <button class="btn btn-info">مراسلة</button>
+                        <form action="{{ route('add-avatar', $user->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <input name="image" type="file" accept="image/*" onchange="preview_image(event)" style="  display: inline-block;
+                            width: 20%;
+                            padding:40px 0 0 0;
+                            height: 10px;
+                            overflow: hidden;
+                            -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                            box-sizing: border-box;
+                            background: url('https://cdn1.iconfinder.com/data/icons/hawcons/32/698394-icon-130-cloud-upload-512.png') center center no-repeat #1accfd; */
+                            border-radius: 5px;
+                            background-size: 40px 40px;"
+                            ><br>
+                            <button style="display: none" type="submit" id="confirm-photo">تأكيد الصورة</button>
+                        </form>
                     </div>
+                    @endif
                 </div>
             </div>
             <div id="user-information" class="col-md-8 p-2 m-2">
@@ -120,7 +140,19 @@
     </div>
 </div>
 <!-------------- User account ------------->
+@endsection
 
-
-
+@section('scripts')
+<script type="text/javascript">
+    function preview_image(event) {
+      var reader = new FileReader();
+      reader.onload = function(){
+        var output = document.getElementById('output_image');
+        output.src = reader.result;
+        var confirm=document.getElementById('confirm-photo');
+        confirm.style.display="inline-block";
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+</script>
 @endsection

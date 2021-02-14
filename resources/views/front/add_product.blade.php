@@ -20,7 +20,7 @@
 
             <div class="form-group">
                 <div class="row">
-                    <label class="col-md-2 text-center mr-5">الموديل</label>
+                    <label class="col-md-2 text-center mr-5">اسم المنتج</label>
                     <div class="col-md-7 ">
                         <input type="text" name="name" id="name" class="form-control">
                     </div>
@@ -33,7 +33,7 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">سنة التصنيع</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="manufactureYear" id="name" class="form-control">
+                        <input type="text" name="manufactureYear" id="name" class="form-control" onkeypress="return onlyNumberKey(event)">
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -44,7 +44,11 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الدفع</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="wheelType" id="name" class="form-control">
+                        <select class="form-control" name="screensize">
+                            <option disabled selected>نوع الدفع</option>
+                            <option value="ثنائي">ثنائي</option>
+                            <option value="رباعي">رباعي</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -55,7 +59,13 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع المنتج</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="product" id="name" class="form-control">
+                        <select class="form-control" name="product">
+                            <option disabled selected>المنتج</option>
+                            <option value="كاباتشينو">كاباتشينو</option>
+                            <option value="اسبريسو">اسبريسو</option>
+                            <option value="قهوة امريكي">قهوة امريكي</option>
+                            <option value="قهوة عربي">قهوة عربي</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -66,7 +76,11 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">مكان المكائن</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="machinesPlace" id="name" class="form-control">
+                        <select class="form-control" name="machinesPlace">
+                            <option disabled selected>مكان المكائن</option>
+                            <option value="داخلي">داخلي</option>
+                            <option value="داخلي">خارجي</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -110,7 +124,11 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الكابل</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="capleType" id="name" class="form-control">
+                        <select class="form-control" name="capleType">
+                            <option disabled selected>نوع الكابل</option>
+                            <option value="لاسلكي">لاسلكي</option>
+                            <option value="سلكي">سلكي</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -121,7 +139,11 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع القير</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="transmissionType" id="name" class="form-control">
+                        <select class="form-control" name="transmissionType">
+                            <option disabled selected>نوع القير</option>
+                            <option value="اوتوماتيك">اوتوماتيك</option>
+                            <option value="اوتوماتيك">عادي</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -154,7 +176,7 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">حجم الشاشة</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="screensize" id="name" class="form-control">
+                        <input type="text" name="screensize" id="name" class="form-control" onkeypress="return onlyNumberKey(event)">
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -163,10 +185,18 @@
             @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
-                    <label class="col-md-2 text-center mr-5">الميموري</label>
+                    <label class="col-md-2 text-center mr-5">الرام</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="memory" id="name" class="form-control">
-                    </div>
+                        <select class="form-control" name="memory">
+                            <option disabled selected>الرام</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                            <option value="16">16</option>
+                            <option value="32">16</option>
+                            <option value="64">16</option>
+                        </select><br>
+                        </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
@@ -176,7 +206,19 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">سعة التخزين</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="storage" id="name" class="form-control">
+                        <select class="form-control" name="storage">
+                            <option disabled selected>سعة التحزين</option>
+                            <option value="2">2</option>
+                            <option value="4">4</option>
+                            <option value="8">8</option>
+                            <option value="16">16</option>
+                            <option value="32">32</option>
+                            <option value="64">64</option>
+                            <option value="120">120</option>
+                            <option value="120">512</option>
+                            <option value="120">1T</option>
+                            <option value="120">2T</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -187,7 +229,13 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الجيل</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="generation" id="name" class="form-control">
+                        <select class="form-control" name="generation">
+                            <option disabled selected>الجيل</option>
+                            <option value="2G">2G</option>
+                            <option value="3G">3G</option>
+                            <option value="4G">4G</option>
+                            <option value="5G">5G</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -242,7 +290,10 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع التبريد</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="coolingType" id="name" class="form-control">
+                        <select class="form-control" name="coolingType">
+                            <option disabled selected>نوع التبريد</option>
+                            <option value="رقمي">رقمي</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -264,7 +315,7 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">عدد الميجات للكاميرات</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="megapixel" id="name" class="form-control">
+                        <input type="text" name="megapixel" id="name" class="form-control" onkeypress="return onlyNumberKey(event)">
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -275,7 +326,13 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الشاشة</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="screenType" id="name" class="form-control">
+                        <select class="form-control" name="screenType">
+                            <option disabled selected>نوع الشاشة</option>
+                            <option value="OLED">OLED</option>
+                            <option value="QLED">QLED</option>
+                            <option value="HD 4K">HD 4K</option>
+                            <option value="LED">LED</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -284,7 +341,7 @@
             @if($category->name == 'قوارب')
             <div class="form-group">
                 <div class="row">
-                    <label class="col-md-2 text-center mr-5">الطول للقوارب</label>
+                    <label class="col-md-2 text-center mr-5">الطول </label>
                     <div class="col-md-7 ">
                         <input type="text" name="length" id="name" class="form-control">
                     </div>
@@ -319,7 +376,11 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع التصنيع</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="manufactureType" id="name" class="form-control">
+                        <select class="form-control" name="manufactureType">
+                            <option disabled selected>نوع التصنيع</option>
+                            <option value="جاهز">جاهز</option>
+                            <option value="تفصيل">تفصيل</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -330,7 +391,13 @@
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الوقود</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="fuelType" id="name" class="form-control">
+                        <select class="form-control" name="fuelType">
+                            <option disabled selected>نوع الوقود</option>
+                            <option value="بنزين">بنزين</option>
+                            <option value="ديزل">ديزل</option>
+                            <option value="غاز">غاز</option>
+                            <option value="كهرباء">كهرباء</option>
+                        </select><br>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -347,12 +414,11 @@
                 </div>
             </div>
             @endif
-
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">العمر</label>
                     <div class="col-md-7 ">
-                        <input type="text" name="age" id="name" class="form-control">
+                        <input type="text" name="age" id="name" class="form-control" onkeypress="return onlyNumberKey(event)">
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -370,7 +436,7 @@
                 <div class="row">
                     <label class="col-md-2 text-center">السعر</label>
                     <div class="col-md-2">
-                        <input type="text" name="price" id="price" class="form-control">
+                        <input type="text" name="price" id="price" class="form-control" onkeypress="return onlyNumberKey(event)">
                     </div>
                     <div class="clearfix"></div>
                 </div>

@@ -35,6 +35,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::delete('/delete-product/{id}', 'AddController@delete')->name('delete_product');
     Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
+    Route::post('/profile/{id}/avatar', 'ProfileController@avater')->name('add-avatar');
 
 });
 
