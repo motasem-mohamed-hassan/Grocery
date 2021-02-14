@@ -25,8 +25,8 @@ class CategoryController extends Controller
             $query->where('name', 'LIKE', '%'.$request->search.'%');
         if($request->min && $request->max)
             $query->whereBetween('price', [$request->min, $request->max]);
-        if($request->has('model'))
-            $query->where('subCategory_id', $request->model);
+        if($request->has('subcategory'))
+            $query->where('subCategory_id', $request->subcategory);
         if($request->has('screensize'))
             $query->where('screensize', $request->screensize);
         if($request->has('memory'))

@@ -126,10 +126,10 @@
                     <!-- //price range -->
                     <!-- cuisine -->
                     @if($category->name == 'موبايلات')
-                        <select class="form-control" name="model">
+                        <select class="form-control" name="subcategory">
                             <option disabled disabled selected>الماركة</option>
-                            @foreach ($category->children as $model)
-                            <option value="{{ $model->name }}">{{ $model->name }}</option>
+                            @foreach ($category->children as $subcategory)
+                            <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                             @endforeach
                         </select><br>
                         <select class="form-control" name="screensize">
