@@ -34,7 +34,7 @@ class productsController extends Controller
     public function show($id)
     {
         $categories     = Category::where('parent_id', null)->get();
-        // $subCategory    = Category::where('parent_id', '>', 0)->get();
+        $subCategory    = Category::where('parent_id', '>', 0)->get();
 
 
 

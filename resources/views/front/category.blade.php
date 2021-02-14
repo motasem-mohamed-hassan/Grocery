@@ -68,14 +68,14 @@
                                             <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
-                                                    <a href="{{ route('singleProduct', $product->id) }}" class="link-product-add-cart">Quick View</a>
+                                                    <a href="{{ route('profile', $product->user_id) }}" class="link-product-add-cart">تواصل مع البائع</a>
                                                 </div>
                                             </div>
                                             <span class="product-new-top">New</span>
                                         </div>
                                         <div class="item-info-product ">
                                             <h4>
-                                                <a href="{{ asset('frontend/') }}single.html">{{ $product->name }}</a>
+                                                <a href="{{ route('singleProduct', $product->id) }}">{{ $product->name }}</a>
                                             </h4>
                                             <div class="info-product-price">
                                                 <span class="item_price">${{ $product->price }}</span>
@@ -83,7 +83,7 @@
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                 <form action="#" method="get">
                                                     <fieldset>
-                                                        <input type="submit" class="submitToCart button" productID="{{ $product->id }}" name="submit" value="Add to cart" />
+                                                        <a href="{{ route('singleProduct', $product->id) }}" class="btn btn-success">صفحة المنتج</a>
                                                     </fieldset>
                                                 </form>
                                             </div>

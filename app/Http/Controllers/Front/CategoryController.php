@@ -12,7 +12,7 @@ class CategoryController extends Controller
 {
     public function show(Request $request, $id)
     {
-        $category = Category::find($id);
+        $category = Category::where('id', $id)->where('parent_id', null)->firstOrFail();
 
         $categories     = Category::where('parent_id', null)->get();
         $subCategories    = Category::where('parent_id', '>', 0)->get();

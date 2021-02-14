@@ -117,7 +117,7 @@ class AddController extends Controller
         return view('front.edit_product', compact('product', 'category', 'subCategory_id', 'categories'));
     }
 
-    public function update(AddRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $product = Product::find($id);
         $product->user_id           =    Auth::id();
@@ -163,22 +163,23 @@ class AddController extends Controller
         $product->status            =   0;
         $product->update();
 
-        $images = $request->file('image');
-        foreach($images as $key =>$image)
-        {
-            if($request->image[$key]->getClientOriginalName()) {
-                $ext    = $image->getClientOriginalExtension();
-                $file   = date('YmdHis').rand(1,99999).'.'.$ext;
-                $image->storeAs('public/products', $file);
+        if($request->hasFile('image')){
+            $images = $request->file('image');
+            foreach($images as $key =>$image)
+            {
+                if($request->image[$key]->getClientOriginalName()) {
+                    $ext    = $image->getClientOriginalExtension();
+                    $file   = date('YmdHis').rand(1,99999).'.'.$ext;
+                    $image->storeAs('public/products', $file);
+                }
+
+                $imag = new Image();
+                $imag->product_id   = $product->id;
+                $imag->url          = $file;
+                $imag->update();
             }
 
-            $imag = new Image();
-            $imag->product_id   = $product->id;
-            $imag->url          = $file;
-            $imag->update();
         }
-
-
         toastr()->success('المنتج في انتظار الموافقة');
         return redirect()->route('home');
     }

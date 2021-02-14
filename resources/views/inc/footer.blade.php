@@ -27,8 +27,9 @@
 	<footer>
 		<div class="container">
 			<!-- footer first section -->
-			<h4 style="color: grey;">يهدف التطبيق الى ان يقوم اي شخص في العالم العربي (توسع تدريجي) الى تسجيل أي جهاز او اثاث لديه في الموقع لبيعه. نتحصل نحن على نسبة مئوية لقاء تسويق المنتج (يثت معريفها في الادمن) مثل 1% او 1.5% او 2%. يتميز الموقع بتسجيل مواصفات ما يتم عرضه حسب البيانات الرئيسية في كتالوج كل منتج لسهولة البحث والفلترة اللغة: يتم برمجة الموقع باللغتين العربية والانجليزية. سيتم تزويد المطور بجميع الترجمات للتعريفات والاختيارات يبقى ان علينا احيانا ترجمة المدخلات بالعربية الى الانجليزي كصيانة للبيانات والعكس بالعكس. الواجهة: يتم عمل واجهة جذابة ومفيدة للباحثين عن شراء المستعمل يتم دراستها جيدا بعد استعراض خبرات الآخرين المشابهين لنا بحيث يكون التطبيق اكثر جاذبية من الآخرين. يكون استعراض المعروضات بطرق اختيارية. مثلا اما بشكل مربعات متجاورة بحيث يمكن رؤية اكبر عدد مع عرض المعلومات الاساسية مثل السعر والعمر ...الخ. او بشكل قائمة (فوق بعض) List يتم عمل فلتر للمدن التي يرغب الباحث فيها ومن الافضل ان يتمكن من اختيار عدد من المدن وليس واحدة فقط: البحث: بحث قوي متطور مع اختيار حفظ نتائج البحث
-			</h4><br>
+			<h4 style="color: grey;text-align:right" > أفضل موقع محلّي للإعلانات المُبوبة. حيث ستتمكّن من بيع وشراء أي شيئ ممكن أن تتخيله، من موبايلك القديم والمقاعد التي مللت منها أو حتى سيارتك، أو الشقة التي تسكن فيها. والأفضل من ذلك، قد تتمكن من العثور على وظيفة أحلامك
+
+            </h4><br>
 
 			<!-- //footer first section -->
 			<!-- footer second section -->
@@ -69,34 +70,25 @@
 			</div>
 			<!-- //footer second section -->
 			<!-- footer third section -->
-			<div class="footer-info w3-agileits-info">
+			<div class="footer-info w3-agileits-info ">
 				<!-- footer categories -->
-				<div class="col-sm-5 address-right">
-					<div class="col-xs-6 footer-grids">
+				<div class="col-sm-3 address-right">
+					<div class="col-xs-6 footer-grids" id="footer-categories">
 						<h3 style="text-align: center;">
-							التصنيفات</h3>
-						<ul>
+							خدماتنا</h3>
+						<ul style="text-align: center;">
 							<li>
-								<a href="{{ asset('frontend/') }}product.html">Grocery</a>
+								<a href="{{ asset('frontend/') }}product.html">قواعد السلامة</a>
 							</li>
 							<li>
-								<a href="{{ asset('frontend/') }}product.html">Fruits</a>
+								<a href="{{ asset('frontend/') }}product.html">خريطة الموقع</a>
 							</li>
 							<li>
-								<a href="{{ asset('frontend/') }}product.html">Soft Drinks</a>
-							</li>
-							<li>
-								<a href="{{ asset('frontend/') }}product2.html">Dishwashers</a>
-							</li>
-							<li>
-								<a href="{{ asset('frontend/') }}product.html">Biscuits & Cookies</a>
-							</li>
-							<li>
-								<a href="{{ asset('frontend/') }}product2.html">Baby Diapers</a>
+								<a href="{{ asset('frontend/') }}product.html">شروط الاسنخدام</a>
 							</li>
 						</ul>
 					</div>
-					<div class="col-xs-6 footer-grids agile-secomk">
+					<!-- <div class="col-xs-6 footer-grids agile-secomk">
 						<ul>
 							<li>
 								<a href="{{ asset('frontend/') }}product.html">Snacks & Beverages</a>
@@ -117,16 +109,16 @@
 								<a href="{{ asset('frontend/') }}product.html">Dried Fruits & Nuts</a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 					<div class="clearfix"></div>
 				</div>
 				<!-- //footer categories -->
 				<!-- quick links -->
 				<div class="col-sm-5 address-right">
-					<div class="col-xs-6 footer-grids">
-						<h3>
+					<div class="col-xs-6 footer-grids ">
+						<h3 >
 							روابط سريعة</h3>
-						<ul>
+						<ul style="text-align: center; margin-right:35%" >
 							<li>
 								<a href="{{ asset('frontend/') }}about.html">شروط واحكام </a>
 							</li>
@@ -141,10 +133,11 @@
 							</li>
 						</ul>
 					</div>
+
 					<div class="col-xs-6 footer-grids">
 						<h3>
 							تواصل معنا</h3>
-						<ul>
+						<ul >
 							<li>
 								<i class="fa fa-map-marker"></i> 123 Sebastian, USA.
 							</li>
@@ -163,8 +156,8 @@
 				</div>
 				<!-- //quick links -->
 				<!-- social icons -->
-				<div class="col-sm-2 footer-grids  w3l-socialmk">
-					<h3 style="text-align: right;">
+				<div class="col-sm-4 footer-grids  w3l-socialmk">
+					<h3 style="text-align: center;">
 						تابعنا</h3>
 					<div style="display: flex; justify-content: center;" class="social">
 						<ul>
@@ -186,11 +179,11 @@
 						</ul>
 					</div>
 					<div class="agileits_app-devices">
-						<h5 style="text-align: right;">حمل التطبيق</h5>
-						<a href="{{ asset('frontend/') }}#">
+						<h5 style="text-align: center;">حمل التطبيق</h5>
+						<a class="download-app" href="{{ asset('frontend/') }}#">
 							<img src="{{ asset('frontend/images/1.png') }}" alt="">
 						</a>
-						<a href="{{ asset('frontend/') }}#">
+						<a class="download-app" href="{{ asset('frontend/') }}#">
 							<img src="{{ asset('frontend/images/2.png') }}" alt="">
 						</a>
 						<div class="clearfix"> </div>
