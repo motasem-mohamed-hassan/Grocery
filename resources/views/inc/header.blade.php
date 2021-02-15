@@ -52,7 +52,7 @@
 					@endif
 				</ul>
                 <!-- Search box-->
-                <div class="search">
+                <div class="search"  style="width: 40%;margin-left:37%">
                     <form action="#" method="GET" class="search-form">
                         <input  type="text" name="search" placeholder="كيف يمكننا مساعدتك اليوم؟" required="">
                         <button type="submit" class="btn btn-default">
@@ -212,7 +212,7 @@
 									<a class="nav-stylehead" href="{{ route('aboutUs') }}">من نحن </a>
 								</li>
 								<li class="active">
-									<a class="nav-stylehead" href="{{ asset('frontend/') }}index.html">الرئيسية
+									<a class="nav-stylehead" href="{{ route('home') }}">الرئيسية
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>

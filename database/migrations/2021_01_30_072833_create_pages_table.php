@@ -17,8 +17,10 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->string('header')->nullable();
             $table->text('description')->nullable();
-            $table->text('video')->nullable();
-            $table->text('video_description')->nullable();
+            $table->string('section2')->nullable();
+            $table->text('description2')->nullable();
+            $table->string('section3')->nullable();
+            $table->text('description3')->nullable();
         });
     }
 

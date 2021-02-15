@@ -5935,3 +5935,17 @@ label.star:before {
     border-radius: 10%;
     margin: 1rem;
 }
+
+#adding-product {
+    direction: rtl;
+    text-align: right;
+    margin-right: 0.1rem;
+}
+
+#adding-product input {
+    border-radius: 5px;
+}
+
+#adding-product textarea {
+    border-radius: 5px;
+}

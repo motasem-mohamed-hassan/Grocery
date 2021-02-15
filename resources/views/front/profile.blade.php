@@ -9,7 +9,7 @@
             <div class="col-md-4 mb-3">
                 <div  id="user-card" class="card bg-light ">
                     @if(!$user->image)
-                        <img src="{{ asset('frontend/images/avatar.png') }}" style="width: 80% ; border-radius:50% ">
+                        <img src="{{ asset('frontend/images/avatar.png') }}" id='output_image' class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% ">
                     @else
                     <img src="{{ asset('storage/avatars/'.$user->image) }}" id='output_image' class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% "  >
                     @endif
@@ -84,13 +84,16 @@
                         </div><br>
                         @if($user->id == Auth::id())
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-info m-2" type="submit" id="edit-button" data-toggle="modal" data-target="#staticBackdrop"> تعديل البيانات الشخصية
+                            <button class="btn btn-info m-2" type="submit" id="edit-button" data-toggle="modal" data-target="#staticBackdrop">
+                                تعديل البيانات الشخصية
                             </button>
-                            <!-- <button class="btn backs" type="submit" id="end-editing"> save</button> -->
+                                <a class="btn btn-primary" href="{{ route('personal-products', Auth::id()) }}">
+                                منتجاتك
+                                </a>
                         </div>
                         @else
                         <div class="d-flex justify-content-end">
-                            <button class="btn btn-success mr-2"> send message
+                            <button class="btn btn-success mr-2"> تواصل مع البائع
                             </button>
                             <!-- <button class="btn backs" type="submit" id="end-editing"> save</button> -->
                         </div>
@@ -128,7 +131,7 @@
                                         <input type="text" class="form-control" name="address" value="Address">
                                     </div>
                                     <div class="modal-footer">
-                                        <input type="submit" class="btn btn-info" value="Update">
+                                        <input type="submit" class="btn btn-info" value="تأكيد">
                                     </div>
                                 </form>
                             </div>

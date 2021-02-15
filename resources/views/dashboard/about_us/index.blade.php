@@ -18,22 +18,33 @@
                     @csrf
                     @method('put')
                     <div class="form-group">
-                        <label>Header</label>
+                        <label>العنوان</label>
                         <input type="text" name="header" class="form-control" value="{{ $about->header }}">
                     </div>
                     <div class="form-group">
-                        <label>Description</label>
+                        <label>وصف الموقع</label>
                         <input type="text" name="description" class="form-control" value="{{ $about->description }}">
                     </div>
                     <br>
                     <div class="form-group">
-                        <label>video</label>
-                        <input type="file" class="form-control" name="video" value="{{ $about->video }}">
+                        <label>عنوان القسم الثاني</label>
+                        <input type="text" name="header" class="form-control" value="{{ $about->section2 }}">
                     </div>
                     <div class="form-group">
-                        <label>video description</label>
-                        <input type="text" name="video_description" class="form-control" value="{{ $about->video_description }}">
+                        <label>محتوى القسم الثاني</label>
+                        <input type="text" name="description" class="form-control" value="{{ $about->description2 }}">
                     </div>
+                    <br>
+                    <div class="form-group">
+                        <label>عوان القسم الثالث</label>
+                        <input type="text" name="header" class="form-control" value="{{ $about->section3 }}">
+                    </div>
+                    <div class="form-group">
+                        <label>محتوى القسم الثالث</label>
+                        <input type="text" name="description" class="form-control" value="{{ $about->description3 }}">
+                    </div>
+                    <br>
+
                     <input type="submit" value="Save Changes" class="btn btn-success float-right">
                 </form>
             </div>

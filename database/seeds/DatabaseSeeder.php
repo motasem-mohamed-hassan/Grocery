@@ -30,11 +30,14 @@ class DatabaseSeeder extends Seeder
 
 
         DB::table('pages')->insert([
-            'id'                => '1',
-            'header'      => 'Welcome to our Site',
-            'description' =>  'Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus omnis optio cumque nihil impedit',
-            //'video'      =>  '',
-            'video_description' =>  'No.1 Leading E-commerce marketplace with over 70 million Products'
+            'id'            => '1',
+            'header'        => 'مرحبا بكم في موقعنا',
+            'description'   => 'تعريف بالموقع تعريف بالموقع تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع  تعريف بالموقع تعريف بالموقع',
+            'section2'      =>  'شروط واحكام',
+            'description2'  =>  'شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  شروط واحكام  ',
+            'section3'      =>  'سياسة الاستخدام',
+            'description3'  =>  'سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  سياسة الاستخدام  '
+
         ]);
 
         DB::table('settings')->insert([

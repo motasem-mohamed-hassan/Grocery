@@ -364,9 +364,6 @@
 								</h4>
 								<div class="w3l-pricehkj">
                                     <h6>${{ $pro->price }}</h6>
-                                    @isset($pro->discount)
-                                        <p>${{ $pro->oldPrice * ($pro->discount /100) }}</p>
-                                    @endisset
 								</div>
 							</div>
 						</div>

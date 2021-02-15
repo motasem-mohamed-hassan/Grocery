@@ -19,8 +19,10 @@ class AboutController extends Controller
         $about = Page::find($id);
         $about->header              = $request->header;
         $about->description         = $request->description;
-        $about->video               = $request->video;
-        $about->video_description   = $request->video_description;
+        $about->section2               = $request->section2;
+        $about->description2   = $request->description2;
+        $about->section3               = $request->section3;
+        $about->description3   = $request->description3;
 
         $about->save();
 

@@ -31,6 +31,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
     Route::get('/profile/{id}', 'ProfileController@show')->name('profile');
     Route::put('/profile/update', 'ProfileController@update')->name('profile.update');
     Route::post('/profile/{id}/avatar', 'ProfileController@avater')->name('add-avatar');
+    Route::get('/profile/{id}/products', 'ProfileController@personalProduct')->name('personal-products');
 
 });
 

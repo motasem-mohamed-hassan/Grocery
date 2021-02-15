@@ -74,34 +74,6 @@
 		<span class="sr-only">Next</span>
 	</a>
 </div>
-{{-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-      <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="img-fluid" src="{{ asset('frontend/images/banner1.jpg') }}" class="d-block"width="1600" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../images/banner1.jpg" class="d-block w-100" alt="...">
-      </div>
-      <div class="carousel-item">
-        <img src="../images/banner3.jpg" class="d-block w-100" alt="...">
-      </div>
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div> --}}
-<!-- //banner -->
-
 @endsection
 
 @section('content')
@@ -163,10 +135,10 @@
 
             <!-- product left -->
             <div class="side-bar col-md-3">
-                <form action="{{ route('home') }}" method="get">
+                <form action="{{ route('home') }}" method="get" style="direction: rtl">
                 <div class="search-hotel">
                     <h3 class="agileits-sear-head">بحث في الصفحة</h3>
-                        <input type="search" name="search" placeholder="...اسم المنتج">
+                        <input type="search" name="search" placeholder="اسم المنتج">
                 </div>
                 <!-- price range -->
                 <div class="range">
@@ -189,7 +161,7 @@
                 </div>
                 <!-- //price range -->
                 <!-- cuisine -->
-                <div class="left-side">
+                <div class="left-side" style="direction: rtl">
                     <h3 class="agileits-sear-head">الاقسام الرئيسية</h3>
                     <ul>
                         @foreach($categories as $category)

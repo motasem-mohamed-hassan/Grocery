@@ -120,16 +120,10 @@
 							روابط سريعة</h3>
 						<ul style="text-align: center; margin-right:35%" >
 							<li>
-								<a href="{{ asset('frontend/') }}about.html">شروط واحكام </a>
+								<a href={{ route('aboutUs') }}">شروط واحكام </a>
 							</li>
 							<li>
-								<a href="{{ asset('frontend/') }}contact.html">سياسة الخصوصية </a>
-							</li>
-							<li>
-								<a href="{{ asset('frontend/') }}help.html">سياسة الشحن والتوصيل</a>
-							</li>
-							<li>
-								<a href="{{ asset('frontend/') }}faqs.html">سياسة الالغاء و الارجاع  مع تحديد المدة</a>
+								<a href="{{ route('aboutUs') }}">سياسة الخصوصية </a>
 							</li>
 						</ul>
 					</div>

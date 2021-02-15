@@ -9,6 +9,7 @@ use App\Setting;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Product;
 use Illuminate\Support\Facades\Auth;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Support\Facades\Storage;
@@ -50,7 +51,16 @@ class ProfileController extends Controller
 
         toastr()->success('تم اضافة الصورة بنجاح');
         return redirect()->back();
+    }
+
+    public function personalProduct($id)
+    {
+        $user = User::find($id);
+        $setting = Setting::find('1');
+        $categories = Category::where('parent_id', null)->get();
+        $products = Product::where('user_id', $id)->get();
 
 
+        return view('front/personal_products', compact('user', 'setting', 'categories', 'products'));
     }
 }

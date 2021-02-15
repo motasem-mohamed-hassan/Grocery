@@ -5,18 +5,13 @@
 
 @section('content')
 
-	<!-- banner-2 -->
-	<div class="page-head_agile_info_w3l">
-
-	</div>
-	<!-- //banner-2 -->
 	<!-- page -->
 	<div class="services-breadcrumb">
 		<div class="agile_inner_breadcrumb">
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="{{ route('home') }}">Home</a>
+						<a href="{{ route('home') }}">الرئيسية</a>
 						<i>|</i>
 					</li>
 					<li>{{ $category->name }}</li>
@@ -27,21 +22,6 @@
 	<!-- //page -->
 	<!-- top Products -->
 
-	<div class="services-breadcrumb">
-		<div class="agile_inner_breadcrumb">
-			<div style="display: flex; justify-content: flex-end;" class="container">
-				<ul class="w3_short">
-                <li>
-                    <a href="{{ route('home') }}">Home</a>
-                    <i>|</i>
-                </li>
-                <li>
-                    <a href="{{ route('categoryPage', $category->id) }}"> {{ $category->name }} </a>
-                    <i>|</i>
-                </li>
-            </ul>
-        </div>
-    </div>
 </div>
 
 <div>
@@ -100,11 +80,11 @@
 
 
             <!-- product left -->
-            <form action="{{ route('categoryPage', $category->id) }}" method="get">
+            <form action="{{ route('categoryPage', $category->id) }}" method="get" style="direction: rtl">
                 <div class="side-bar col-md-3">
                     <div class="search-hotel">
                         <h3 class="agileits-sear-head">بحث في الصفحة</h3>
-                            <input type="search" placeholder="Product name..." name="search">
+                            <input type="search" placeholder="اسم المنتج" name="search">
                     </div>
                     <!-- price range -->
                     <div class="range">
@@ -114,11 +94,11 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="minPrice">الحد الأدنى</label>
-                                        <input type="number" class="form-control" id="minPrice" name="min" placeholder="Enter main">
+                                        <input type="number" class="form-control" id="minPrice" name="min">
                                     </div>
                                     <div class="form-group">
                                         <label for="maxPrice">الحد الأقصى</label>
-                                        <input type="number" class="form-control" id="maxPrice" name="max" placeholder="Enter max">
+                                        <input type="number" class="form-control" id="maxPrice" name="max">
                                     </div>
                             </li>
                         </ul>

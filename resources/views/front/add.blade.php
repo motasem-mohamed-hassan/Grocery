@@ -12,33 +12,35 @@
         @endif
 
         <form action="{{ route('get_add_category') }}" method="get"  enctype="multipart/form-data">
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-md-2 text-center">Category</label>
+            <div class="form-group" >
+                <div class="row" style="direction: rtl; text-align:right">
+
                     <div class="col-md-7">
                         <select name="category_id" class="form-control" id="category">
-                            <option value="" selected>--Select Category--</option>
+                            <option value="" selected>--اختر قسم--</option>
                             @foreach ($categories as $category)
                                 <option category_id="{{ $category->id }}" id="categoriesOption" value="{{ $category->id }}">{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
+                    <label class="col-md-2 text-center">القسم</label>
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="row">
-                    <label class="col-md-2 text-center">Sub Category</label>
+            <div class="form-group" >
+                <div class="row" style="direction: rtl; text-align:right">
+
                     <div class="col-md-6">
                         <select name="subCategory_id" class="form-control" id="subCategory">
-                            <option value="" selected>--Select Sategory--</option>
+                            <option value="" selected>--اختر ماركة--</option>
                         </select>
                     </div>
+                    <label class="col-md-2 text-center">ماركة</label>
                     <div class="clearfix"></div>
                 </div>
             </div>
             <div class="modal-footer">
-                <input  type="submit" class="btn btn-info" value="Confirm">
+                <input  type="submit" class="btn btn-info" value="تأكيد">
             </div>
         </form>
 
