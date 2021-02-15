@@ -139,17 +139,13 @@
 							تواصل معنا</h3>
 						<ul >
 							<li>
-								<i class="fa fa-map-marker"></i> 123 Sebastian, USA.
+								<i class="fa fa-map-marker"></i> {{ $setting->location }}
 							</li>
 							<li>
-								<i class="fa fa-mobile"></i> 333 222 3333
+								<i class="fa fa-mobile"></i> {{ $setting->phone1 }}
 							</li>
 							<li>
-								<i class="fa fa-phone"></i> +222 11 4444
-							</li>
-							<li>
-								<i class="fa fa-envelope-o"></i>
-								<a href="{{ asset('frontend/') }}mailto:example@mail.com"> mail@example.com</a>
+								<i class="fa fa-phone"></i> {{ $setting->phone2 }}
 							</li>
 						</ul>
 					</div>
@@ -162,17 +158,17 @@
 					<div style="display: flex; justify-content: center;" class="social">
 						<ul>
 							<li>
-								<a class="icon fb" href="{{ asset('frontend/') }}#">
+								<a class="icon fb" href="{{ $setting->facebook }}">
 									<i class="fa fa-facebook"></i>
 								</a>
 							</li>
 							<li>
-								<a class="icon tw" href="{{ asset('frontend/') }}#">
+								<a class="icon tw" href="{{ $setting->twitter }}">
 									<i class="fa fa-twitter"></i>
 								</a>
 							</li>
 							<li>
-								<a class="icon gp" href="{{ asset('frontend/') }}#">
+								<a class="icon gp" href="{{ $setting->instegram }}">
 									<i class="fa fa-google-plus"></i>
 								</a>
 							</li>

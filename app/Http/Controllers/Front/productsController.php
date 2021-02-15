@@ -35,16 +35,15 @@ class productsController extends Controller
 
     public function show($id)
     {
+        $setting = Setting::find('1');
         $categories     = Category::where('parent_id', null)->get();
         $subCategory    = Category::where('parent_id', '>', 0)->get();
-
-
 
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
         $subCategory = Category::where('id', $product->subCategory_id)->first();
 
-        return view('front.product', compact('product', 'categories', 'images', 'subCategory'));
+        return view('front.product', compact('product', 'categories', 'images', 'subCategory', 'setting'));
     }
 
 

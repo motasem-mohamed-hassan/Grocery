@@ -60,26 +60,19 @@
                     <div  class=" contact-text w3-agileits">
                         <h4 style="text-align: right;">:تواصل معنا</h4>
                         <p style="text-align: right;">
-                            123 Sebastian, NY 10002, USA.
+                            {{ $setting->location }}
                             <i class="fa fa-map-marker"></i>
 
                         </p>
                         <p style="text-align: right;">
-                             333 222 3333 :التليفون
+                             {{ $setting->phone1 }} :التليفون
                             <i class="fa fa-phone"></i>
-
                         </p>
                         <p style="text-align: right;">
-                              +1 888 888 4444: فاكس
-                             <i class="fa fa-fax"></i>
+                            {{ $setting->phone2 }} :التليفون
+                           <i class="fa fa-phone"></i>
 
-                            </p>
-                        <p style="text-align: right;">
-
-                            <a href="mailto:example@mail.com">mail@example.com</a>:البريد الالكتروني
-                            <i class="fa fa-envelope-o"></i>
-
-                        </p>
+                       </p>
                     </div>
                     <div class="col-xs-5 contact-agile">
                         <img src="images/contact2.jpg" alt="">

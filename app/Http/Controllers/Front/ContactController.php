@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Front;
 
+use App\Setting;
 use App\Category;
 use App\Mail\ContactFormMail;
 use App\Http\Controllers\Controller;
@@ -13,11 +14,11 @@ class ContactController extends Controller
 
     public function index()
     {
+        $setting = Setting::find('1');
         $categories = Category::all();
-        $itemsCount = \Cart::session(Session::getId())->getTotalQuantity();
 
 
-        return view('front.contact', compact('categories', 'itemsCount'));
+        return view('front.contact', compact('categories', 'setting'));
     }
 
 

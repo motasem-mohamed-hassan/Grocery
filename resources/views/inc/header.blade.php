@@ -1,5 +1,6 @@
 
-	<!-- header-bot-->
+
+<!-- header-bot-->
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
@@ -14,10 +15,6 @@
 			<div class="col-md-8 header">
 				<!-- header lists -->
 				<ul>
-					{{-- <li>
-						<a class="play-icon popup-with-zoom-anim" href="{{ asset('frontend/#small-dialog1') }}">
-							الموقع <span class="fa fa-map-marker" aria-hidden="true"></span></a>
-					</li> --}}
 					<li>
 						@if(auth()->check())
 						<a href="{{ route('profile', Auth::user()) }}">
@@ -56,14 +53,14 @@
 				</ul>
                 <!-- Search box-->
                 <div class="search">
-                    <form class="search-form ">
+                    <form action="#" method="GET" class="search-form">
+                        <input  type="text" name="search" placeholder="كيف يمكننا مساعدتك اليوم؟" required="">
                         <button type="submit" class="btn btn-default">
                             <span class="fa fa-search" aria-hidden="true"> </span>
                         </button>
-                        <input  type="text" placeholder="كيف يمكننا مساعدتك اليوم؟" required="">
-                        {{-- <input type="submit" value="Submit"> --}}
                     </form>
                 </div>
+
 			</div>
 			<div class="clearfix"></div>
 		</div>
@@ -236,5 +233,7 @@
     </div>
     @endif
 
+@section('scripts')
 
+@endsection
 	<!-- //navigation -->

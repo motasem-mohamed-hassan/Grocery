@@ -10,6 +10,8 @@ use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Facade\FlareClient\Stacktrace\File;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -41,6 +43,8 @@ class ProfileController extends Controller
         $file   = date('YmdHis').rand(1,99999).'.'.$ext;
         $avatarurl->storeAs('public/avatars', $file);
         $user = User::find($id);
+
+        Storage::disk('local')->delete('public/avatars/'.$user->image);
         $user->image = $file;
         $user->save();
 

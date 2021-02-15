@@ -11,6 +11,7 @@ use App\Http\Requests\AddRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 
 class AddController extends Controller
@@ -37,11 +38,13 @@ class AddController extends Controller
 
     public function category(Request $request)
     {
+        $setting = Setting::find('1');
+
         $categories = Category::where('parent_id', null)->get();
         $category = Category::where('id', $request->category_id)->first();
         $category_id = $request->category_id;
         $subCategory_id = $request->subCategory_id;
-        return view('front.add_product', compact('categories', 'category','subCategory_id'));
+        return view('front.add_product', compact('categories', 'category','subCategory_id', 'setting'));
     }
 
     public function store( AddRequest $request)
@@ -112,16 +115,18 @@ class AddController extends Controller
 
     public function show($id)
     {
+        $setting = Setting::find('1');
         $categories = Category::where('parent_id', null)->get();
         $product = Product::find($id);
         $category = Category::where('id', $product->category_id)->first();
         $subCategory_id = Category::where('id', $product->subCategory_id)->first();
 
-        return view('front.edit_product', compact('product', 'category', 'subCategory_id', 'categories'));
+        return view('front.edit_product', compact('product', 'category', 'subCategory_id', 'categories', 'setting'));
     }
 
     public function update(Request $request, $id)
     {
+
         $product = Product::find($id);
         $product->user_id           =    Auth::id();
         $product->category_id       =    $request->category_id;
@@ -167,6 +172,11 @@ class AddController extends Controller
         $product->update();
 
         if($request->hasFile('image')){
+            $oldimages = Image::where('product_id', $id)->get();
+            foreach($oldimages as $oldimage)
+            {
+                Storage::disk('local')->delete('public/products/'.$oldimage->url);
+            }
             $images = $request->file('image');
             foreach($images as $key =>$image)
             {
@@ -190,6 +200,14 @@ class AddController extends Controller
     public function delete($id)
     {
         $product = Product::find($id);
+        $oldimages = Image::where('product_id', $id)->get();
+
+        foreach($oldimages as $oldimage)
+        {
+            Storage::disk('local')->delete('public/products/'.$oldimage->url);
+        }
+
+
         $product->delete();
 
         toastr()->info('تم مسح المنتج بنجاح');

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Category;
-use App\Http\Controllers\Controller;
 use App\Image;
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -36,23 +37,20 @@ class ProductsController extends Controller
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
 
-        return view('dashboard.products.product', compact('product', 'images'));
+        return view('dashboard.products.product', compact('product', 'images', 'setting'));
     }
 
     public function delete(Request $request)
     {
+        $oldimages = Image::where('product_id', $request->id)->get();
+        foreach($oldimages as $oldimage)
+        {
+            Storage::disk('local')->delete('public/products/'.$oldimage->url);
+        }
+
+
         $product = product::find($request->id);
         $product->delete();
-
-        // $images = Image::where('product_id', '$request->id')->get();
-
-        // foreach ($images as $image){
-        //     $filePath = 'public/products/'.$image->url;
-
-        //     if(file_exists($filePath)){
-        //         File::delete($filePath);
-        //     }
-        // }
 
         return response()->json([
             'status' => true,

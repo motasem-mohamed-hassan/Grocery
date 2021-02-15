@@ -16,11 +16,6 @@ Route::namespace('Front')->group(function() {
     Route::get('/about-us', 'AboutController@index')->name('aboutUs');
 
 
-    //search
-    Route::get('autocomplete', 'SearchController@autocomplete')->name('autocomplete');
-
-
-
 });
 
 Route::middleware('auth')->namespace('Front')->group(function() {
