@@ -25,6 +25,14 @@ class productsController extends Controller
             $query->where('name', 'LIKE', '%'.$request->search.'%');
         }if($request->min && $request->max){
             $query->whereBetween('price', [$request->min, $request->max]);
+        }if($request->has('sortby')){
+            if($request->sortby == 'asc'){
+                $query->orderBy('price','asc');
+            }elseif($request->sortby == 'desc'){
+                $query->orderBy('price','desc');
+            }else{
+                $query->orderBy('created_at');
+            }
         }
 
         $products = $query->get();

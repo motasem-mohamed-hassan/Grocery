@@ -7,6 +7,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
@@ -14,8 +15,9 @@ class ProductsController extends Controller
     public function index()
     {
         $products = Product::where('status', 0)->paginate(10);
+        $user = Auth::user();
 
-        return view('dashboard.products.index', compact('products'));
+        return view('dashboard.products.index', compact('products', 'user'));
     }
 
 
@@ -34,10 +36,11 @@ class ProductsController extends Controller
 
     public function show($id)
     {
+        $user = Auth::user();
         $product = Product::find($id);
         $images = Image::where('product_id', $id)->get();
 
-        return view('dashboard.products.product', compact('product', 'images', 'setting'));
+        return view('dashboard.products.product', compact('user','product', 'images', 'setting'));
     }
 
     public function delete(Request $request)

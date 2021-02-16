@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Category;
-use App\Http\Controllers\Controller;
 use App\Review;
+use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class CategoriesController extends Controller
 {
@@ -13,8 +14,10 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::with('children')->whereNull('parent_id')->get();
+        $user = Auth::user();
 
-        return view('dashboard.categories.index', compact('categories'));
+
+        return view('dashboard.categories.index', compact('categories', 'user'));
     }
 
 

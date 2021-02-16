@@ -59,10 +59,6 @@
                     <span class="item_price">${{ $product->price }}</span>
 				</p>
 				<div class="product-single-w3l">
-					<p>
-						<i class="fa fa-hand-o-right" aria-hidden="true"></i>This is a
-						<label>{{ $product->category->name }}</label> product.
-                    </p>
                     @isset($product->manufactureYear)
 					<ul>
                         <p>
@@ -314,7 +310,7 @@
 
                 @if($product->user_id == Auth::id())
                 <div>
-                    <a href="{{ route('edit_product', $product->id) }}" class="btn btn-info">تعديل</a>
+                    <button href="{{ route('edit_product', $product->id) }}" class="btn btn-info">تعديل</button>
                     <form action="{{ route('delete_product', $product->id) }}" method="POST">
                         @csrf
                         @method('delete')

@@ -11,8 +11,9 @@ class OrdersController extends Controller
     public function index()
     {
         $orders = Order::all();
+        $user = Auth::user();
 
-        return view('dashboard.orders.index', compact('orders'));
+        return view('dashboard.orders.index', compact('orders', 'user'));
     }
 
     public function approved(Request $request, $id)

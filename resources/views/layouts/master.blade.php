@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Grocery Shoppy an Ecommerce Category Bootstrap Responsive Web Template | Home :: w3layouts</title>
+	<title>most5dm</title>
 	<!--/tags -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -51,13 +51,11 @@
 
 	@yield('panner')
 
-	{{-- @include('flash-message') --}}
 
 	@yield('content')
 
 
 	@include('inc.footer')
-	<!-- js-files -->
 
 
 
@@ -93,84 +91,6 @@
 
 		});
 	</script>
-	<!-- Large modal -->
-
-    	{{-- <!-- Large modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('#search').on('keyup',function() {
-                var query = $(this).val();
-
-                $.ajax({
-                    url:"{{ route('autocomplete') }}",
-                    type:"GET",
-                    data:{'words':query},
-
-                    processData: false,
-                    contentType: false,
-                    cache: false,
-
-
-                    success:function (data) {
-
-                        console.log(data.data);
-                        $.each(data.data, function(k, v) {
-                            $('.product_list').append(`<a>${v.name}</a><br>`);
-
-                        });
-
-
-                    }
-
-                })
-            });
-
-
-            // $(document).on('click', 'li', function(){
-
-            //     var value = $(this).text();
-            //     $('#country').val(value);
-            //     $('#country_list').html("");
-            // });
-        });
-    </script> --}}
-
-	{{-- <!-- Search Bar -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-
-            $('#Search').on('keyup',function() {
-                var query = $(this).val();
-                $.ajax({
-
-                    url:"{{ route('search') }}",
-	type:"GET",
-	data:{'country':query},
-
-	success:function (data) {
-
-	$('#product_list').html(data);
-	}
-	})
-	// end of ajax call
-	});
-	$(document).on('click', '.dropdown-menu', function (e) {
-	e.stopPropagation();
-	});
-
-	// make it as accordion for smaller screens
-	if ($(window).width() < 992) { $('.dropdown-menu a').click(function(e){ e.preventDefault(); if($(this).next('.submenu').length){ $(this).next('.submenu').toggle(); } $('.dropdown').on('hide.bs.dropdown', function () { $(this).find('.submenu').hide(); }) }); } $(document).on('click', 'li' , function(){ var value=$(this).text(); $('#country').val(value); $('#country_list').html(""); }); }); </script> --}}
-
-		<!--End Search Bar -->
 
 		<!-- price range (top products) -->
 		<script src="{{ asset('frontend/js/jquery-ui.js') }}"></script>
@@ -182,7 +102,8 @@
 		<!-- FlexSlider -->
 		<script src="{{ asset('frontend/js/jquery.flexslider.js') }}"></script>
 		<script>
-			// Can also be used with $(document).ready()
+
+		// Can also be used with $(document).ready()
 			$(window).load(function() {
 				$('.flexslider').flexslider({
 					animation: "slide",
@@ -285,8 +206,6 @@
 		<!-- //for bootstrap working -->
 		<!--toaster js-->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-
-
 
 </body>
 

@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use App\Page;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class AboutController extends Controller
 {
     public function index()
     {
+        $user = Auth::user();
+
         $about = Page::first();
-        return view('dashboard.about_us.index', compact('about'));
+        return view('dashboard.about_us.index', compact('about', 'user'));
     }
 
     public function update($id, Request $request)

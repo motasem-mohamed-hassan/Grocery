@@ -1,16 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Categories</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-    <!-- /.content-header -->
 
     <div class="container py-3">
 
@@ -18,7 +7,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Edit Category</h5>
+                <h5 class="modal-title">تعديل الماركة</h5>
 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -36,8 +25,8 @@
 
                 <div class="modal-footer">
                     <input type="text" name="id" id="currentid" class="form-control" value="" hidden>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="submitToUpdate" class="btn btn-primary" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                    <button type="submit" id="submitToUpdate" class="btn btn-primary" data-dismiss="modal">تعديل</button>
                 </div>
               </div>
               </form>
@@ -49,7 +38,7 @@
 
           <div class="card">
             <div class="card-header">
-              <h3>Categories</h3>
+              <h3>الماركات</h3>
             </div>
             <div class="card-body">
               <ul class="list-group">
@@ -76,11 +65,11 @@
                               {{ $child->name }}
 
                               <div class="button-group d-flex">
-                                <button type="button" category_id="{{ $child->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">Edit</button>
+                                <button type="button" category_id="{{ $child->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">تعديل</button>
 
                                 <form action="#" method="POST">
                                   @csrf
-                                  <button type="submit" category_id="{{ $child->id }}" class="delete_btn btn btn-sm btn-danger">Delete</button>
+                                  <button type="submit" category_id="{{ $child->id }}" class="delete_btn btn btn-sm btn-danger">حذف</button>
                                 </form>
                               </div>
                             </div>
@@ -98,7 +87,7 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-header">
-              <h3>Create Category</h3>
+              <h3>اضافة ماركة</h3>
             </div>
 
             <div class="card-body">
@@ -107,7 +96,7 @@
 
                 <div class="form-group">
                   <select class="form-control" name="parent_id">
-                    <option value="">Select Parent Category</option>
+                    <option value="">اختار القسم</option>
 
                     @foreach ($categories as $category)
                       <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -116,11 +105,11 @@
                 </div>
 
                 <div class="form-group">
-                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="Category Name" required>
+                  <input type="text" name="name" class="form-control" value="{{ old('name') }}" placeholder="اسم الماركة" required>
                 </div>
 
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Create</button>
+                  <button type="submit" class="btn btn-primary">انشاء</button>
                 </div>
               </form>
             </div>

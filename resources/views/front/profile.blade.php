@@ -11,7 +11,7 @@
                     @if(!$user->image)
                         <img src="{{ asset('frontend/images/avatar.png') }}" id='output_image' class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% ">
                     @else
-                    <img src="{{ asset('storage/avatars/'.$user->image) }}" id='output_image' class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% "  >
+                        <img src="{{ asset('storage/avatars/'.$user->image) }}" id='output_image' class="card-img-top" alt="profile-picture" style="width: 80% ; border-radius:50% "  >
                     @endif
                     <div class="card-body">
                         <h3 class="card-title">اسم المستخدم</h3>

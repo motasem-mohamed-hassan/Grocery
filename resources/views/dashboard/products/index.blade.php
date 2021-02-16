@@ -1,69 +1,54 @@
 @extends('layouts.admin')
 @section('content')
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Products</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-    <!-- /.content-header -->
-
-            <!--Start table-->
-            <table id="myTable" class="table table-bordered table-striped">
-                <tr class="bg-info">
-                    <th>ID</th>
-                    <th>user id</th>
-                    <th>user name</th>
-                    <th>User phone</th>
-                    <th>Category</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Action</th>
-                </tr>
-                @foreach ($products as $product )
-                <tr class="productRow{{ $product->id }}">
-                    <td>
-                        {{ $product->id }}
-                    </td>
-                    <td>
-                        {{ $product->user_id }}
-                    </td>
-                    <td >
-                        {{ $product->user->name }}
-                    </td>
-                    <td >
-                        {{ $product->user->phone_number }}
-                    </td>
-                    <td >
-                        {{ $product->category->name }}
-                    </td>
-                    <td >
-                        {{ $product->name }}
-                    </td>
-                    <td>
-                        {{ $product->description }}
-                    </td>
-                    <td>
-                        {{ $product->price }}
-                    </td>
-                    <td>
-                        <button product_id="{{ $product->id }}"  class="approve_btn btn btn-info">Approve</button>
-                        <button product_id="{{ $product->id }}"  class="delete_btn btn btn-danger">Delete</button>
-                        <a class="btn btn-success" href="{{ route('admin.show-btn', $product->id) }}">Show</a>
-                    </td>
-                </tr>
-                @endforeach
-            </table>
-            <!--End table-->
-
-            {{ $products->render() }}
-        </div>
-    </section>
+        <!--Start table-->
+        <table id="myTable" class="table table-bordered table-striped">
+            <tr class="bg-info">
+                <th>رقم المنتج</th>
+                <th>رقم المستحدم</th>
+                <th>اسم المستخدم</th>
+                <th>هاتف المستخدم</th>
+                <th>اسم القسم</th>
+                <th>اسم المنتج</th>
+                <th>الوصف</th>
+                <th>السعر</th>
+                <th>العملية</th>
+            </tr>
+            @foreach ($products as $product )
+            <tr class="productRow{{ $product->id }}">
+                <td>
+                    {{ $product->id }}
+                </td>
+                <td>
+                    {{ $product->user_id }}
+                </td>
+                <td >
+                    {{ $product->user->name }}
+                </td>
+                <td >
+                    {{ $product->user->phone_number }}
+                </td>
+                <td >
+                    {{ $product->category->name }}
+                </td>
+                <td >
+                    {{ $product->name }}
+                </td>
+                <td>
+                    {{ $product->description }}
+                </td>
+                <td>
+                    {{ $product->price }}
+                </td>
+                <td>
+                    <button product_id="{{ $product->id }}"  class="approve_btn btn btn-info">موافقة</button>
+                    <button product_id="{{ $product->id }}"  class="delete_btn btn btn-danger">مسح</button>
+                    <a class="btn btn-success" href="{{ route('admin.show-btn', $product->id) }}">المزيد</a>
+                </td>
+            </tr>
+            @endforeach
+        </table>
+        <!--End table-->
+        {{ $products->render() }}
 @endsection
 
 @section('scripts')

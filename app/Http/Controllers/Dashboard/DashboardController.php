@@ -6,6 +6,7 @@ use App\User;
 use App\Order;
 use App\Http\Controllers\Controller;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -15,6 +16,7 @@ class DashboardController extends Controller
         $productsNotApprovedCount = Product::where('status', 0)->count();
         $allProductsCount = Product::all()->count();
         $usersCount = User::all()->count();
-        return view('dashboard.dashboard', compact('usersCount', 'productsApprovedCount', 'productsNotApprovedCount', 'allProductsCount'));
+        $user = Auth::user();
+        return view('dashboard.dashboard', compact('user','usersCount', 'productsApprovedCount', 'productsNotApprovedCount', 'allProductsCount'));
     }
 }

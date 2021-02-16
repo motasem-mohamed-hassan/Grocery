@@ -11,11 +11,12 @@
             </div>
         @endif
 
-        <form action="{{ route('get_add_category') }}" method="get"  enctype="multipart/form-data">
+        <form action="{{ route('get_add_category') }}" method="get"  enctype="multipart/form-data" id="add-category">
             <div class="form-group" >
-                <div class="row" style="direction: rtl; text-align:right">
+                <div class="row d-flex justify-content-start" >
+                    <div  class="col-md-1"></div>
+                    <div class="col-md-9">
 
-                    <div class="col-md-7">
                         <select name="category_id" class="form-control" id="category">
                             <option value="" selected>--اختر قسم--</option>
                             @foreach ($categories as $category)
@@ -23,23 +24,25 @@
                             @endforeach
                         </select>
                     </div>
+
                     <label class="col-md-2 text-center">القسم</label>
                     <div class="clearfix"></div>
                 </div>
             </div>
             <div class="form-group" >
-                <div class="row" style="direction: rtl; text-align:right">
-
-                    <div class="col-md-6">
+                <div class="row d-flex justify-content-start" >
+                    <div  class="col-md-1"></div>
+                    <div class="col-md-9" >
                         <select name="subCategory_id" class="form-control" id="subCategory">
                             <option value="" selected>--اختر ماركة--</option>
                         </select>
                     </div>
+
                     <label class="col-md-2 text-center">ماركة</label>
                     <div class="clearfix"></div>
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" >
                 <input  type="submit" class="btn btn-info" value="تأكيد">
             </div>
         </form>

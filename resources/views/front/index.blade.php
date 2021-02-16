@@ -90,7 +90,6 @@
 				</span>
 			</h3>
             <!-- //tittle heading -->
-
             <div>
                 <div class="agileinfo-ads-display col-md-9">
                     <div class="wrapper">
@@ -108,20 +107,19 @@
                                             </div>
                                                 <span class="product-new-top">جديد</span>
                                         </div>
-                                        <div class="item-info-product ">
-                                            <h4>
+                                        <div class="item-info-product text-center border-top mt-4">
+                                            <h4 class="pt-1">
                                                 <a href="{{ route('singleProduct', $product->id) }}">{{ $product->name }}</a>
                                             </h4>
-                                            <div class="info-product-price">
+                                            <div class="info-product-price my-2">
                                                 <span class="item_price">${{ $product->price }}</span>
                                             </div>
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                     <fieldset>
-                                                        <a href="{{ route('singleProduct', $product->id) }}" class="btn btn-success">صفحة المنتج</a>
+                                                        <input href="{{ route('singleProduct', $product->id) }}" class="button btn" value="صفحة المنتج" />
                                                     </fieldset>
                                                 </form>
                                             </div>
-
                                         </div>
                                     </div>
                                 </div>
@@ -135,68 +133,83 @@
 
             <!-- product left -->
             <div class="side-bar col-md-3">
+                <form action="{{ route('home') }}" method="GET">
+                    <button type="submit" class="col-md-4">تأكيد</button>
+                    <select class="col-md-8" name="sortby">
+                        <option disabled disabled selected>ترتيب حسب ..</option>
+                        <option value="asc">الأقل سعر</option>
+                        <option value="desc">الأعلى سعر</option>
+                        <option value="newest">الأحدث</option>
+                    </select>
+                </form>
+                <br>
+
                 <form action="{{ route('home') }}" method="get" style="direction: rtl">
-                <div class="search-hotel">
-                    <h3 class="agileits-sear-head">بحث في الصفحة</h3>
-                        <input type="search" name="search" placeholder="اسم المنتج">
-                </div>
-                <!-- price range -->
-                <div class="range">
-                    <h3 class="agileits-sear-head">تحديد السعر</h3>
-                    <ul class="dropdown-menu6">
-                        <li>
-                                @csrf
-                                <div class="form-group">
-                                    <label for="minPrice">الحد الأدني</label>
-                                    <input type="number" class="form-control" id="minPrice" name="min">
+                    <div class="search-hotel">
+                        <h3 class="agileits-sear-head">بحث في الصفحة</h3>
+                            <input type="search" name="search" placeholder="اسم المنتج">
+                    </div>
+                    <!-- price range -->
+                    <div class="range">
+                        <h3 class="agileits-sear-head">تحديد السعر</h3>
+                        <ul class="dropdown-menu6">
+                            <li>
+                                    @csrf
+                                    <div class="form-group">
+                                        <label for="minPrice">الحد الأدني</label>
+                                        <input type="number" class="form-control" id="minPrice" name="min">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="maxPrice">الحد الأعلى</label>
+                                        <input type="number" class="form-control" id="maxPrice" name="max">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- //price range -->
+                    <!-- cuisine -->
+                    <div class="left-side" style="direction: rtl">
+                        <h3 class="agileits-sear-head">الاقسام الرئيسية</h3>
+                        <ul>
+                            @foreach($categories as $category)
+                            <li>
+                                <div id="index-items">
+                                {{-- <input type="checkbox" class="checked"> --}}
+                                <a  href="#" class="span" style="text-decoration: none">{{ $category->name }}</a>
                                 </div>
-                                <div class="form-group">
-                                    <label for="maxPrice">الحد الأعلى</label>
-                                    <input type="number" class="form-control" id="maxPrice" name="max">
-                                </div>
-                                <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
-                            </form>
-                        </li>
-                    </ul>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </div>
+
+
+                    <!-- //cuisine -->
+                    <!-- deals -->
+                    {{-- <div class="deal-leftmk left-side">
+                        <h3 class="agileits-sear-head">المنتجات المبوبة</h3> --}}
+                        {{-- <div class="special-sec1">
+                            <div class="col-xs-4 img-deals">
+                                <img src="images/d2.jpg" alt="">
+                            </div>
+                            <div class="col-xs-8 img-deal1">
+                                <h3>Lay's Potato Chips</h3>
+                                <a href="single.html">$18.00</a>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div> --}}
+                    </div>
+                    <!-- //deals -->
                 </div>
-                <!-- //price range -->
-                <!-- cuisine -->
-                <div class="left-side" style="direction: rtl">
-                    <h3 class="agileits-sear-head">الاقسام الرئيسية</h3>
-                    <ul>
-                        @foreach($categories as $category)
-                        <li>
-                            <input type="checkbox" class="checked">
-                            <span class="span">{{ $category->name }}</span>
-                        </li>
-                        @endforeach
-                    </ul>
-                </div>
-                <!-- //cuisine -->
-                <!-- deals -->
-                <div class="deal-leftmk left-side">
-                    <h3 class="agileits-sear-head">المنتجات المبوبة</h3>
-                    {{-- <div class="special-sec1">
-                        <div class="col-xs-4 img-deals">
-                            <img src="images/d2.jpg" alt="">
-                        </div>
-                        <div class="col-xs-8 img-deal1">
-                            <h3>Lay's Potato Chips</h3>
-                            <a href="single.html">$18.00</a>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div> --}}
-                </div>
-                <!-- //deals -->
+                <!-- //product left -->
+
+
+
             </div>
-            <!-- //product left -->
-
-
-
-		</div>
-	</div>
-	<!-- //top products -->
-@endsection
+        </div>
+        <!-- //top products -->
+    @endsection
 
 
 

@@ -35,7 +35,7 @@ Route::middleware('auth')->namespace('Front')->group(function() {
 
 });
 
-Route::namespace('Dashboard')->as('admin.')->middleware('role:admin')->group(function() {
+Route::namespace('Dashboard')->as('admin.')->middleware('role:admin|superAdmin')->group(function() {
 
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
     Route::get('/dashboard/categories', 'CategoriesController@index')->name('categories.index');

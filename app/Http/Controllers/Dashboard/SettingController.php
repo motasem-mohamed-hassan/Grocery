@@ -2,17 +2,19 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use App\Setting;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class SettingController extends Controller
 {
     public function index()
     {
         $setting = Setting::first();
+        $user = Auth::user();
 
-        return view('dashboard.setting.index', compact('setting'));
+        return view('dashboard.setting.index', compact('setting', 'user'));
     }
 
     public function update($id, Request $request)

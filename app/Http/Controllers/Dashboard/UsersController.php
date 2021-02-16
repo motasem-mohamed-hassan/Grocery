@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -16,15 +17,15 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::all();
-
-        return view('dashboard.users.index', compact('users'));
+        $user = Auth::user();
+        return view('dashboard.users.index', compact('users','user'));
     }
 
     public function makeAdmin($id)
     {
         $user = User::find($id);
-        
-        if($user->hasRole('admin')){
+
+        if($user->hasRole('superAdmin')){
             $user->removeRole('admin');
         }else{
             $user->assignRole('admin');

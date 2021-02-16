@@ -1,6 +1,5 @@
 
 
-<!-- header-bot-->
 	<div class="header-bot">
 		<div class="header-bot_inner_wthreeinfo_header_mid">
 			<!-- header-bot-->
@@ -17,19 +16,24 @@
 				<ul>
 					<li>
 						@if(auth()->check())
-						<a href="{{ route('profile', Auth::user()) }}">
-							@else
-							<a href="#" data-toggle="modal" data-target="#myModal1">
-							@endif
-							اطلب طلبك <span class="fa fa-truck" aria-hidden="true"></span></a>
+						    <a href="{{ route('profile', Auth::user()) }}">
+						@else
+						    <a href="#" data-toggle="modal" data-target="#myModal1">
+						@endif
 					</li>
+                    @role('admin|superAdmin')
+                    <li>
+                        <a class="btn btn-danger" href="{{ route('admin.dashboard') }}">صفحة الأدمن
+                        </a>
+                    </li>
+                    @endrole
 					<li>
-						{{ $setting->phone1 }}<span class="fa fa-phone" aria-hidden="true"></span> </li>
-
+						{{ $setting->phone1 }}<span class="fa fa-phone" aria-hidden="true"></span>
+                    </li>
 					@if( auth()->check() )
 					<li>
 						<a href="{{ route('profile', Auth::id())}}">
-							<span class="fa fa-user" aria-hidden="true"></span>  الصفحة الشخصية</a>
+							<span class="fa fa-user" aria-hidden="true"></span>الصفحة الشخصية</a>
 					</li>
 					<li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
@@ -52,9 +56,10 @@
 					@endif
 				</ul>
                 <!-- Search box-->
-                <div class="search"  style="width: 40%;margin-left:37%">
+
+                <div class="search" >
                     <form action="#" method="GET" class="search-form">
-                        <input  type="text" name="search" placeholder="كيف يمكننا مساعدتك اليوم؟" required="">
+                        <input  type="text" name="search" placeholder="ابحث..." required>
                         <button type="submit" class="btn btn-default">
                             <span class="fa fa-search" aria-hidden="true"> </span>
                         </button>
@@ -84,7 +89,7 @@
 							<a href="#" data-toggle="modal" data-target="#myModal2">
 								تسجيل جديد </a>
 						</p>
-						<form action="{{ route('login') }}" method="post">
+						<form action="{{ route('login') }}" method="post"  autocomplete="off">
 							@csrf
 							<div class="styled-input agile-styled-input-top">
 								<input style="text-align: right;" type="text" placeholder="رقم الهاتف" name="phone_number" required="">
@@ -124,7 +129,7 @@
 						<h4 style="text-align: right;">
 							دعنا ننشئ حسابك
 						</h4><br>
-						<form action="{{ route('register') }}" method="post">
+						<form action="{{ route('register') }}" method="post" autocomplete="off">
 							@csrf
 							<div class="styled-input">
 								<input style="text-align: right;" type="text" placeholder="الاسم" name="name" required>
@@ -134,6 +139,9 @@
 							</div>
                             <div class="styled-input">
 								<input style="text-align: right;" type="text" placeholder="رقم الهاتف" name="phone_number" required>
+							</div>
+                            <div class="styled-input">
+								<input style="text-align: right;" type="text" placeholder="العنوان" name="address" required>
 							</div>
 							<div class="styled-input">
 								<input style="text-align: right;" type="password" placeholder="كلمةالسر" name="password" id="password1" required>
@@ -201,18 +209,18 @@
 										</div>
 									</ul>
 								</li>
-								<li class="">
-									<a class="nav-stylehead" href="{{ route('get_add') }}">اضف منتجات</a>
+                                <?php $segment = Request::segment(1) ?>
+								<li class="@if($segment=='adding') active @endif">
+									<a class="nav-stylehead " href="{{ route('get_add') }}">اضف منتجات</a>
 								</li>
-
-								<li class="">
-									<a class="nav-stylehead" href="{{ route('contactPage') }}">تواصل معنا</a>
+								<li class="@if($segment=='contact') active @endif">
+									<a class="nav-stylehead " href="{{ route('contactPage') }}">تواصل معنا</a>
 								</li>
-								<li class="">
-									<a class="nav-stylehead" href="{{ route('aboutUs') }}">من نحن </a>
+								<li class="@if($segment=='about-us') active @endif">
+									<a class="nav-stylehead " href="{{ route('aboutUs') }}">من نحن </a>
 								</li>
-								<li class="active">
-									<a class="nav-stylehead" href="{{ route('home') }}">الرئيسية
+								<li class="@if(!$segment) active @endif">
+									<a class="nav-stylehead " href="{{ route('home') }}">الرئيسية
 										<span class="sr-only">(current)</span>
 									</a>
 								</li>

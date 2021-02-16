@@ -16,10 +16,10 @@
         <div class="container-fluid">
             <table class="table table-bordered table-striped">
                 <tr class="bg-info">
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Permission</th>
+                    <th>رقم المستخدم</th>
+                    <th>الاسم</th>
+                    <th>الايميل</th>
+                    <th>الصلاحيات</th>
                 </tr>
                 @foreach ($users as $user)
                 <tr>
@@ -28,15 +28,17 @@
                     <td>{{ $user->email }}</td>
 
                     <td>
-                        <form method="POST" action="{{ Route('admin.makeAdmin', $user->id) }}">
-                            @method('PUT')
-                            @csrf
-                            @if ($user->hasRole('admin'))
-                                <button type="submit" class="btn btn-secondary waves-effect">Remove Admin</button>
-                            @else
-                                <button type="submit" class="btn btn-primary waves-effect">Make Admin</button>
-                            @endif
-                        </form>
+                        @role('suberAdmin')
+                            <form method="POST" action="{{ Route('admin.makeAdmin', $user->id) }}">
+                                @method('PUT')
+                                @csrf
+                                @if ($user->hasRole('admin'))
+                                    <button type="submit" class="btn btn-secondary waves-effect">ازالة الأدمن</button>
+                                @else
+                                    <button type="submit" class="btn btn-primary waves-effect">تسجيل كأدمن</button>
+                                @endif
+                            </form>
+                        @endrole
                     </td>
                 </tr>
                 @endforeach
