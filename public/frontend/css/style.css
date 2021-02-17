@@ -5786,7 +5786,11 @@
                     .side-bar button{
                         background-color: #1accfd;
                     }
-
-                    #
-                    product-page
-
+                    #product-page{
+                        background-color: #1accfd;
+                        border:none;
+                        width: 100%;
+                    }
+                    #product-page:hover{
+                        background-color: black;
+                    }
