@@ -19,12 +19,12 @@ class productsController extends Controller
     {
         $categories = Category::where('parent_id', null)->get();
         $setting = Setting::find('1');
-
         $query = Product::where('status', 1);
         if($request->has('search')){
             $query->where('name', 'LIKE', '%'.$request->search.'%');
-        }if($request->min && $request->max){
-            $query->whereBetween('price', [$request->min, $request->max]);
+        }if($request->pricerange){
+            preg_match_all('!\d+!', $request->pricerange, $range);
+            $query->whereBetween('price', [$range[0][0],$range[0][1]]);
         }if($request->has('sortby')){
             if($request->sortby == 'asc'){
                 $query->orderBy('price','asc');

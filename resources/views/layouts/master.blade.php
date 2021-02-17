@@ -38,7 +38,7 @@
 
 
 
-
+    @yield('head')
 
 	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
@@ -112,6 +112,27 @@
 			});
 		</script>
 		<!-- //FlexSlider-->
+
+        <!-- price range (top products) -->
+        <script src="js/jquery-ui.js"></script>
+        <script>
+            //<![CDATA[
+            $(window).load(function () {
+                $("#slider-range").slider({
+                    range: true,
+                    min: 0,
+                    max: 100000,
+                    values: [200, 50000],
+                    slide: function (event, ui) {
+                        $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                    }
+                });
+
+                $("#amount").val("$" + $("#slider-range").slider("values", 0) + " - $" + $("#slider-range").slider("values", 1));
+            }); //]]>
+        </script>
+	    <!-- //price range (top products) -->
+
 
 
 		<!-- flexisel (for special offers) -->

@@ -1,7 +1,21 @@
 @extends('layouts.master')
 
 
+@section('head')
+{{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+{{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script> --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<style type="text/css">
+    .dropdown-toggle{
+        height: 40px;
+        width: 115% !important;
+        margin-bottom: 20px;
+    }
+</style>
 
+@endsection
 
 @section('content')
 
@@ -80,52 +94,51 @@
 
 
             <!-- product left -->
-            <form action="{{ route('categoryPage', $category->id) }}" method="get" style="direction: rtl">
                 <div class="side-bar col-md-3">
+                    <form style="direction: rtl">
+                        <div class="range">
+                            <h3 class="agileits-sear-head">تحديد السعر</h3>
+                            <ul class="dropdown-menu6">
+                                <li>
+                                    <div id="slider-range"></div>
+                                    <input type="text" id="amount" name="pricerange" style="border: 0; color: #ffffff; font-weight: normal;" />
+                                </li>
+                            </ul>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%" id="submitToRange">نفذ</button>
+                    </form>
+
+                    <hr>
+
+                    <form action="{{ route('categoryPage', $category->id) }}" method="get" style="direction: rtl">
                     <div class="search-hotel">
                         <h3 class="agileits-sear-head">بحث في الصفحة</h3>
                             <input type="search" placeholder="اسم المنتج" name="search">
                     </div>
                     <!-- price range -->
-                    <div class="range">
-                        <h3 class="agileits-sear-head">تحديد السعر</h3>
-                        <ul class="dropdown-menu6">
-                            <li>
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="minPrice">الحد الأدنى</label>
-                                        <input type="number" class="form-control" id="minPrice" name="min">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="maxPrice">الحد الأقصى</label>
-                                        <input type="number" class="form-control" id="maxPrice" name="max">
-                                    </div>
-                            </li>
-                        </ul>
-                    </div>
                     <!-- //price range -->
                     <!-- cuisine -->
                     @if($category->name == 'موبايلات')
-                        <select class="form-control" name="subcategory">
+                        <select multiple class="selectpicker" name="subcategory[]">
                             <option disabled disabled selected>الماركة</option>
                             @foreach ($category->children as $subcategory)
-                            <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
                             @endforeach
                         </select><br>
-                        <select class="form-control" name="screensize">
-                            <option disabled disabled selected>حجم الشاشة</option>
+                        <select multiple class="selectpicker"  name="screensize[]">
+                            <option disabled selected>حجم الشاشة</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
                             <option value="6">6</option>
                         </select><br>
-                        <select class="form-control" name="memory">
+                        <select multiple class="selectpicker"  name="memory[]">
                             <option disabled disabled selected>الرام</option>
                             <option value="2">2</option>
                             <option value="4">4</option>
                             <option value="8">8</option>
                             <option value="16">16</option>
                         </select><br>
-                        <select class="form-control" name="storage">
+                        <select multiple class="selectpicker" name="storage[]">
                             <option disabled disabled selected>سعة التحزين</option>
                             <option value="4">2</option>
                             <option value="5">4</option>
@@ -135,7 +148,7 @@
                             <option value="64">64</option>
                             <option value="120">120</option>
                         </select><br>
-                        <select class="form-control" name="generation">
+                        <select multiple class="selectpicker" name="generation[]">
                             <option disabled disabled selected>الجيل</option>
                             <option value="2G">2G</option>
                             <option value="3G">3G</option>
@@ -144,27 +157,27 @@
                         </select><br>
                     @endif
                     @if($category->name == 'اجهزة لوحية')
-                    <select class="form-control" name="model">
+                    <select multiple class="selectpicker" name="subcategory[]">
                         <option disabled selected>الماركة</option>
-                        @foreach ($category->children as $model)
-                        <option value="{{ $model->name }}">{{ $model->name }}</option>
+                        @foreach ($category->children as $subcategory)
+                        <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                         @endforeach
                     </select><br>
-                    <select class="form-control" name="screensize">
+                    <select multiple class="selectpicker" name="screensize[]">
                         <option disabled selected>حجم الشاشة</option>
                         <option value="7">7</option>
                         <option value="8">8</option>
                         <option value="10">10</option>
                         <option value="12">12</option>
                     </select><br>
-                    <select class="form-control" name="memory">
+                    <select multiple class="selectpicker" name="memory[]">
                         <option disabled selected>الرام</option>
                         <option value="2">2</option>
                         <option value="4">4</option>
                         <option value="8">8</option>
                         <option value="16">16</option>
                     </select><br>
-                    <select class="form-control" name="storage">
+                    <select multiple class="selectpicker" name="storage[]">
                         <option disabled selected>سعة التحزين</option>
                         <option value="2">2</option>
                         <option value="4">4</option>
@@ -174,7 +187,7 @@
                         <option value="64">64</option>
                         <option value="120">120</option>
                     </select><br>
-                    <select class="form-control" name="generation">
+                    <select multiple class="selectpicker" name="generation[]">
                         <option disabled selected>الجيل</option>
                         <option value="2G">2G</option>
                         <option value="3G">3G</option>
@@ -183,23 +196,23 @@
                     </select><br>
                 @endif
                 @if($category->name == 'سيارات')
-                <select class="form-control" name="model">
+                <select multiple class="selectpicker" name="subcategory[]">
                     <option disabled selected>الماركة</option>
-                    @foreach ($category->children as $model)
-                    <option value="{{ $model->name }}">{{ $model->name }}</option>
+                    @foreach ($category->children as $subcategory)
+                    <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                     @endforeach
                 </select><br>
-                <select class="form-control" name="transmissionType">
+                <select multiple class="selectpicker" name="transmissionType[]">
                     <option disabled selected>نوع القير</option>
                     <option value="اوتوماتيك">اوتوماتيك</option>
                     <option value="اوتوماتيك">عادي</option>
                 </select><br>
-                <select class="form-control" name="wheelType">
+                <select multiple class="selectpicker" name="wheelType[]">
                     <option disabled selected>نوع الدفع</option>
                     <option value="ثنائي">ثنائي</option>
                     <option value="رياعي">رباعي</option>
                 </select><br>
-                <select class="form-control" name="fuelType">
+                <select multiple class="selectpicker" name="fuelType[]">
                     <option disabled selected>نوع الوقود</option>
                     <option value="بنزين">بنزين</option>
                     <option value="ديزل">ديزل</option>
@@ -213,20 +226,20 @@
                 </div>
             @endif
             @if($category->name == 'لابتوب')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
-            <select class="form-control" name="processor">
+            <select multiple class="selectpicker" name="processor[]">
                 <option disabled selected>المعالج</option>
                 <option value="i3">i3</option>
                 <option value="i5">i5</option>
                 <option value="i7">i7</option>
                 <option value="i9">i9</option>
             </select><br>
-            <select class="form-control" name="memory">
+            <select multiple class="selectpicker" name="memory[]">
                 <option disabled selected>الرام</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -234,7 +247,7 @@
                 <option value="16">16</option>
                 <option value="32">32</option>
             </select><br>
-            <select class="form-control" name="storage">
+            <select multiple class="selectpicker" name="storage[]">
                 <option disabled selected>سعة التخزين</option>
                 <option value="512">512</option>
                 <option value="1t">1t</option>
@@ -242,20 +255,20 @@
             </select><br>
             @endif
             @if($category->name == 'كمبيوتر مكتبي')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
-            <select class="form-control" name="processor">
+            <select multiple class="selectpicker" name="processor[]">
                 <option disabled selected>المعالج</option>
                 <option value="i3">i3</option>
                 <option value="i5">i5</option>
                 <option value="i7">i7</option>
                 <option value="i9">i9</option>
             </select><br>
-            <select class="form-control" name="memory">
+            <select multiple class="selectpicker" name="memory[]">
                 <option disabled selected>الرام</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -263,7 +276,7 @@
                 <option value="16">16</option>
                 <option value="32">32</option>
             </select><br>
-            <select class="form-control" name="storage">
+            <select multiple class="selectpicker" name="storage[]">
                 <option disabled selected>سعة التخزين</option>
                 <option value="512">512</option>
                 <option value="1t">1t</option>
@@ -271,43 +284,43 @@
             </select><br>
             @endif
             @if($category->name == 'مكيفات')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
-            <select class="form-control" name="coolingType">
+            <select multiple class="selectpicker" name="coolingType[]">
                 <option disabled selected>نوع التبريد</option>
                 <option value="رقمي">رقمي</option>
             </select><br>
             @endif
             @if($category->name == 'اجهزة منزلية كبيرة')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="capacitance" placeholder="ميجا بيكسل"><br>
             @endif
             @if($category->name == 'اجهزة منزلية صغيرة')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
             @if($category->name == 'كاميرات')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="megapixel" placeholder="ميجا بيكسل"><br>
-            <select class="form-control" name="storage">
+            <select multiple class="selectpicker" name="storage[]">
                 <option disabled selected>ذاكرة التحزين</option>
                 <option value="2">2</option>
                 <option value="4">4</option>
@@ -317,14 +330,14 @@
             </select><br>
             @endif
             @if($category->name == 'تلفيزيونات')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="screensize" placeholder="مقاس الشاشة"><br>
-            <select class="form-control" name="screenType">
+            <select multiple class="selectpicker" name="screenType[]">
                 <option disabled selected>نوع الشاشة</option>
                 <option value="OLED">OLED</option>
                 <option value="QLED">QLED</option>
@@ -333,21 +346,21 @@
             </select><br>
             @endif
             @if($category->name == 'العاب الكترونية')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
             @if($category->name == 'مكائن القهوة')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
-            <select class="form-control" name="product">
+            <select multiple class="selectpicker" name="product[]">
                 <option disabled selected>المنتج</option>
                 <option value="كاباتشينو">كاباتشينو</option>
                 <option value="اسبريسو">اسبريسو</option>
@@ -356,69 +369,69 @@
             </select><br>
             @endif
             @if($category->name == 'قوارب')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="length" placeholder="الطول"><br>
-            <select class="form-control" name="machinesPlace">
+            <select multiple class="selectpicker" name="machinesPlace[]">
                 <option disabled selected>مكان المكائن</option>
                 <option value="داخلي">داخلي</option>
                 <option value="داخلي">خارجي</option>
             </select><br>
             @endif
             @if($category->name == 'عدد وادوات')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
-            <select class="form-control" name="capleType">
+            <select multiple class="selectpicker" name="capleType[]">
                 <option disabled selected>نوع الكابل</option>
                 <option value="لاسلكي">لاسلكي</option>
                 <option value="سلكي">سلكي</option>
             </select><br>
             @endif
             @if($category->name == 'معدات رياضية')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
             @if($category->name == 'اثاث')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الاثاث</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
             @if($category->name == 'معدات صناعية')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
             @if($category->name == 'اجهزة طبية')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
             @if($category->name == 'مقتنيات ثمينة')
-            <select class="form-control" name="model">
+            <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>النوع</option>
-                @foreach ($category->children as $model)
-                <option value="{{ $model->name }}">{{ $model->name }}</option>
+                @foreach ($category->children as $subcategory)
+                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
                 @endforeach
             </select><br>
             @endif
@@ -439,7 +452,7 @@
 
 
 
-            <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; background-color: violet" id="submitToRange">نفذ</button>
             </form>
 		</div>
 	</div>
@@ -447,3 +460,16 @@
 </div>
 @endsection
 
+@section('scripts')
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+        $('#select').selectpicker();
+
+    });
+
+</script>
+
+
+@endsection

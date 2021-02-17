@@ -105,7 +105,6 @@
                                                     <a href="{{ route('profile', $product->user_id) }}" class="link-product-add-cart">تواصل مع البائع</a>
                                                 </div>
                                             </div>
-                                                <span class="product-new-top">جديد</span>
                                         </div>
                                         <div class="item-info-product text-center border-top mt-4">
                                             <h4 class="pt-1">
@@ -115,8 +114,8 @@
                                                 <span class="item_price">${{ $product->price }}</span>
                                             </div>
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                                                    <fieldset>
-                                                        <input href="{{ route('singleProduct', $product->id) }}" class="button btn" value="صفحة المنتج" />
+                                                    <fieldset >
+                                                        <a href="{{ route('singleProduct', $product->id) }}" class="btn btn-success" id="product-page" >صفحة المنتج</a>
                                                     </fieldset>
                                                 </form>
                                             </div>
@@ -134,8 +133,8 @@
             <!-- product left -->
             <div class="side-bar col-md-3">
                 <form action="{{ route('home') }}" method="GET">
-                    <button type="submit" class="col-md-4">تأكيد</button>
-                    <select class="col-md-8" name="sortby">
+                    <button type="submit" class="col-md-4" style="width: 30%;border-radius:0.5rem">تأكيد</button>
+                    <select class="col-md-8" name="sortby" style="width: 65%;border-radius:0.5rem;padding:0.1rem;direction:rtl">
                         <option disabled disabled selected>ترتيب حسب ..</option>
                         <option value="asc">الأقل سعر</option>
                         <option value="desc">الأعلى سعر</option>
@@ -148,67 +147,43 @@
                     <div class="search-hotel">
                         <h3 class="agileits-sear-head">بحث في الصفحة</h3>
                             <input type="search" name="search" placeholder="اسم المنتج">
+                            <button type="submit" class="btn btn-primary" style="width: 100%" id="submitToRange">نفذ</button>
                     </div>
-                    <!-- price range -->
+                </form>
+
+                <!-- price range -->
+                <form style="direction: rtl">
                     <div class="range">
                         <h3 class="agileits-sear-head">تحديد السعر</h3>
                         <ul class="dropdown-menu6">
                             <li>
-                                    @csrf
-                                    <div class="form-group">
-                                        <label for="minPrice">الحد الأدني</label>
-                                        <input type="number" class="form-control" id="minPrice" name="min">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="maxPrice">الحد الأعلى</label>
-                                        <input type="number" class="form-control" id="maxPrice" name="max">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary" id="submitToRange">نفذ</button>
-                                </form>
+                                <div id="slider-range"></div>
+                                <input type="text"  id="amount" name="pricerange" style="border: 0; color: #ffffff; font-weight: normal;" />
                             </li>
                         </ul>
                     </div>
-                    <!-- //price range -->
-                    <!-- cuisine -->
-                    <div class="left-side" style="direction: rtl">
-                        <h3 class="agileits-sear-head">الاقسام الرئيسية</h3>
-                        <ul>
-                            @foreach($categories as $category)
-                            <li>
-                                <div id="index-items">
-                                {{-- <input type="checkbox" class="checked"> --}}
-                                <a  href="#" class="span" style="text-decoration: none">{{ $category->name }}</a>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </div>
-
-
-                    <!-- //cuisine -->
-                    <!-- deals -->
-                    {{-- <div class="deal-leftmk left-side">
-                        <h3 class="agileits-sear-head">المنتجات المبوبة</h3> --}}
-                        {{-- <div class="special-sec1">
-                            <div class="col-xs-4 img-deals">
-                                <img src="images/d2.jpg" alt="">
+                    <button type="submit" class="btn btn-primary" style="width: 100%" id="submitToRange">نفذ</button>
+                </form>
+                <hr>
+                <!-- //price range -->
+                <!-- cuisine -->
+                <div class="left-side" style="direction: rtl">
+                    <h3 class="agileits-sear-head">الاقسام الرئيسية</h3>
+                    <ul>
+                        @foreach($categories as $category)
+                        <li>
+                            <div id="index-items">
+                            <a  href="{{ route('categoryPage', $category->id) }}" class="span" style="text-decoration: none">{{ $category->name }}</a>
                             </div>
-                            <div class="col-xs-8 img-deal1">
-                                <h3>Lay's Potato Chips</h3>
-                                <a href="single.html">$18.00</a>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div> --}}
-                    </div>
-                    <!-- //deals -->
+                        </li>
+                        @endforeach
+                    </ul>
                 </div>
-                <!-- //product left -->
-
-
-
+                <!-- //deals -->
             </div>
         </div>
         <!-- //top products -->
+    </div>
     @endsection
 
 
