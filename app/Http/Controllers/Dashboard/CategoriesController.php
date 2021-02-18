@@ -25,7 +25,7 @@ class CategoriesController extends Controller
     {
 
         $validatedData = $this->validate($request, [
-            'name'      => 'required|min:3|max:255|string',
+            'name_ar'      => 'required|min:3|max:255|string',
             'parent_id' => 'sometimes|nullable|numeric'
         ]);
 
