@@ -11,9 +11,9 @@
 				</h1>
 			</div>
 			<!-- header-bot -->
-			<div class="col-md-8 header">
+			<div class="col-md-8 header" >
 				<!-- header lists -->
-				<ul>
+				<ul >
 					<li>
 						@if(auth()->check())
 						    <a href="{{ route('profile', Auth::user()) }}">
@@ -38,7 +38,7 @@
 					<li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                            <button type="submit">
+                            <button type="submit" id="logout-btn">
                                 <span class="fa fa-unlock-alt" aria-hidden="true"></span> تسجيل خروج  </a>
                             </button>
                         </form>
@@ -199,7 +199,7 @@
                                                 <ul class="multi-column-dropdown">
                                                 @foreach($chunk as $category)
                                                 <li>
-                                                    <a href="{{ route('categoryPage', $category->id) }}">{{ $category->name }}</a>
+                                                    <a href="{{ route('categoryPage', $category->id) }}">{{ $category->name_ar }}</a>
                                                 </li>
                                                 @endforeach
                                                 </ul>

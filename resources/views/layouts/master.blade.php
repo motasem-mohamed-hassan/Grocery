@@ -42,6 +42,72 @@
 
 	<!-- fonts -->
 	<link href="//fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800" rel="stylesheet">
+    <style>
+        .carousel .item {
+                        background: url({{ asset('frontend/images/banner1.jpg') }}) no-repeat;
+                        background-size: 100% 100%;
+                        height: 20pc;
+                    }
+
+        .carousel .item.item1 {
+                        background: url({{ asset('frontend/images/banner1.jpg') }}) no-repeat;
+                        background-size: 100% 100%;
+                        height: 20pc;
+                    }
+
+        .carousel .item.item2 {
+                        background: url({{ asset('frontend/images/banner1.jpg') }}) no-repeat;
+                        background-size: 100% 100%;
+                        height: 20pc;
+                    }
+
+        .carousel .item.item3 {
+                        background: url({{ asset('frontend/images/banner1.jpg') }}) no-repeat;
+                        background-size: 100% 100%;
+                        height: 20pc;
+                    }
+
+        .carousel .item.item4 {
+                        background: url({{ asset('frontend/images/banner1.jpg') }}) no-repeat;
+                        background-size: 100% 100%;
+                        height: 20pc;
+                    }
+        @media screen and (max-width: 720px) {
+                        .carousel .item {
+                            background: url({{ asset('frontend/images/2.jpeg') }}) no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+
+        @media screen and (max-width: 720px) {
+                        .carousel .item.item1 {
+                            background: url({{ asset('frontend/images/2.jpeg') }}) no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+
+        @media screen and (max-width: 720px) {
+                        .carousel .item.item2 {
+                            background: url({{ asset('frontend/images/2.jpeg') }}) no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+
+        @media screen and (max-width: 720px) {
+                        .carousel .item.item3 {
+                            background: url({{ asset('frontend/images/2.jpeg') }}) no-repeat;
+                            background-size: 100% 100%;
+                        }
+                    }
+
+        @media screen and (max-width: 720px) {
+            .carousel .item.item4 {
+                background: url({{ asset('frontend/images/2.jpeg') }}) no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+)
+    </style>
 
 </head>
 

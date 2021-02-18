@@ -11,7 +11,7 @@
 		<li data-target="#myCarousel" data-slide-to="3" class=""></li>
 	</ol>
 	<div class="carousel-inner" >
-		<div class="item active item1" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;">
+		<div class="item active item1" >
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>حفظ
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item2" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;">
+		<div class="item item2" >
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>ادخار
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item3" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;">
+		<div class="item item3" >
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>صفقة
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item4" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;" >
+		<div class="item item4"  >
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>خصم
@@ -147,7 +147,7 @@
                 <form action="{{ route('home') }}" method="get" style="direction: rtl">
                     <div class="search-hotel">
                         <h3 class="agileits-sear-head">بحث في الصفحة</h3>
-                            <input type="search" name="search" placeholder="اسم المنتج">
+                            <input type="search" name="search" placeholder="اسم المنتج" style="width: 100%;border-radius:1rem">
                             <button type="submit" class="btn btn-primary" style="width: 100%" id="submitToRange">نفذ</button>
                     </div>
                 </form>
@@ -174,7 +174,7 @@
                         @foreach($categories as $category)
                         <li>
                             <div id="index-items">
-                            <a  href="{{ route('categoryPage', $category->id) }}" class="span" style="text-decoration: none">{{ $category->name }}</a>
+                            <a  href="{{ route('categoryPage', $category->id) }}" class="span" style="text-decoration: none">{{ $category->name_ar }}</a>
                             </div>
                         </li>
                         @endforeach

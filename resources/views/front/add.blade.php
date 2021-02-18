@@ -20,7 +20,7 @@
                         <select name="category_id" class="form-control" id="category">
                             <option value="" selected>--اختر قسم--</option>
                             @foreach ($categories as $category)
-                                <option category_id="{{ $category->id }}" id="categoriesOption" value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option category_id="{{ $category->id }}" id="categoriesOption" value="{{ $category->id }}">{{ $category->name_ar }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -64,7 +64,7 @@
                     $('.ajax').remove(); //remove result before
                     $.each(response.data, function(index, value) {
                         console.log(value);
-                        $('#subCategory').append(`<option class="ajax" value="${value.id}">${value.name}</option>`);
+                        $('#subCategory').append(`<option class="ajax" value="${value.id}">${value.name_ar}</option>`);
                     });
                 },
             });

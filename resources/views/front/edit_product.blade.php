@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <p>{{ $category->name }}</p><br><br><br>
+        <p>{{ $category->name_ar }}</p><br><br><br>
 
         <form action="{{ route('update_product', $product->id)}}" method="post"  enctype="multipart/form-data">
             @csrf
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">سنة التصنيع</label>
@@ -40,7 +40,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الدفع</label>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'مكائن القهوة')
+            @if($category->name_ar == 'مكائن القهوة')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع المنتج</label>
@@ -62,7 +62,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">مكان المكائن</label>
@@ -73,7 +73,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع المكائن</label>
@@ -84,7 +84,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">قوة المكائن</label>
@@ -95,7 +95,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">عمر المكائن</label>
@@ -106,7 +106,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الكابل</label>
@@ -117,7 +117,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع القير</label>
@@ -128,7 +128,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">عدد الكيلومتر</label>
@@ -139,7 +139,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">سعة المحرك</label>
@@ -150,7 +150,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'اجهزة لوحية' OR $category->name == 'موبايلات' OR $category->name == 'لابتوب' OR $category->name == 'تلفيزيونات')
+            @if($category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'موبايلات' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'تلفيزيونات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">حجم الشاشة</label>
@@ -161,7 +161,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الميموري</label>
@@ -172,7 +172,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">سعة التخزين</label>
@@ -183,7 +183,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الجيل</label>
@@ -194,7 +194,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'سيارات')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">اللون</label>
@@ -205,7 +205,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الملحقات</label>
@@ -216,7 +216,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">المعالج</label>
@@ -227,7 +227,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'مكيفات')
+            @if($category->name_ar == 'مكيفات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">قوة التبريد</label>
@@ -238,7 +238,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'مكيفات')
+            @if($category->name_ar == 'مكيفات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع التبريد</label>
@@ -249,7 +249,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'اجهزة منزلية كبيرة' OR $category->name == 'اجهزة منزلية صغيرة')
+            @if($category->name_ar == 'اجهزة منزلية كبيرة' OR $category->name_ar == 'اجهزة منزلية صغيرة')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">السعة</label>
@@ -260,7 +260,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'كاميرات')
+            @if($category->name_ar == 'كاميرات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">عدد الميجات للكاميرات</label>
@@ -271,7 +271,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'تلفيزيونات')
+            @if($category->name_ar == 'تلفيزيونات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الشاشة</label>
@@ -282,7 +282,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الطول للقوارب</label>
@@ -293,7 +293,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">عدد المكائن</label>
@@ -304,7 +304,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">المقاس</label>
@@ -315,7 +315,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'اثاث')
+            @if($category->name_ar == 'اثاث')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع التصنيع</label>
@@ -326,7 +326,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات' OR $category->name == 'معدات صناعية')
+            @if($category->name_ar == 'سيارات' OR $category->name_ar == 'معدات صناعية')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">نوع الوقود</label>
@@ -337,7 +337,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <div class="form-group">
                 <div class="row">
                     <label class="col-md-2 text-center mr-5">الطاقة</label>

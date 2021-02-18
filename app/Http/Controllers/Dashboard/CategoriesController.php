@@ -33,7 +33,7 @@ class CategoriesController extends Controller
 
         return redirect()->back()->withSuccess('You have successfully created a Category!');
         // $category = new Category();
-        // $category->name = $request->name;
+        // $category->name_ar = $request->name;
         // $category->save();
 
 
@@ -57,7 +57,7 @@ class CategoriesController extends Controller
     public function update(Request $request)
     {
         $category = Category::find($request->id);
-        $category->name = $request->name;
+        $category->name_ar = $request->name;
         $category->update();
 
         return response()->json([

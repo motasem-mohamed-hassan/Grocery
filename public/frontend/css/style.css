@@ -110,7 +110,6 @@
                         font-size: 14px;
                         padding: 7px 0;
                         letter-spacing: 1px;
-                        border-right: 1px solid rgba(18, 18, 18, 0.18);
                     }
 
                     .header ul li a {
@@ -497,10 +496,7 @@
                     /* position: inherit; */
                     /* min-height: 20pc;
                     padding-top: 8em; */
-
-
                     /*-- carousel-slider --*/
-
                     /* .carousel .item {
                         background: url(../images/banner1.jpg) no-repeat;
                         background-size: 100%;
@@ -1036,12 +1032,16 @@
 
                     input#amount,
                     input#amount1 {
-                        font-size: 13px;
+                        width: 100%;
+                        border-radius: 0.75rem;
+                        font-size: 14px;
+                        text-align: center;
+                        padding: 0.5rem;
                         outline: none;
-                        background: none;
+                        background: white;
                         color: #000 !important;
                         position: absolute;
-                        left: 34%;
+                        /* left: 34%; */
                         top: -27px;
                         margin-top: -10px;
                     }
@@ -1510,7 +1510,7 @@
                     .text-form-footer h3 {
                         color: #000;
                         font-size: 27px;
-                        letter-spacing: 2px;
+                        /* letter-spacing: 2px; */
                         font-weight: 600;
                         line-height: 1.3;
                     }
@@ -4167,7 +4167,7 @@
                             padding: 0 .5em;
                         }
                         .text-form-footer h3 {
-                            letter-spacing: 1px;
+                            /* letter-spacing: 1px; */
                         }
                         .product-men {
                             padding: 0 .5em;
@@ -5619,8 +5619,7 @@
                     .sortable-handler {
                         touch-action: none;
                     }
-
-                    @media screen and (max-width: 720px) {
+                    /* @media screen and (max-width: 720px) {
                         .carousel .item {
                             background: url(../images/Mobile.jpeg) no-repeat;
                             background-size: 100% 100%;
@@ -5653,7 +5652,7 @@
                             background: url(../images/Mobile.jpeg) no-repeat;
                             background-size: 100% 100%;
                         }
-                    }
+                    } */
 
                     @media screen and (max-width: 600px) {
                         #footer-categories {
@@ -5670,7 +5669,7 @@
                     /* Header search */
 
                     .search {
-                        overflow: auto;
+                        overflow: hidden;
                         -moz-border-radius: 15px;
                         -webkit-border-radius: 15px;
                         margin-top: 20px;
@@ -5682,7 +5681,7 @@
                     .search input[type="text"] {
                         border: 0px;
                         width: 100%;
-                        padding: 10px 10px;
+                        padding: 9px 10px;
                         text-align: right;
                         background-color: rgba(0, 0, 0, 0.16);
                     }
@@ -5699,6 +5698,7 @@
                         color: #fff;
                         float: left;
                         padding: 10px 10px;
+                        text-align: center;
                         border-radius-top-right: 5px;
                         -moz-border-radius-top-right: 5px;
                         -webkit-border-radius-top-right: 5px;
@@ -5765,6 +5765,8 @@
 
                     #index-items a {
                         color: #000;
+                        display: inline-block;
+                        width:100%;
                     }
 
                     #index-items:hover {
@@ -5783,14 +5785,26 @@
                         justify-content: end;
                     }
 
-                    .side-bar button{
+                    .side-bar button {
                         background-color: #1accfd;
                     }
-                    #product-page{
+
+                    #product-page {
                         background-color: #1accfd;
-                        border:none;
+                        border: none;
                         width: 100%;
                     }
-                    #product-page:hover{
+
+                    #product-page:hover {
                         background-color: black;
+                    }
+
+                    #logout-btn {
+                        border: none;
+                        background-color: transparent;
+                    }
+
+                    #category-multiselect option {
+                        direction: ltr;
+                        color: red;
                     }

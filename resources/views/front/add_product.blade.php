@@ -3,7 +3,7 @@
 <div class="ads-grid">
     <div class="container">
         <!-- tittle heading -->
-        <h3 class="tittle-w3l">{{ $category->name }}
+        <h3 class="tittle-w3l">{{ $category->name_ar }}
             <span class="heading-style">
                 <i></i>
                 <i></i>
@@ -23,7 +23,7 @@
                 </ul>
             </div>
         @endif
-        
+
         <form action="{{ route('post_add')}}" method="post"  enctype="multipart/form-data">
             @csrf
             <input style="display: none" type="text" name="subCategory_id" class="form-control" value="{{ $subCategory_id }}">
@@ -40,7 +40,7 @@
                 </div>
             </div>
 
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -52,7 +52,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -68,7 +68,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'مكائن القهوة')
+            @if($category->name_ar == 'مكائن القهوة')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -86,7 +86,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -102,7 +102,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -114,7 +114,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -126,7 +126,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -138,7 +138,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -154,7 +154,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -170,7 +170,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -182,7 +182,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات')
+            @if($category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -194,7 +194,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'اجهزة لوحية' OR $category->name == 'موبايلات' OR $category->name == 'لابتوب' OR $category->name == 'تلفيزيونات')
+            @if($category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'موبايلات' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'تلفيزيونات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -206,7 +206,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -226,7 +226,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -250,7 +250,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -268,7 +268,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'سيارات')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'سيارات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -280,7 +280,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -292,7 +292,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'موبايلات' OR $category->name == 'اجهزة لوحية' OR $category->name == 'لابتوب' OR $category->name == 'كومبيوتر مكتبي')
+            @if($category->name_ar == 'موبايلات' OR $category->name_ar == 'اجهزة لوحية' OR $category->name_ar == 'لابتوب' OR $category->name_ar == 'كومبيوتر مكتبي')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -304,7 +304,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'مكيفات')
+            @if($category->name_ar == 'مكيفات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -316,7 +316,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'مكيفات')
+            @if($category->name_ar == 'مكيفات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -331,7 +331,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'اجهزة منزلية كبيرة' OR $category->name == 'اجهزة منزلية صغيرة')
+            @if($category->name_ar == 'اجهزة منزلية كبيرة' OR $category->name_ar == 'اجهزة منزلية صغيرة')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -343,7 +343,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'كاميرات')
+            @if($category->name_ar == 'كاميرات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -355,7 +355,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'تلفيزيونات')
+            @if($category->name_ar == 'تلفيزيونات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -373,7 +373,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -385,7 +385,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -397,7 +397,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -409,7 +409,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'اثاث')
+            @if($category->name_ar == 'اثاث')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -425,7 +425,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'سيارات' OR $category->name == 'معدات صناعية')
+            @if($category->name_ar == 'سيارات' OR $category->name_ar == 'معدات صناعية')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">
@@ -443,7 +443,7 @@
                 </div>
             </div>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <div class="form-group">
                 <div class="row">
                     <div class="col-md-7 ">

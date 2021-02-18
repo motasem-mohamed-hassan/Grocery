@@ -26,7 +26,28 @@ class SettingController extends Controller
         $setting->facebook      = $request->facebook;
         $setting->twitter       = $request->twitter;
         $setting->instegram     = $request->instegram;
+
+
+        $computer_paner_url = $request->file('computer_paner');
+        $computer_paner_url->getClientOriginalName();
+        $ext    = $computer_paner_url->getClientOriginalExtension();
+        $file   = date('YmdHis').rand(1,99999).'.'.$ext;
+        $computer_paner_url->storeAs('public/avatars', $file);
+        Storage::disk('local')->delete('public/avatars/'.$setting->computer_paner);
+        $setting->computer_paner = $file;
+
+        $mobile_paner_url = $request->file('mobile_paner');
+        $mobile_paner_url->getClientOriginalName();
+        $ext    = $mobile_paner_url->getClientOriginalExtension();
+        $file   = date('YmdHis').rand(1,99999).'.'.$ext;
+        $mobile_paner_url->storeAs('public/avatars', $file);
+        Storage::disk('local')->delete('public/avatars/'.$setting->mobile_paner);
+        $setting->mobile_paner = $file;
+
+
+
         $setting->description  = $request->description;
+
 
         $setting->save();
 

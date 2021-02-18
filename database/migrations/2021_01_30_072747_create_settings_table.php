@@ -21,6 +21,8 @@ class CreateSettingsTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->string('instegram')->nullable();
+            $table->string('Copmuter_praner')->nullable();
+            $table->string('mobile_panner')->nullable();
             $table->text('description')->nullable();
         });
     }

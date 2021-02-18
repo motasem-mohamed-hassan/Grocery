@@ -9,15 +9,15 @@
 			<div class="container">
 				<ul class="w3_short">
 					<li>
-						<a href="{{ route('home') }}">Home</a>
+						<a href="{{ route('home') }}">الرئيسية</a>
 						<i>|</i>
 					</li>
 					<li>
-                       <a href="{{ route('categoryPage', $product->category->id) }}"> {{ $product->category->name }} </a>
+                       <a href="{{ route('categoryPage', $product->category->id) }}"> {{ $product->category->name_ar }} </a>
                         <i>|</i>
                     </li>
                     <li>
-                        {{ $subCategory->name }}
+                        {{ $subCategory->name_ar }}
                         <i>|</i>
                     </li>
 				</ul>
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-7 single-right-left simpleCart_shelfItem">
+			<div class="col-md-7 single-right-left simpleCart_shelfItem" style="direction: rtl">
 				<h3>{{ $product->name }}</h3>
 				<p>
                     <span class="item_price">${{ $product->price }}</span>
@@ -62,7 +62,7 @@
                     @isset($product->manufactureYear)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>سنة التصنيع :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>سنة التصنيع :
                             {{ $product->manufactureYear }}
                         </p>
                     </ul>
@@ -70,7 +70,7 @@
                     @isset($product->wheelType)
                     <ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع الدفع :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع الدفع :
                             {{ $product->wheelType }}
                         </p>
                     </ul>
@@ -78,7 +78,7 @@
                     @isset($product->product)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع المنتج :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع المنتج :
                             {{ $product->product }}
                         </p>
                     </ul>
@@ -86,7 +86,7 @@
                     @isset($product->machinesPlace)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>مكان المكائن :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>مكان المكائن :
                             {{ $product->machinesPlace }}
                         </p>
                     </ul>
@@ -94,7 +94,7 @@
                     @isset($product->machinesType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع المكائن :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع المكائن :
                             {{ $product->machinesType }}
                         </p>
                     </ul>
@@ -102,7 +102,7 @@
                     @isset($product->machinesPower)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>قوة المكائن :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>قوة المكائن :
                             {{ $product->machinesPower }}
                         </p>
                     </ul>
@@ -110,7 +110,7 @@
                     @isset($product->machinesAge)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>عمر المكائن :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>عمر المكائن :
                             {{ $product->machinesAge }}
                         </p>
                     </ul>
@@ -118,7 +118,7 @@
                     @isset($product->capleType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع الكابل :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع الكابل :
                             {{ $product->capleType }}
                         </p>
                     </ul>
@@ -126,7 +126,7 @@
                     @isset($product->age)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>العمر :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>العمر :
                             {{ $product->age }}
                         </p>
                     </ul>
@@ -134,7 +134,7 @@
                     @isset($product->transmissionType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع القير :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع القير :
                             {{ $product->transmissionType }}
                         </p>
                     </ul>
@@ -142,7 +142,7 @@
                     @isset($product->kilometers)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>عدد الكيلومتر :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>عدد الكيلومتر :
                             {{ $product->kilometers }}
                         </p>
                     </ul>
@@ -150,7 +150,7 @@
                     @isset($product->engineCapacity)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>سعة المحرك :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>سعة المحرك :
                             {{ $product->engineCapacity }}
                         </p>
                     </ul>
@@ -158,7 +158,7 @@
                     @isset($product->screensize)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>حجم الشاشة :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>حجم الشاشة :
                             {{ $product->screensize }}
                         </p>
                     </ul>
@@ -166,7 +166,7 @@
                     @isset($product->memory)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>الميموري :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>الميموري :
                             {{ $product->memory }}
                         </p>
                     </ul>
@@ -174,7 +174,7 @@
                     @isset($product->storage)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>سعة التخزين :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>سعة التخزين :
                             {{ $product->storage }}
                         </p>
                     </ul>
@@ -182,7 +182,7 @@
                     @isset($product->generation)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>الجيل :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>الجيل :
                             {{ $product->generation }}
                         </p>
                     </ul>
@@ -190,7 +190,7 @@
                     @isset($product->color)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>اللون :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>اللون :
                             {{ $product->color }}
                         </p>
                     </ul>
@@ -198,7 +198,7 @@
                     @isset($product->accessories)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>الملحقات :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>الملحقات :
                             {{ $product->accessories }}
                         </p>
                     </ul>
@@ -206,7 +206,7 @@
                     @isset($product->processor)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>المعالج :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>المعالج :
                             {{ $product->processor }}
                         </p>
                     </ul>
@@ -214,7 +214,7 @@
                     @isset($product->coolingPower)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>قوة التبريد :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>قوة التبريد :
                             {{ $product->coolingPower }}
                         </p>
                     </ul>
@@ -222,7 +222,7 @@
                     @isset($product->coolingType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع التبريد :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع التبريد :
                             {{ $product->coolingType }}
                         </p>
                     </ul>
@@ -230,7 +230,7 @@
                     @isset($product->capacitance)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>السعة :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>السعة :
                             {{ $product->capacitance }}
                         </p>
                     </ul>
@@ -238,7 +238,7 @@
                     @isset($product->megapixel)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>ميجابيكسل :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>ميجابيكسل :
                             {{ $product->megapixel }}
                         </p>
                     </ul>
@@ -246,7 +246,7 @@
                     @isset($product->screenType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع الشاشة :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع الشاشة :
                             {{ $product->screenType }}
                         </p>
                     </ul>
@@ -254,7 +254,7 @@
                     @isset($product->length)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>الطول :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>الطول :
                             {{ $product->length }}
                         </p>
                     </ul>
@@ -262,7 +262,7 @@
                     @isset($product->machinesNumber)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>عدد المكائن :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>عدد المكائن :
                             {{ $product->machinesNumber }}
                         </p>
                     </ul>
@@ -270,7 +270,7 @@
                     @isset($product->size)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>المقاس :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>المقاس :
                             {{ $product->size }}
 
                         </p>
@@ -279,7 +279,7 @@
                     @isset($product->manufactureType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع التصنيع :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع التصنيع :
                             {{ $product->manufactureType }}
                         </p>
                     </ul>
@@ -287,7 +287,7 @@
                     @isset($product->fuelType)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>نوع الوقود :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>نوع الوقود :
                             {{ $product->fuelType }}
                         </p>
                     </ul>
@@ -295,14 +295,14 @@
                     @isset($product->energy)
 					<ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>الطاقة :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>الطاقة :
                             {{ $product->energy }}
                         </p>
                     </ul>
                     @endisset
                     <ul>
                         <p>
-                            <i class="fa fa-hand-o-right" aria-hidden="true"></i>معلومات اضافية :
+                            <i class="fa fa-hand-o-left" aria-hidden="true"></i>معلومات اضافية :
                             {{ $product->description }}
                         </p>
                     </ul>
@@ -311,7 +311,7 @@
                 @if($product->user_id == Auth::id())
                 <div>
                     <button href="{{ route('edit_product', $product->id) }}" class="btn btn-info">تعديل</button>
-                    <form action="{{ route('delete_product', $product->id) }}" method="POST">
+                    <form action="{{ route('delete_product', $product->id) }}" method="POST" style="display: inline-block">
                         @csrf
                         @method('delete')
                         <button type="submit" class="btn btn-danger">مسح</button>

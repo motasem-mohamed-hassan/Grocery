@@ -19,7 +19,7 @@
                 <tr>
                     <th scope="row"> {{$loop->iteration}} </th>
                     <td>{{ $product->name }}</td>
-                    <td>{{ $product->category->name }}</td>
+                    <td>{{ $product->category->name_ar }}</td>
                     <td>{{ $product->price }}</td>
                     <td>
                         {{ $product->status == 0 ? 'في انتظار النشر' : 'تم النشر' }}

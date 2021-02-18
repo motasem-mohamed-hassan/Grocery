@@ -42,6 +42,14 @@
                         <label for="inputName">انستجرام</label>
                         <input type="text" name="instegram" class="form-control" value="{{ $setting->instegram }}">
                     </div>
+                    <div class="form-group">
+                        <label for="inputName">صورة الموقع للكمبيوتر</label>
+                        <input type="file" accept="image/*" name="computer_paner" class="form-control" value="{{ asset('storage/paners/'.$setting->computer_paner) }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputName">صورة الموقع للموبايل</label>
+                        <input type="file" accept="image/*" name="mobile_paner" class="form-control" value="{{ asset('storage/paners/'.$setting->mobile_paner) }}">
+                    </div>
                     <br>
                     <div class="form-group">
                         <label for="inputDescription">وصف الموقع</label>

@@ -45,7 +45,7 @@
                 @foreach ($categories as $category)
                   <li class="list-group-item">
                     <div class="d-flex justify-content-between category_name{{ $category->id }}">
-                      {{ $category->name }}
+                      {{ $category->name_ar }}
 
                       {{-- <div class="button-group d-flex">
                         <button type="button" category_id="{{ $category->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">Edit</button>
@@ -62,7 +62,7 @@
                         @foreach ($category->children as $child)
                           <li class="list-group-item">
                             <div class="d-flex justify-content-between subCategory_name{{ $category->id }}">
-                              {{ $child->name }}
+                              {{ $child->name_ar }}
 
                               <div class="button-group d-flex">
                                 <button type="button" category_id="{{ $child->id }}" class="editBtn btn btn-sm btn-primary mr-1 edit-category" data-toggle="modal" data-target="#editCategoryModal">تعديل</button>
@@ -99,7 +99,7 @@
                     <option value="">اختار القسم</option>
 
                     @foreach ($categories as $category)
-                      <option value="{{ $category->id }}">{{ $category->name }}</option>
+                      <option value="{{ $category->id }}">{{ $category->name_ar }}</option>
                     @endforeach
                   </select>
                 </div>
@@ -134,7 +134,7 @@
                     data:   {'id' : category_id},
 
                     success: function (data) {
-                        $('#editName').val(data.data.name);
+                        $('#editName').val(data.data.name_ar);
                         $('#currentid').val(data.data.id);
                     },
 

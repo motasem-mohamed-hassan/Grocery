@@ -13,6 +13,7 @@
         width: 115% !important;
         margin-bottom: 20px;
     }
+
 </style>
 
 @endsection
@@ -28,7 +29,7 @@
 						<a href="{{ route('home') }}">الرئيسية</a>
 						<i>|</i>
 					</li>
-					<li>{{ $category->name }}</li>
+					<li>{{ $category->name_ar }}</li>
 				</ul>
 			</div>
 		</div>
@@ -42,7 +43,7 @@
     <div class="ads-grid">
 		<div class="container">
 			<!-- tittle heading -->
-			<h3 class="tittle-w3l">{{ $category->name }}
+			<h3 class="tittle-w3l">{{ $category->name_ar }}
 				<span class="heading-style">
 					<i></i>
 					<i></i>
@@ -59,7 +60,7 @@
                                 <div class="col-md-4 product-men justify-content-end">
                                     <div class="men-pro-item simpleCart_shelfItem mt-5">
                                         <div class="men-thumb-item">
-                                            <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 100%; height:40vh"">
+                                            <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 100%; height:40vh">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
                                                     <a href="{{ route('profile', $product->user_id) }}" class="link-product-add-cart">تواصل مع البائع</a>
@@ -111,18 +112,19 @@
                     <hr>
 
                     <form action="{{ route('categoryPage', $category->id) }}" method="get" style="direction: rtl">
-                    <div class="search-hotel">
-                        <h3 class="agileits-sear-head">بحث في الصفحة</h3>
-                            <input type="search" placeholder="اسم المنتج" name="search">
+                        <div class="search-hotel">
+                            <h3 class="agileits-sear-head">بحث في الصفحة</h3>
+                            <input type="search" name="search" placeholder="اسم المنتج" style="width: 100%;border-radius:1rem">
                     </div>
+
                     <!-- price range -->
                     <!-- //price range -->
                     <!-- cuisine -->
-                    @if($category->name == 'موبايلات')
-                        <select multiple class="selectpicker" name="subcategory[]">
+                    @if($category->name_ar == 'موبايلات')
+                        <select multiple class="selectpicker" name="subcategory[]" >
                             <option disabled disabled selected>الماركة</option>
                             @foreach ($category->children as $subcategory)
-                            <option value="{{ $subcategory->id }}">{{ $subcategory->name }}</option>
+                            <option value="{{ $subcategory->id }}">{{ $subcategory->name_ar }}</option>
                             @endforeach
                         </select><br>
                         <select multiple class="selectpicker"  name="screensize[]">
@@ -156,11 +158,11 @@
                             <option value="5G">5G</option>
                         </select><br>
                     @endif
-                    @if($category->name == 'اجهزة لوحية')
+                    @if($category->name_ar == 'اجهزة لوحية')
                     <select multiple class="selectpicker" name="subcategory[]">
                         <option disabled selected>الماركة</option>
                         @foreach ($category->children as $subcategory)
-                        <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                        <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                         @endforeach
                     </select><br>
                     <select multiple class="selectpicker" name="screensize[]">
@@ -195,11 +197,11 @@
                         <option value="5G">5G</option>
                     </select><br>
                 @endif
-                @if($category->name == 'سيارات')
+                @if($category->name_ar == 'سيارات')
                 <select multiple class="selectpicker" name="subcategory[]">
                     <option disabled selected>الماركة</option>
                     @foreach ($category->children as $subcategory)
-                    <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                    <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                     @endforeach
                 </select><br>
                 <select multiple class="selectpicker" name="transmissionType[]">
@@ -225,11 +227,11 @@
                     <input type="number" class="form-control" name="maxmanufactureYear" placeholder="الى">
                 </div>
             @endif
-            @if($category->name == 'لابتوب')
+            @if($category->name_ar == 'لابتوب')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <select multiple class="selectpicker" name="processor[]">
@@ -254,11 +256,11 @@
                 <option value="2t">2t</option>
             </select><br>
             @endif
-            @if($category->name == 'كمبيوتر مكتبي')
+            @if($category->name_ar == 'كمبيوتر مكتبي')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <select multiple class="selectpicker" name="processor[]">
@@ -283,11 +285,11 @@
                 <option value="2t">2t</option>
             </select><br>
             @endif
-            @if($category->name == 'مكيفات')
+            @if($category->name_ar == 'مكيفات')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <select multiple class="selectpicker" name="coolingType[]">
@@ -295,28 +297,28 @@
                 <option value="رقمي">رقمي</option>
             </select><br>
             @endif
-            @if($category->name == 'اجهزة منزلية كبيرة')
+            @if($category->name_ar == 'اجهزة منزلية كبيرة')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="capacitance" placeholder="ميجا بيكسل"><br>
             @endif
-            @if($category->name == 'اجهزة منزلية صغيرة')
+            @if($category->name_ar == 'اجهزة منزلية صغيرة')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
-            @if($category->name == 'كاميرات')
+            @if($category->name_ar == 'كاميرات')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="megapixel" placeholder="ميجا بيكسل"><br>
@@ -329,11 +331,11 @@
                 <option value="32">32</option>
             </select><br>
             @endif
-            @if($category->name == 'تلفيزيونات')
+            @if($category->name_ar == 'تلفيزيونات')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="screensize" placeholder="مقاس الشاشة"><br>
@@ -345,19 +347,19 @@
                 <option value="LED">LED</option>
             </select><br>
             @endif
-            @if($category->name == 'العاب الكترونية')
+            @if($category->name_ar == 'العاب الكترونية')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
-            @if($category->name == 'مكائن القهوة')
+            @if($category->name_ar == 'مكائن القهوة')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <select multiple class="selectpicker" name="product[]">
@@ -368,11 +370,11 @@
                 <option value="قهوة عربي">قهوة عربي</option>
             </select><br>
             @endif
-            @if($category->name == 'قوارب')
+            @if($category->name_ar == 'قوارب')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>الماركة</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <input type="number" class="form-control" name="length" placeholder="الطول"><br>
@@ -382,11 +384,11 @@
                 <option value="داخلي">خارجي</option>
             </select><br>
             @endif
-            @if($category->name == 'عدد وادوات')
+            @if($category->name_ar == 'عدد وادوات')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             <select multiple class="selectpicker" name="capleType[]">
@@ -395,43 +397,43 @@
                 <option value="سلكي">سلكي</option>
             </select><br>
             @endif
-            @if($category->name == 'معدات رياضية')
+            @if($category->name_ar == 'معدات رياضية')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
-            @if($category->name == 'اثاث')
+            @if($category->name_ar == 'اثاث')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الاثاث</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
-            @if($category->name == 'معدات صناعية')
+            @if($category->name_ar == 'معدات صناعية')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
-            @if($category->name == 'اجهزة طبية')
+            @if($category->name_ar == 'اجهزة طبية')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>نوع الجهاز</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
-            @if($category->name == 'مقتنيات ثمينة')
+            @if($category->name_ar == 'مقتنيات ثمينة')
             <select multiple class="selectpicker" name="subcategory[]">
                 <option disabled selected>النوع</option>
                 @foreach ($category->children as $subcategory)
-                <option value="{{ $subcategory->name }}">{{ $subcategory->name }}</option>
+                <option value="{{ $subcategory->name_ar">{{ $subcategory->name_ar</option>
                 @endforeach
             </select><br>
             @endif
