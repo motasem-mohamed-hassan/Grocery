@@ -26,6 +26,11 @@
   <link rel="stylesheet" href="{{ asset('admin/plugins/summernote/summernote-bs4.css') }}">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  <!-- Bootstrap 4 RTL -->
+  <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">
+  <!-- Custom style for RTL -->
+  <link rel="stylesheet" href="{{ asset('admin/dist/css/custom.css') }}">
+
   <!-- toaster link css -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css" rel="stylesheet"/>
 
@@ -52,7 +57,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="{{ route('admin.dashboard') }}" class="brand-link">
       <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
       <span class="brand-text font-weight-light">
@@ -104,12 +109,33 @@
             </a>
           </li>
           <li class="nav-item has-treeview">
-             <a href="{{ route('admin.products.index') }}" class="nav-link @if($segment=='products') active @endif">
-              <i class="nav-icon fas fa-copy"></i>
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-table"></i>
               <p>
                 المنتجات
+                <i class="fas fa-angle-left right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ route('admin.products.index') }}" class="nav-link @if($segment=='products') active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>جميع المنتجات</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.products.waiting') }}" class="nav-link @if($segment=='waiting') active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>منتجات في انتظار الموافقة</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ route('admin.products.approved') }}" class="nav-link @if($segment=='approved') active @endif">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>منتجات تمت الموافقة عليها</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item has-treeview">
             <a href="{{ route('admin.users.index') }}" class="nav-link @if($segment=='users') active @endif">
@@ -198,8 +224,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 </body>
-{{-- @jquery
-@toastr_js --}}
 
 @toastr_render
 

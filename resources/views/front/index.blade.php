@@ -11,7 +11,7 @@
 		<li data-target="#myCarousel" data-slide-to="3" class=""></li>
 	</ol>
 	<div class="carousel-inner" >
-		<div class="item active item1">
+		<div class="item active item1" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;">
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>حفظ
@@ -24,7 +24,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item2">
+		<div class="item item2" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;">
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>ادخار
@@ -37,7 +37,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item3">
+		<div class="item item3" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;">
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>صفقة
@@ -51,7 +51,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="item item4">
+		<div class="item item4" style="background: url({{ asset('frontend/images/1.png') }}) no-repeat;background-size: 100%;height: 20pc;" >
 			<div class="container">
 				<div class="carousel-caption">
 					{{-- <h3>خصم
@@ -65,6 +65,7 @@
 			</div>
 		</div>
 	</div>
+
 	<a class="left carousel-control" href="{{ asset('frontend/') }}#myCarousel" role="button" data-slide="prev">
 		<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
 		<span class="sr-only">Previous</span>

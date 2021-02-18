@@ -14,10 +14,26 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products = Product::where('status', 0)->paginate(10);
+        $products = Product::paginate(50);
         $user = Auth::user();
 
         return view('dashboard.products.index', compact('products', 'user'));
+    }
+
+    public function waiting()
+    {
+        $user = Auth::user();
+        $products = Products::where('status', 0)->paginate(50);
+
+        return view('dashboard.products.waiting', compact('user', 'products'));
+    }
+
+    public function approved()
+    {
+        $user = Auth::user();
+        $products = Products::where('status', 1)->paginate(50);
+
+        return view('dashboard.products.approved', compact('user', 'products'));
     }
 
 

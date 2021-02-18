@@ -498,10 +498,10 @@
                     /* min-height: 20pc;
                     padding-top: 8em; */
 
-                    */
+
                     /*-- carousel-slider --*/
 
-                    .carousel .item {
+                    /* .carousel .item {
                         background: url(../images/banner1.jpg) no-repeat;
                         background-size: 100%;
                         height: 20pc;
@@ -529,7 +529,7 @@
                         background: url(../images/banner1.jpg) no-repeat;
                         background-size: 100%;
                         height: 20pc;
-                    }
+                    } */
                     /* .carousel-caption h2,
                 .carousel-caption h3 {
                     font-size: 5em;
@@ -557,7 +557,7 @@
                     font-size: 40px;
                     letter-spacing: 0px;
                     font-weight: 600;
-                } */
+                }
 
                     .codes.agileitsbg3 {
                         background: #3498DB;

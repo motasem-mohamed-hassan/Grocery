@@ -59,7 +59,7 @@
                                 <div class="col-md-4 product-men justify-content-end">
                                     <div class="men-pro-item simpleCart_shelfItem mt-5">
                                         <div class="men-thumb-item">
-                                            <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 150px">
+                                            <img src="{{ asset('storage/products/'.$product->first_image->url) }}" style="width: 100%; height:40vh"">
                                             <div class="men-cart-pro">
                                                 <div class="inner-men-cart-pro">
                                                     <a href="{{ route('profile', $product->user_id) }}" class="link-product-add-cart">تواصل مع البائع</a>
@@ -77,7 +77,7 @@
                                             <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                 <form action="#" method="get">
                                                     <fieldset>
-                                                        <a href="{{ route('singleProduct', $product->id) }}" class="btn btn-success">صفحة المنتج</a>
+                                                        <a href="{{ route('singleProduct', $product->id) }}" class="btn btn-success" id="product-page">صفحة المنتج</a>
                                                     </fieldset>
                                                 </form>
                                             </div>
@@ -452,7 +452,7 @@
 
 
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; background-color: violet" id="submitToRange">نفذ</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; " id="submitToRange">نفذ</button>
             </form>
 		</div>
 	</div>

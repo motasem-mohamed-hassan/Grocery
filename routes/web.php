@@ -46,6 +46,10 @@ Route::namespace('Dashboard')->as('admin.')->middleware('role:admin|superAdmin')
 
     //products view
     Route::get('/dashboard/products', 'productsController@index')->name('products.index');
+    Route::get('/dashboard/waiting', 'ProductsController@waiting')->name('products.waiting');
+    Route::get('/dashboard/approved', 'ProductsController@apprved')->name('products.approved');
+
+
     Route::get('/dashboard/products/approve', 'productsController@approve')->name('products.approve');
     Route::get('/dashboard/products/delete', 'productsController@delete')->name('products.delete');
     Route::get('dashboard/product/{id}', 'productsController@show')->name('show-btn');

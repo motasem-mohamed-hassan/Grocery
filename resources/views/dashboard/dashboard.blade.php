@@ -31,7 +31,7 @@
             <div class="icon">
             <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="{{ route('admin.products.index') }}" class="small-box-footer">الانتقال الى الصفحة <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.products.approved') }}" class="small-box-footer">الانتقال الى الصفحة <i class="fas fa-arrow-circle-right"></i></a>
         </div>
         </div>
         <!-- ./col -->
@@ -45,7 +45,7 @@
             <div class="icon">
             <i class="ion ion-pie-graph"></i>
             </div>
-            <a href="{{ route('admin.products.index') }}" class="small-box-footer">الانتقال الى الصفحة <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="{{ route('admin.products.waiting') }}" class="small-box-footer">الانتقال الى الصفحة <i class="fas fa-arrow-circle-right"></i></a>
         </div>
         </div>
         <!-- ./col -->
